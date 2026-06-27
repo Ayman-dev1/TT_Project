@@ -1,2 +1,6 @@
-# Nixpacks configuration to ensure both Node.js and Python runtimes are installed
+# Nixpacks configuration to enforce stable Node 20 and Python 3.10
 providers = ["node", "python"]
+
+[variables]
+NIXPACKS_NODE_VERSION = "20"
+NIXPACKS_PYTHON_VERSION = "3.10"
