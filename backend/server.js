@@ -20,7 +20,10 @@ const server = http.createServer(app);
 initSecurity(app, server);
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+    credentials: true,
+}));
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
@@ -38,10 +41,27 @@ app.use('/api/appointments', require('./routes/appointmentRoutes'));
 app.use('/api/admin', require('./routes/adminRoutes'));
 app.use('/api/medical-records', require('./routes/medicalRecordRoutes'));
 
-// Root route
-app.get('/', (req, res) => {
+// Root route (API health check)
+app.get('/api', (req, res) => {
     res.send('Tabibi API is running...');
 });
+
+// -------------------------------------------------------
+// Serve React front-end in production
+// The Vite build outputs to frontend/dist (relative to repo root)
+// -------------------------------------------------------
+const frontendBuildPath = path.join(__dirname, '..', 'frontend', 'dist');
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(frontendBuildPath));
+    // Catch-all: send React's index.html for any non-API route
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(frontendBuildPath, 'index.html'));
+    });
+} else {
+    app.get('/', (req, res) => {
+        res.send('Tabibi API is running (development mode)...');
+    });
+}
 
 // Error Handling Middleware
 app.use(errorHandler);

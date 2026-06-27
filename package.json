@@ -4,18 +4,15 @@
   "description": "Tabibi Project Monorepo Root",
   "main": "backend/server.js",
   "scripts": {
-    "start": "node backend/server.js"
+    "install:backend": "cd backend && npm install",
+    "install:frontend": "cd frontend && npm install",
+    "install:all": "npm run install:backend && npm run install:frontend",
+    "build": "cd frontend && npm run build",
+    "start": "node backend/server.js",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev"
   },
-  "dependencies": {
-    "bcryptjs": "^3.0.3",
-    "cloudinary": "^1.41.3",
-    "cors": "^2.8.6",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3",
-    "mongoose": "^9.6.2",
-    "multer": "^2.1.1",
-    "multer-storage-cloudinary": "^4.0.0",
-    "socket.io": "^4.8.3"
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
