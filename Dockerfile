@@ -1,12 +1,12 @@
 # Use a stable, pre-bundled Node.js and Python Debian-based image
 FROM nikolaik/python-nodejs:python3.10-nodejs20
 
-# Set working directory to the root-level project folder inside the container
-WORKDIR /app/doctor-recommend-system-main
+# Set working directory inside the container
+WORKDIR /app
 
 # Copy dependency files first from the respective paths to leverage Docker layer caching
-COPY doctor-recommend-system-main/backend/package*.json ./backend/
-COPY doctor-recommend-system-main/requirements.txt ./
+COPY backend/package*.json ./backend/
+COPY requirements.txt ./
 
 # Install Node.js dependencies
 RUN cd backend && npm install --production=false
@@ -14,8 +14,8 @@ RUN cd backend && npm install --production=false
 # Install Python dependencies
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# Copy the entire workspace code into the container
-COPY . /app
+# Copy all contents of the build context into the container
+COPY . .
 
 # Expose ports for Node.js (5000) and Django (8000)
 EXPOSE 5000
