@@ -1,0 +1,2 @@
+# Nixpacks configuration to ensure both Node.js and Python runtimes are installed
+providers = ["node", "python"]
