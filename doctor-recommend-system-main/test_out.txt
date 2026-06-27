@@ -1,0 +1,1 @@
+{'input': 'انا عندي دوخة وخدلان', 'matched_symptoms': [], 'predictions': [], 'top_specialty': None, 'error': 'No recognizable symptoms found. Please describe symptoms in more detail.'}

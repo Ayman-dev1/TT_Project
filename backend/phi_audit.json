@@ -1,0 +1,6660 @@
+[
+  {
+    "userId": "test-user",
+    "patientId": "patient-123",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Automated verification test",
+    "ip": "127.0.0.1",
+    "time": "17/06/2026, 09:05:28 am CAI",
+    "timeCairo": "17/06/2026, 09:05:28 CAI",
+    "isoTime": "2026-06-17T06:05:28.803Z",
+    "meta": {},
+    "_sig": "dcf33c2e59c5821a"
+  },
+  {
+    "userId": "test-user",
+    "patientId": "patient-123",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Automated verification test",
+    "ip": "127.0.0.1",
+    "time": "17/06/2026, 09:05:55 am CAI",
+    "timeCairo": "17/06/2026, 09:05:55 CAI",
+    "isoTime": "2026-06-17T06:05:55.143Z",
+    "meta": {},
+    "_sig": "ced97ddc7269486f"
+  },
+  {
+    "userId": "6a36a819d86a10c7c4b53cc5",
+    "patientId": "6a36a819d86a10c7c4b53cc5",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "User registration",
+    "ip": "127.0.0.1",
+    "time": "20/06/2026, 05:47:53 pm CAI",
+    "timeCairo": "20/06/2026, 17:47:53 CAI",
+    "isoTime": "2026-06-20T14:47:53.445Z",
+    "meta": {},
+    "_sig": "0c1b38f463cd5bbf"
+  },
+  {
+    "userId": "6a36ceaf53d4a9003b455bc2",
+    "patientId": "6a36ceaf53d4a9003b455bc2",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "User registration",
+    "ip": "127.0.0.1",
+    "time": "20/06/2026, 08:32:32 pm CAI",
+    "timeCairo": "20/06/2026, 20:32:32 CAI",
+    "isoTime": "2026-06-20T17:32:32.321Z",
+    "meta": {},
+    "_sig": "be6a1db5f40ec230"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a7822678ba26d693e6257",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:17:47 pm CAI",
+    "timeCairo": "23/06/2026, 15:17:47 CAI",
+    "isoTime": "2026-06-23T12:17:47.008Z",
+    "meta": {},
+    "_sig": "8e5e653fbe469945"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a7822678ba26d693e6257",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:17:47 pm CAI",
+    "timeCairo": "23/06/2026, 15:17:47 CAI",
+    "isoTime": "2026-06-23T12:17:47.338Z",
+    "meta": {},
+    "_sig": "8e5e653fbe469945"
+  },
+  {
+    "userId": "6a3a7a6b98fd9a55e2c9dcf7",
+    "patientId": "6a3a7a6b98fd9a55e2c9dcf7",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "User registration",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:22:03 pm CAI",
+    "timeCairo": "23/06/2026, 15:22:04 CAI",
+    "isoTime": "2026-06-23T12:22:04.054Z",
+    "meta": {},
+    "_sig": "5e73e34d4330776c"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a7823678ba26d693e6259",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:22:09 pm CAI",
+    "timeCairo": "23/06/2026, 15:22:09 CAI",
+    "isoTime": "2026-06-23T12:22:09.919Z",
+    "meta": {},
+    "_sig": "cc52777d8c997acf"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a7823678ba26d693e6259",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:22:10 pm CAI",
+    "timeCairo": "23/06/2026, 15:22:10 CAI",
+    "isoTime": "2026-06-23T12:22:10.254Z",
+    "meta": {},
+    "_sig": "1d88875241a99822"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a7822678ba26d693e6257",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:22:22 pm CAI",
+    "timeCairo": "23/06/2026, 15:22:22 CAI",
+    "isoTime": "2026-06-23T12:22:22.989Z",
+    "meta": {},
+    "_sig": "b7468d325a4e69db"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a7822678ba26d693e6257",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:22:23 pm CAI",
+    "timeCairo": "23/06/2026, 15:22:23 CAI",
+    "isoTime": "2026-06-23T12:22:23.321Z",
+    "meta": {},
+    "_sig": "1427e5141862c2bb"
+  },
+  {
+    "userId": "6a3a7a6b98fd9a55e2c9dcf7",
+    "patientId": "6a3a7a6b98fd9a55e2c9dcf7",
+    "fields": [
+      "patientName",
+      "phone"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "Book appointment",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:22:27 pm CAI",
+    "timeCairo": "23/06/2026, 15:22:27 CAI",
+    "isoTime": "2026-06-23T12:22:27.042Z",
+    "meta": {
+      "appointmentId": "6a3a7a8217960ff5099cab60"
+    },
+    "_sig": "19f560f5db2c0460"
+  },
+  {
+    "userId": "6a3a7a6b98fd9a55e2c9dcf7",
+    "patientId": "6a3a7a6b98fd9a55e2c9dcf7",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:22:30 pm CAI",
+    "timeCairo": "23/06/2026, 15:22:30 CAI",
+    "isoTime": "2026-06-23T12:22:30.861Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "ad2fb24d525213f4"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "User registration",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:34:03 pm CAI",
+    "timeCairo": "23/06/2026, 15:34:03 CAI",
+    "isoTime": "2026-06-23T12:34:03.213Z",
+    "meta": {},
+    "_sig": "4339c387fa36b0c1"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:34:10 pm CAI",
+    "timeCairo": "23/06/2026, 15:34:10 CAI",
+    "isoTime": "2026-06-23T12:34:10.794Z",
+    "meta": {
+      "count": 0
+    },
+    "_sig": "80dd017b9a2665a8"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a7823678ba26d693e625b",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:34:21 pm CAI",
+    "timeCairo": "23/06/2026, 15:34:21 CAI",
+    "isoTime": "2026-06-23T12:34:21.482Z",
+    "meta": {},
+    "_sig": "751ec104fdec1773"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:34:59 pm CAI",
+    "timeCairo": "23/06/2026, 15:34:59 CAI",
+    "isoTime": "2026-06-23T12:34:59.849Z",
+    "meta": {
+      "count": 0
+    },
+    "_sig": "3b6a524473cf3755"
+  },
+  {
+    "userId": "6a3a7dccf83043dc1d7b113e",
+    "patientId": "6a3a7dccf83043dc1d7b113e",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "User registration",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:36:29 pm CAI",
+    "timeCairo": "23/06/2026, 15:36:29 CAI",
+    "isoTime": "2026-06-23T12:36:29.615Z",
+    "meta": {},
+    "_sig": "0d12b4fd7bc2a32f"
+  },
+  {
+    "userId": "6a3a7dccf83043dc1d7b113e",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:36:37 pm CAI",
+    "timeCairo": "23/06/2026, 15:36:37 CAI",
+    "isoTime": "2026-06-23T12:36:37.124Z",
+    "meta": {
+      "count": 0
+    },
+    "_sig": "4187dc0c1470f59b"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a7822678ba26d693e6257",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:36:51 pm CAI",
+    "timeCairo": "23/06/2026, 15:36:51 CAI",
+    "isoTime": "2026-06-23T12:36:51.972Z",
+    "meta": {},
+    "_sig": "ea1baf7e301b7349"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a7822678ba26d693e6257",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:36:52 pm CAI",
+    "timeCairo": "23/06/2026, 15:36:52 CAI",
+    "isoTime": "2026-06-23T12:36:52.298Z",
+    "meta": {},
+    "_sig": "968b98d94d459d38"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:37:53 pm CAI",
+    "timeCairo": "23/06/2026, 15:37:53 CAI",
+    "isoTime": "2026-06-23T12:37:53.305Z",
+    "meta": {},
+    "_sig": "d64f284c0158ed32"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a7dccf83043dc1d7b113e",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:37:59 pm CAI",
+    "timeCairo": "23/06/2026, 15:37:59 CAI",
+    "isoTime": "2026-06-23T12:37:59.837Z",
+    "meta": {},
+    "_sig": "ab9d612e7347b893"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a7dccf83043dc1d7b113e",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:38:00 pm CAI",
+    "timeCairo": "23/06/2026, 15:38:00 CAI",
+    "isoTime": "2026-06-23T12:38:00.173Z",
+    "meta": {},
+    "_sig": "716b928693726b4d"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "phone"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "Book appointment",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:38:04 pm CAI",
+    "timeCairo": "23/06/2026, 15:38:04 CAI",
+    "isoTime": "2026-06-23T12:38:04.507Z",
+    "meta": {
+      "appointmentId": "6a3a7e2c90c15f4a2fc152ea"
+    },
+    "_sig": "17a1c229d7afa8ac"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:38:08 pm CAI",
+    "timeCairo": "23/06/2026, 15:38:08 CAI",
+    "isoTime": "2026-06-23T12:38:08.413Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "49b9e0e54c4012ba"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:38:16 pm CAI",
+    "timeCairo": "23/06/2026, 15:38:16 CAI",
+    "isoTime": "2026-06-23T12:38:16.489Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "1c43524f133929db"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a7dccf83043dc1d7b113e",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:38:22 pm CAI",
+    "timeCairo": "23/06/2026, 15:38:22 CAI",
+    "isoTime": "2026-06-23T12:38:22.431Z",
+    "meta": {},
+    "_sig": "1cde7749783d59fc"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a7dccf83043dc1d7b113e",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:38:22 pm CAI",
+    "timeCairo": "23/06/2026, 15:38:22 CAI",
+    "isoTime": "2026-06-23T12:38:22.762Z",
+    "meta": {},
+    "_sig": "1cde7749783d59fc"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:38:26 pm CAI",
+    "timeCairo": "23/06/2026, 15:38:26 CAI",
+    "isoTime": "2026-06-23T12:38:26.370Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "097b78aaffee1036"
+  },
+  {
+    "userId": "6a3a7dccf83043dc1d7b113e",
+    "patientId": "6a3a7dccf83043dc1d7b113e",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:40:05 pm CAI",
+    "timeCairo": "23/06/2026, 15:40:05 CAI",
+    "isoTime": "2026-06-23T12:40:05.897Z",
+    "meta": {},
+    "_sig": "51785c0b73499aa6"
+  },
+  {
+    "userId": "6a3a7dccf83043dc1d7b113e",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:40:09 pm CAI",
+    "timeCairo": "23/06/2026, 15:40:10 CAI",
+    "isoTime": "2026-06-23T12:40:10.017Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "727ecdaab1e24107"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a7dccf83043dc1d7b113e",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:46:57 pm CAI",
+    "timeCairo": "23/06/2026, 15:46:57 CAI",
+    "isoTime": "2026-06-23T12:46:57.639Z",
+    "meta": {},
+    "_sig": "40347150ed325c7a"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a7dccf83043dc1d7b113e",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:48:22 pm CAI",
+    "timeCairo": "23/06/2026, 15:48:22 CAI",
+    "isoTime": "2026-06-23T12:48:22.480Z",
+    "meta": {},
+    "_sig": "fca5ea10dd036a2f"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a7dccf83043dc1d7b113e",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:48:22 pm CAI",
+    "timeCairo": "23/06/2026, 15:48:22 CAI",
+    "isoTime": "2026-06-23T12:48:22.816Z",
+    "meta": {},
+    "_sig": "fca5ea10dd036a2f"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:48:46 pm CAI",
+    "timeCairo": "23/06/2026, 15:48:46 CAI",
+    "isoTime": "2026-06-23T12:48:46.095Z",
+    "meta": {},
+    "_sig": "3023e61f242121fd"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:48:50 pm CAI",
+    "timeCairo": "23/06/2026, 15:48:50 CAI",
+    "isoTime": "2026-06-23T12:48:50.329Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "cebb6fe2c2a3220c"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:48:56 pm CAI",
+    "timeCairo": "23/06/2026, 15:48:56 CAI",
+    "isoTime": "2026-06-23T12:48:56.212Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "89e7ec6590728049"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName"
+    ],
+    "categories": [
+      "IDENTITY"
+    ],
+    "action": "DELETE",
+    "reason": "Cancel appointment",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:49:00 pm CAI",
+    "timeCairo": "23/06/2026, 15:49:00 CAI",
+    "isoTime": "2026-06-23T12:49:00.121Z",
+    "meta": {
+      "appointmentId": "6a3a7e2c90c15f4a2fc152ea"
+    },
+    "_sig": "7a6c6e05f2cbc93b"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName"
+    ],
+    "categories": [
+      "IDENTITY"
+    ],
+    "action": "DELETE",
+    "reason": "Cancel appointment",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:49:05 pm CAI",
+    "timeCairo": "23/06/2026, 15:49:05 CAI",
+    "isoTime": "2026-06-23T12:49:05.608Z",
+    "meta": {
+      "appointmentId": "6a3a7e2c90c15f4a2fc152ea"
+    },
+    "_sig": "b046840b6608914a"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:49:12 pm CAI",
+    "timeCairo": "23/06/2026, 15:49:12 CAI",
+    "isoTime": "2026-06-23T12:49:12.496Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "1768d1f60cac34fd"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "phone"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "Book appointment",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:49:19 pm CAI",
+    "timeCairo": "23/06/2026, 15:49:19 CAI",
+    "isoTime": "2026-06-23T12:49:19.524Z",
+    "meta": {
+      "appointmentId": "6a3a80cf1f9e394d189eceb2"
+    },
+    "_sig": "38548f33b4863757"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:49:23 pm CAI",
+    "timeCairo": "23/06/2026, 15:49:23 CAI",
+    "isoTime": "2026-06-23T12:49:23.608Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "3fd4b166e26d1210"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:49:35 pm CAI",
+    "timeCairo": "23/06/2026, 15:49:35 CAI",
+    "isoTime": "2026-06-23T12:49:35.894Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "6663c2dd515bf0f7"
+  },
+  {
+    "userId": "6a3a81190925d1cb9d125d59",
+    "patientId": "6a3a81190925d1cb9d125d59",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "User registration",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:50:33 pm CAI",
+    "timeCairo": "23/06/2026, 15:50:33 CAI",
+    "isoTime": "2026-06-23T12:50:33.801Z",
+    "meta": {},
+    "_sig": "b6be80a969e2708d"
+  },
+  {
+    "userId": "6a3a81190925d1cb9d125d59",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:50:45 pm CAI",
+    "timeCairo": "23/06/2026, 15:50:45 CAI",
+    "isoTime": "2026-06-23T12:50:45.100Z",
+    "meta": {
+      "count": 0
+    },
+    "_sig": "914a562b3ba19cbe"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:51:44 pm CAI",
+    "timeCairo": "23/06/2026, 15:51:44 CAI",
+    "isoTime": "2026-06-23T12:51:44.972Z",
+    "meta": {},
+    "_sig": "520f875664324a1d"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a81190925d1cb9d125d59",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:51:59 pm CAI",
+    "timeCairo": "23/06/2026, 15:51:59 CAI",
+    "isoTime": "2026-06-23T12:51:59.087Z",
+    "meta": {},
+    "_sig": "d05d4b6bc595e243"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a81190925d1cb9d125d59",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:52:06 pm CAI",
+    "timeCairo": "23/06/2026, 15:52:06 CAI",
+    "isoTime": "2026-06-23T12:52:06.642Z",
+    "meta": {},
+    "_sig": "5fb8fa7b3083d71f"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a81190925d1cb9d125d59",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:52:06 pm CAI",
+    "timeCairo": "23/06/2026, 15:52:06 CAI",
+    "isoTime": "2026-06-23T12:52:06.966Z",
+    "meta": {},
+    "_sig": "5fb8fa7b3083d71f"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "phone"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "Book appointment",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:52:13 pm CAI",
+    "timeCairo": "23/06/2026, 15:52:13 CAI",
+    "isoTime": "2026-06-23T12:52:13.817Z",
+    "meta": {
+      "appointmentId": "6a3a817df98408d5d4e645e8"
+    },
+    "_sig": "fde40e7ec482002d"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:52:18 pm CAI",
+    "timeCairo": "23/06/2026, 15:52:18 CAI",
+    "isoTime": "2026-06-23T12:52:18.833Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "7037edd3ff515345"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 03:52:28 pm CAI",
+    "timeCairo": "23/06/2026, 15:52:28 CAI",
+    "isoTime": "2026-06-23T12:52:28.725Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "5c8b57350fa682a1"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:02:09 pm CAI",
+    "timeCairo": "23/06/2026, 16:02:09 CAI",
+    "isoTime": "2026-06-23T13:02:09.859Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "f2eaad87b954fee9"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName"
+    ],
+    "categories": [
+      "IDENTITY"
+    ],
+    "action": "DELETE",
+    "reason": "Cancel appointment",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:02:18 pm CAI",
+    "timeCairo": "23/06/2026, 16:02:18 CAI",
+    "isoTime": "2026-06-23T13:02:18.033Z",
+    "meta": {
+      "appointmentId": "6a3a7e2c90c15f4a2fc152ea"
+    },
+    "_sig": "4200f35a041b767e"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:02:23 pm CAI",
+    "timeCairo": "23/06/2026, 16:02:23 CAI",
+    "isoTime": "2026-06-23T13:02:23.374Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "ae3686902d824abf"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:02:33 pm CAI",
+    "timeCairo": "23/06/2026, 16:02:33 CAI",
+    "isoTime": "2026-06-23T13:02:33.424Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "9d11e0729f5daaf8"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:03:30 pm CAI",
+    "timeCairo": "23/06/2026, 16:03:30 CAI",
+    "isoTime": "2026-06-23T13:03:30.147Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "2711ddd62a9fac2b"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:05:52 pm CAI",
+    "timeCairo": "23/06/2026, 16:05:52 CAI",
+    "isoTime": "2026-06-23T13:05:52.423Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "a1292f1e10c57a95"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:11:15 pm CAI",
+    "timeCairo": "23/06/2026, 16:11:15 CAI",
+    "isoTime": "2026-06-23T13:11:15.669Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "6ee480ce21f4772b"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName"
+    ],
+    "categories": [
+      "IDENTITY"
+    ],
+    "action": "DELETE",
+    "reason": "Cancel appointment",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:11:21 pm CAI",
+    "timeCairo": "23/06/2026, 16:11:21 CAI",
+    "isoTime": "2026-06-23T13:11:21.627Z",
+    "meta": {
+      "appointmentId": "6a3a80cf1f9e394d189eceb2"
+    },
+    "_sig": "9ec2bebb14b29645"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName"
+    ],
+    "categories": [
+      "IDENTITY"
+    ],
+    "action": "DELETE",
+    "reason": "Cancel appointment",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:11:29 pm CAI",
+    "timeCairo": "23/06/2026, 16:11:29 CAI",
+    "isoTime": "2026-06-23T13:11:29.054Z",
+    "meta": {
+      "appointmentId": "6a3a80cf1f9e394d189eceb2"
+    },
+    "_sig": "6bca397009574f27"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:11:34 pm CAI",
+    "timeCairo": "23/06/2026, 16:11:34 CAI",
+    "isoTime": "2026-06-23T13:11:34.759Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "3756e059fe4d3d70"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName"
+    ],
+    "categories": [
+      "IDENTITY"
+    ],
+    "action": "DELETE",
+    "reason": "Cancel appointment",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:11:41 pm CAI",
+    "timeCairo": "23/06/2026, 16:11:41 CAI",
+    "isoTime": "2026-06-23T13:11:41.125Z",
+    "meta": {
+      "appointmentId": "6a3a7e2c90c15f4a2fc152ea"
+    },
+    "_sig": "871a4aa6b82285e1"
+  },
+  {
+    "userId": "6a3a7821678ba26d693e6253",
+    "patientId": "6a3a7821678ba26d693e6253",
+    "fields": [
+      "patientName"
+    ],
+    "categories": [
+      "IDENTITY"
+    ],
+    "action": "DELETE",
+    "reason": "Cancel appointment",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:15:08 pm CAI",
+    "timeCairo": "23/06/2026, 16:15:08 CAI",
+    "isoTime": "2026-06-23T13:15:08.844Z",
+    "meta": {
+      "appointmentId": "6a3a7824678ba26d693e625f"
+    },
+    "_sig": "f487baa7c0b48b05"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:15:23 pm CAI",
+    "timeCairo": "23/06/2026, 16:15:23 CAI",
+    "isoTime": "2026-06-23T13:15:23.124Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "b29bdfbb16f9bd1c"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:17:09 pm CAI",
+    "timeCairo": "23/06/2026, 16:17:09 CAI",
+    "isoTime": "2026-06-23T13:17:09.195Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "762f30e9cf94ea32"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:17:21 pm CAI",
+    "timeCairo": "23/06/2026, 16:17:21 CAI",
+    "isoTime": "2026-06-23T13:17:21.723Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "1af692f39012bdff"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:17:27 pm CAI",
+    "timeCairo": "23/06/2026, 16:17:27 CAI",
+    "isoTime": "2026-06-23T13:17:27.132Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "ba1cbe4473b634c1"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:18:04 pm CAI",
+    "timeCairo": "23/06/2026, 16:18:04 CAI",
+    "isoTime": "2026-06-23T13:18:04.140Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "093463729f66524e"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:18:08 pm CAI",
+    "timeCairo": "23/06/2026, 16:18:08 CAI",
+    "isoTime": "2026-06-23T13:18:08.312Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "91f26d1848ca183e"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:19:08 pm CAI",
+    "timeCairo": "23/06/2026, 16:19:08 CAI",
+    "isoTime": "2026-06-23T13:19:08.339Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "875bfcd549c0a505"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:20:31 pm CAI",
+    "timeCairo": "23/06/2026, 16:20:31 CAI",
+    "isoTime": "2026-06-23T13:20:31.150Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "d450f5de5d1bf320"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:20:37 pm CAI",
+    "timeCairo": "23/06/2026, 16:20:37 CAI",
+    "isoTime": "2026-06-23T13:20:37.549Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "af21736900c1fffa"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:20:46 pm CAI",
+    "timeCairo": "23/06/2026, 16:20:46 CAI",
+    "isoTime": "2026-06-23T13:20:46.016Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "c02562c1f8647df0"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:20:53 pm CAI",
+    "timeCairo": "23/06/2026, 16:20:53 CAI",
+    "isoTime": "2026-06-23T13:20:53.341Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "3a46a43047b06d91"
+  },
+  {
+    "userId": "6a3a7a6b98fd9a55e2c9dcf7",
+    "patientId": "6a3a7a6b98fd9a55e2c9dcf7",
+    "fields": [
+      "patientName"
+    ],
+    "categories": [
+      "IDENTITY"
+    ],
+    "action": "DELETE",
+    "reason": "Cancel appointment",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:21:55 pm CAI",
+    "timeCairo": "23/06/2026, 16:21:55 CAI",
+    "isoTime": "2026-06-23T13:21:55.818Z",
+    "meta": {
+      "appointmentId": "6a3a7a8217960ff5099cab60"
+    },
+    "_sig": "0d64f6b6fb1ecdac"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:22:18 pm CAI",
+    "timeCairo": "23/06/2026, 16:22:18 CAI",
+    "isoTime": "2026-06-23T13:22:18.140Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "e9ea2a3643a5158e"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName"
+    ],
+    "categories": [
+      "IDENTITY"
+    ],
+    "action": "DELETE",
+    "reason": "Cancel appointment",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:22:22 pm CAI",
+    "timeCairo": "23/06/2026, 16:22:22 CAI",
+    "isoTime": "2026-06-23T13:22:22.056Z",
+    "meta": {
+      "appointmentId": "6a3a817df98408d5d4e645e8"
+    },
+    "_sig": "163584bef2330650"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:22:30 pm CAI",
+    "timeCairo": "23/06/2026, 16:22:30 CAI",
+    "isoTime": "2026-06-23T13:22:30.175Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "e6898bcad3016f52"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:30:54 pm CAI",
+    "timeCairo": "23/06/2026, 16:30:54 CAI",
+    "isoTime": "2026-06-23T13:30:54.115Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "f7dd804c90ac8a26"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a81190925d1cb9d125d59",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:31:07 pm CAI",
+    "timeCairo": "23/06/2026, 16:31:07 CAI",
+    "isoTime": "2026-06-23T13:31:07.557Z",
+    "meta": {},
+    "_sig": "2080fcda56063339"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a81190925d1cb9d125d59",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:31:14 pm CAI",
+    "timeCairo": "23/06/2026, 16:31:14 CAI",
+    "isoTime": "2026-06-23T13:31:14.221Z",
+    "meta": {},
+    "_sig": "25420108f50419df"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:31:22 pm CAI",
+    "timeCairo": "23/06/2026, 16:31:22 CAI",
+    "isoTime": "2026-06-23T13:31:22.418Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "f8b92a7bfbb1d3d6"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:44:39 pm CAI",
+    "timeCairo": "23/06/2026, 16:44:39 CAI",
+    "isoTime": "2026-06-23T13:44:39.412Z",
+    "meta": {},
+    "_sig": "9ad10f5646a8e20d"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:44:47 pm CAI",
+    "timeCairo": "23/06/2026, 16:44:47 CAI",
+    "isoTime": "2026-06-23T13:44:47.199Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "2942dfdbfb65b1bf"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a81190925d1cb9d125d59",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:44:56 pm CAI",
+    "timeCairo": "23/06/2026, 16:44:56 CAI",
+    "isoTime": "2026-06-23T13:44:56.852Z",
+    "meta": {},
+    "_sig": "6254c2587d344f83"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "phone"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "Book appointment",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:45:05 pm CAI",
+    "timeCairo": "23/06/2026, 16:45:05 CAI",
+    "isoTime": "2026-06-23T13:45:05.755Z",
+    "meta": {
+      "appointmentId": "6a3a8de189fe0e2680b3f471"
+    },
+    "_sig": "31b571d8e5528af5"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:45:12 pm CAI",
+    "timeCairo": "23/06/2026, 16:45:12 CAI",
+    "isoTime": "2026-06-23T13:45:12.922Z",
+    "meta": {
+      "count": 4
+    },
+    "_sig": "e717aab1dde61332"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName"
+    ],
+    "categories": [
+      "IDENTITY"
+    ],
+    "action": "DELETE",
+    "reason": "Cancel appointment",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:45:31 pm CAI",
+    "timeCairo": "23/06/2026, 16:45:31 CAI",
+    "isoTime": "2026-06-23T13:45:31.913Z",
+    "meta": {
+      "appointmentId": "6a3a8de189fe0e2680b3f471"
+    },
+    "_sig": "6676f7f5bdff0806"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:45:39 pm CAI",
+    "timeCairo": "23/06/2026, 16:45:39 CAI",
+    "isoTime": "2026-06-23T13:45:39.283Z",
+    "meta": {
+      "count": 4
+    },
+    "_sig": "148c15d9e5e707fd"
+  },
+  {
+    "userId": "6a3a7dccf83043dc1d7b113e",
+    "patientId": "6a3a7dccf83043dc1d7b113e",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:49:27 pm CAI",
+    "timeCairo": "23/06/2026, 16:49:27 CAI",
+    "isoTime": "2026-06-23T13:49:27.362Z",
+    "meta": {},
+    "_sig": "bf8b5431510df304"
+  },
+  {
+    "userId": "6a3a7dccf83043dc1d7b113e",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:49:34 pm CAI",
+    "timeCairo": "23/06/2026, 16:49:34 CAI",
+    "isoTime": "2026-06-23T13:49:34.531Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "fe7969072e9ebb96"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:49:53 pm CAI",
+    "timeCairo": "23/06/2026, 16:49:53 CAI",
+    "isoTime": "2026-06-23T13:49:53.785Z",
+    "meta": {},
+    "_sig": "f30add22078cce60"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a7dccf83043dc1d7b113e",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:50:00 pm CAI",
+    "timeCairo": "23/06/2026, 16:50:00 CAI",
+    "isoTime": "2026-06-23T13:50:00.220Z",
+    "meta": {},
+    "_sig": "17dfe146d2826fcb"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3a7dccf83043dc1d7b113e",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:50:00 pm CAI",
+    "timeCairo": "23/06/2026, 16:50:00 CAI",
+    "isoTime": "2026-06-23T13:50:00.567Z",
+    "meta": {},
+    "_sig": "17dfe146d2826fcb"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "phone"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "Book appointment",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:50:03 pm CAI",
+    "timeCairo": "23/06/2026, 16:50:03 CAI",
+    "isoTime": "2026-06-23T13:50:03.925Z",
+    "meta": {
+      "appointmentId": "6a3a8f0b26798dcfde294545"
+    },
+    "_sig": "1b9fd0b495254dae"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:50:07 pm CAI",
+    "timeCairo": "23/06/2026, 16:50:07 CAI",
+    "isoTime": "2026-06-23T13:50:07.915Z",
+    "meta": {
+      "count": 5
+    },
+    "_sig": "530e8a083aae25a7"
+  },
+  {
+    "userId": "6a3a7dccf83043dc1d7b113e",
+    "patientId": "6a3a7dccf83043dc1d7b113e",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:50:22 pm CAI",
+    "timeCairo": "23/06/2026, 16:50:22 CAI",
+    "isoTime": "2026-06-23T13:50:22.151Z",
+    "meta": {},
+    "_sig": "ecaf5c4af6d0de27"
+  },
+  {
+    "userId": "6a3a7dccf83043dc1d7b113e",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:50:26 pm CAI",
+    "timeCairo": "23/06/2026, 16:50:26 CAI",
+    "isoTime": "2026-06-23T13:50:26.379Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "02512b43b01389a5"
+  },
+  {
+    "userId": "6a3a7d3a034974fc51e58943",
+    "patientId": "6a3a7d3a034974fc51e58943",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 04:50:46 pm CAI",
+    "timeCairo": "23/06/2026, 16:50:46 CAI",
+    "isoTime": "2026-06-23T13:50:46.813Z",
+    "meta": {},
+    "_sig": "36f1611fe683191b"
+  },
+  {
+    "userId": "6a3ab15f10c6562b3b8ddecb",
+    "patientId": "6a3ab15f10c6562b3b8ddecb",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "User registration",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:16:32 pm CAI",
+    "timeCairo": "23/06/2026, 19:16:32 CAI",
+    "isoTime": "2026-06-23T16:16:32.247Z",
+    "meta": {},
+    "_sig": "d8986938402cff4e"
+  },
+  {
+    "userId": "6a3ab15f10c6562b3b8ddecb",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:16:40 pm CAI",
+    "timeCairo": "23/06/2026, 19:16:40 CAI",
+    "isoTime": "2026-06-23T16:16:40.284Z",
+    "meta": {
+      "count": 0
+    },
+    "_sig": "8ced7976947b8f60"
+  },
+  {
+    "userId": "6a3ab15f10c6562b3b8ddecb",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:16:40 pm CAI",
+    "timeCairo": "23/06/2026, 19:16:40 CAI",
+    "isoTime": "2026-06-23T16:16:40.792Z",
+    "meta": {
+      "count": 0
+    },
+    "_sig": "8ced7976947b8f60"
+  },
+  {
+    "userId": "6a3ab1976e920b775db483e3",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "User registration",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:17:27 pm CAI",
+    "timeCairo": "23/06/2026, 19:17:27 CAI",
+    "isoTime": "2026-06-23T16:17:27.822Z",
+    "meta": {},
+    "_sig": "db3489c062b4a209"
+  },
+  {
+    "userId": "6a3ab1976e920b775db483e3",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:17:58 pm CAI",
+    "timeCairo": "23/06/2026, 19:17:58 CAI",
+    "isoTime": "2026-06-23T16:17:58.781Z",
+    "meta": {
+      "count": 0
+    },
+    "_sig": "be0b056454cacce2"
+  },
+  {
+    "userId": "6a3ab1976e920b775db483e3",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:17:59 pm CAI",
+    "timeCairo": "23/06/2026, 19:17:59 CAI",
+    "isoTime": "2026-06-23T16:17:59.127Z",
+    "meta": {
+      "count": 0
+    },
+    "_sig": "ad88713080d083d3"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3ab15f10c6562b3b8ddecb",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:18:03 pm CAI",
+    "timeCairo": "23/06/2026, 19:18:03 CAI",
+    "isoTime": "2026-06-23T16:18:03.897Z",
+    "meta": {},
+    "_sig": "e4e9adacb0fdbe8d"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3ab15f10c6562b3b8ddecb",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:18:04 pm CAI",
+    "timeCairo": "23/06/2026, 19:18:04 CAI",
+    "isoTime": "2026-06-23T16:18:04.241Z",
+    "meta": {},
+    "_sig": "3f27f3fde0f61229"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3ab15f10c6562b3b8ddecb",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:20:37 pm CAI",
+    "timeCairo": "23/06/2026, 19:20:37 CAI",
+    "isoTime": "2026-06-23T16:20:37.922Z",
+    "meta": {},
+    "_sig": "d8be493857ea121e"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3ab15f10c6562b3b8ddecb",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:20:38 pm CAI",
+    "timeCairo": "23/06/2026, 19:20:38 CAI",
+    "isoTime": "2026-06-23T16:20:38.287Z",
+    "meta": {},
+    "_sig": "09d4014e09f186ac"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3ab15f10c6562b3b8ddecb",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:36:57 pm CAI",
+    "timeCairo": "23/06/2026, 19:36:57 CAI",
+    "isoTime": "2026-06-23T16:36:57.429Z",
+    "meta": {},
+    "_sig": "470e1eaf65ff2dfd"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3ab15f10c6562b3b8ddecb",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:36:57 pm CAI",
+    "timeCairo": "23/06/2026, 19:36:57 CAI",
+    "isoTime": "2026-06-23T16:36:57.802Z",
+    "meta": {},
+    "_sig": "470e1eaf65ff2dfd"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3ab15f10c6562b3b8ddecb",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:37:03 pm CAI",
+    "timeCairo": "23/06/2026, 19:37:03 CAI",
+    "isoTime": "2026-06-23T16:37:03.856Z",
+    "meta": {},
+    "_sig": "4e04493bc2655f1b"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3ab15f10c6562b3b8ddecb",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:37:04 pm CAI",
+    "timeCairo": "23/06/2026, 19:37:04 CAI",
+    "isoTime": "2026-06-23T16:37:04.257Z",
+    "meta": {},
+    "_sig": "e9b3cd4594eba74b"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3ab15f10c6562b3b8ddecb",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:38:49 pm CAI",
+    "timeCairo": "23/06/2026, 19:38:49 CAI",
+    "isoTime": "2026-06-23T16:38:49.882Z",
+    "meta": {},
+    "_sig": "fd246881cd1a9379"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3ab15f10c6562b3b8ddecb",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:38:50 pm CAI",
+    "timeCairo": "23/06/2026, 19:38:50 CAI",
+    "isoTime": "2026-06-23T16:38:50.265Z",
+    "meta": {},
+    "_sig": "531cd3627211b9f5"
+  },
+  {
+    "userId": "6a3ab1976e920b775db483e3",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "patientName",
+      "phone"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "Book appointment",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:39:19 pm CAI",
+    "timeCairo": "23/06/2026, 19:39:19 CAI",
+    "isoTime": "2026-06-23T16:39:19.898Z",
+    "meta": {
+      "appointmentId": "6a3ab6b7753efd22671f1cab"
+    },
+    "_sig": "040aaeaedcc00b26"
+  },
+  {
+    "userId": "6a3ab1976e920b775db483e3",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:39:48 pm CAI",
+    "timeCairo": "23/06/2026, 19:39:48 CAI",
+    "isoTime": "2026-06-23T16:39:48.742Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "dd60e4b11aafadbe"
+  },
+  {
+    "userId": "6a3ab1976e920b775db483e3",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:47:34 pm CAI",
+    "timeCairo": "23/06/2026, 19:47:34 CAI",
+    "isoTime": "2026-06-23T16:47:34.592Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "c9a5981057bce1fa"
+  },
+  {
+    "userId": "6a3ab15f10c6562b3b8ddecb",
+    "patientId": "6a3ab15f10c6562b3b8ddecb",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:55:13 pm CAI",
+    "timeCairo": "23/06/2026, 19:55:14 CAI",
+    "isoTime": "2026-06-23T16:55:14.097Z",
+    "meta": {},
+    "_sig": "7c6653a07430f48f"
+  },
+  {
+    "userId": "6a3ab15f10c6562b3b8ddecb",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 07:55:23 pm CAI",
+    "timeCairo": "23/06/2026, 19:55:23 CAI",
+    "isoTime": "2026-06-23T16:55:23.793Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "3191c7db286d5fe1"
+  },
+  {
+    "userId": "6a3ab1976e920b775db483e3",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "23/06/2026, 08:00:16 pm CAI",
+    "timeCairo": "23/06/2026, 20:00:16 CAI",
+    "isoTime": "2026-06-23T17:00:16.750Z",
+    "meta": {},
+    "_sig": "82633e5e04851b43"
+  },
+  {
+    "userId": "6a3ab1976e920b775db483e3",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Read own medical records",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 03:29:58 pm CAI",
+    "timeCairo": "24/06/2026, 15:29:58 CAI",
+    "isoTime": "2026-06-24T12:29:58.435Z",
+    "meta": {},
+    "_sig": "f3d57de728eb770e"
+  },
+  {
+    "userId": "6a3ab1976e920b775db483e3",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Read own medical records",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 03:29:59 pm CAI",
+    "timeCairo": "24/06/2026, 15:29:59 CAI",
+    "isoTime": "2026-06-24T12:29:59.002Z",
+    "meta": {},
+    "_sig": "fb5788a53a7ec04b"
+  },
+  {
+    "userId": "6a3ab1976e920b775db483e3",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "WRITE",
+    "reason": "Upload medical record",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 03:30:14 pm CAI",
+    "timeCairo": "24/06/2026, 15:30:14 CAI",
+    "isoTime": "2026-06-24T12:30:14.672Z",
+    "meta": {},
+    "_sig": "aaa40b882f67f5fc"
+  },
+  {
+    "userId": "6a3ab1976e920b775db483e3",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Read own medical records",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 03:30:23 pm CAI",
+    "timeCairo": "24/06/2026, 15:30:23 CAI",
+    "isoTime": "2026-06-24T12:30:23.598Z",
+    "meta": {},
+    "_sig": "a052d2fed1ee168e"
+  },
+  {
+    "userId": "6a3ab1976e920b775db483e3",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "WRITE",
+    "reason": "Upload medical record",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 03:30:40 pm CAI",
+    "timeCairo": "24/06/2026, 15:30:40 CAI",
+    "isoTime": "2026-06-24T12:30:40.387Z",
+    "meta": {},
+    "_sig": "562d0258ba9070a5"
+  },
+  {
+    "userId": "6a3ab1976e920b775db483e3",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Read own medical records",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 03:30:55 pm CAI",
+    "timeCairo": "24/06/2026, 15:30:55 CAI",
+    "isoTime": "2026-06-24T12:30:55.227Z",
+    "meta": {},
+    "_sig": "fd5076b581ee7d02"
+  },
+  {
+    "userId": "6a3ab1976e920b775db483e3",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Read own medical records",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 03:31:02 pm CAI",
+    "timeCairo": "24/06/2026, 15:31:02 CAI",
+    "isoTime": "2026-06-24T12:31:02.946Z",
+    "meta": {},
+    "_sig": "598b45fb19a7115b"
+  },
+  {
+    "userId": "6a3ab1976e920b775db483e3",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Read own medical records",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 03:31:54 pm CAI",
+    "timeCairo": "24/06/2026, 15:31:54 CAI",
+    "isoTime": "2026-06-24T12:31:54.384Z",
+    "meta": {},
+    "_sig": "14463ef1c79e6cd2"
+  },
+  {
+    "userId": "6a3ab1976e920b775db483e3",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Read own medical records",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 03:32:30 pm CAI",
+    "timeCairo": "24/06/2026, 15:32:30 CAI",
+    "isoTime": "2026-06-24T12:32:30.168Z",
+    "meta": {},
+    "_sig": "d345b318ff14c716"
+  },
+  {
+    "userId": "6a3ab15f10c6562b3b8ddecb",
+    "patientId": "6a3ab15f10c6562b3b8ddecb",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 03:41:10 pm CAI",
+    "timeCairo": "24/06/2026, 15:41:10 CAI",
+    "isoTime": "2026-06-24T12:41:10.657Z",
+    "meta": {},
+    "_sig": "020442e2715b944e"
+  },
+  {
+    "userId": "6a3ab15f10c6562b3b8ddecb",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 03:41:16 pm CAI",
+    "timeCairo": "24/06/2026, 15:41:16 CAI",
+    "isoTime": "2026-06-24T12:41:16.449Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "c64e2f0c7d69d413"
+  },
+  {
+    "userId": "6a3ab15f10c6562b3b8ddecb",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Doctor read patient medical records",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 03:41:24 pm CAI",
+    "timeCairo": "24/06/2026, 15:41:24 CAI",
+    "isoTime": "2026-06-24T12:41:24.089Z",
+    "meta": {},
+    "_sig": "6157e2bf5fe0ca04"
+  },
+  {
+    "userId": "6a3ab15f10c6562b3b8ddecb",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Doctor read patient medical records",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 03:41:36 pm CAI",
+    "timeCairo": "24/06/2026, 15:41:36 CAI",
+    "isoTime": "2026-06-24T12:41:36.092Z",
+    "meta": {},
+    "_sig": "2c4d309f5ba555d4"
+  },
+  {
+    "userId": "6a3ab15f10c6562b3b8ddecb",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:10:47 pm CAI",
+    "timeCairo": "24/06/2026, 18:10:47 CAI",
+    "isoTime": "2026-06-24T15:10:47.860Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "35a24e6820d47c27"
+  },
+  {
+    "userId": "6a3ab15f10c6562b3b8ddecb",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "patientName"
+    ],
+    "categories": [
+      "IDENTITY"
+    ],
+    "action": "DELETE",
+    "reason": "Cancel appointment",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:10:59 pm CAI",
+    "timeCairo": "24/06/2026, 18:10:59 CAI",
+    "isoTime": "2026-06-24T15:10:59.118Z",
+    "meta": {
+      "appointmentId": "6a3ab6b7753efd22671f1cab"
+    },
+    "_sig": "8780ced2305189b1"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3ab0ce39e1dff820473b70",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:11:06 pm CAI",
+    "timeCairo": "24/06/2026, 18:11:06 CAI",
+    "isoTime": "2026-06-24T15:11:06.419Z",
+    "meta": {},
+    "_sig": "600b1d856dce1cf9"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3ab0ce39e1dff820473b70",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:11:06 pm CAI",
+    "timeCairo": "24/06/2026, 18:11:06 CAI",
+    "isoTime": "2026-06-24T15:11:06.787Z",
+    "meta": {},
+    "_sig": "600b1d856dce1cf9"
+  },
+  {
+    "userId": "6a3ab15f10c6562b3b8ddecb",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:11:16 pm CAI",
+    "timeCairo": "24/06/2026, 18:11:16 CAI",
+    "isoTime": "2026-06-24T15:11:16.704Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "c3eb501b0b739906"
+  },
+  {
+    "userId": "6a3ab15f10c6562b3b8ddecb",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:11:24 pm CAI",
+    "timeCairo": "24/06/2026, 18:11:24 CAI",
+    "isoTime": "2026-06-24T15:11:24.291Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "bf197618e126d5dc"
+  },
+  {
+    "userId": "6a3ab15f10c6562b3b8ddecb",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:12:43 pm CAI",
+    "timeCairo": "24/06/2026, 18:12:43 CAI",
+    "isoTime": "2026-06-24T15:12:43.469Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "6da4f5b93edcafba"
+  },
+  {
+    "userId": "6a3ab1976e920b775db483e3",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:15:10 pm CAI",
+    "timeCairo": "24/06/2026, 18:15:10 CAI",
+    "isoTime": "2026-06-24T15:15:10.200Z",
+    "meta": {},
+    "_sig": "9c493745f272ba05"
+  },
+  {
+    "userId": "6a3ab1976e920b775db483e3",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:15:16 pm CAI",
+    "timeCairo": "24/06/2026, 18:15:16 CAI",
+    "isoTime": "2026-06-24T15:15:16.084Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "cf24d32fb111c942"
+  },
+  {
+    "userId": "6a3ab1976e920b775db483e3",
+    "patientId": "6a3ab1976e920b775db483e3",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Read own medical records",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:15:23 pm CAI",
+    "timeCairo": "24/06/2026, 18:15:23 CAI",
+    "isoTime": "2026-06-24T15:15:23.283Z",
+    "meta": {},
+    "_sig": "25fe792e651dcbbc"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "User registration",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:53:58 pm CAI",
+    "timeCairo": "24/06/2026, 18:53:58 CAI",
+    "isoTime": "2026-06-24T15:53:58.945Z",
+    "meta": {},
+    "_sig": "8c37ee33f2ac1197"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:55:32 pm CAI",
+    "timeCairo": "24/06/2026, 18:55:32 CAI",
+    "isoTime": "2026-06-24T15:55:32.976Z",
+    "meta": {
+      "count": 0
+    },
+    "_sig": "85ad14c795419e8e"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:55:33 pm CAI",
+    "timeCairo": "24/06/2026, 18:55:33 CAI",
+    "isoTime": "2026-06-24T15:55:33.320Z",
+    "meta": {
+      "count": 0
+    },
+    "_sig": "f4ff06b64ee20753"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "6a3bfe23b862706c5b304740",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "User registration",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:56:20 pm CAI",
+    "timeCairo": "24/06/2026, 18:56:20 CAI",
+    "isoTime": "2026-06-24T15:56:20.782Z",
+    "meta": {},
+    "_sig": "d356b9c467464a9a"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:56:29 pm CAI",
+    "timeCairo": "24/06/2026, 18:56:29 CAI",
+    "isoTime": "2026-06-24T15:56:29.546Z",
+    "meta": {
+      "count": 0
+    },
+    "_sig": "fba407e250ccf353"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:56:56 pm CAI",
+    "timeCairo": "24/06/2026, 18:56:56 CAI",
+    "isoTime": "2026-06-24T15:56:56.093Z",
+    "meta": {},
+    "_sig": "96c807b539bc0980"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3bfe23b862706c5b304740",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:57:03 pm CAI",
+    "timeCairo": "24/06/2026, 18:57:03 CAI",
+    "isoTime": "2026-06-24T15:57:03.253Z",
+    "meta": {},
+    "_sig": "71e215f0fca5ce47"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3bfe23b862706c5b304740",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:57:03 pm CAI",
+    "timeCairo": "24/06/2026, 18:57:03 CAI",
+    "isoTime": "2026-06-24T15:57:03.605Z",
+    "meta": {},
+    "_sig": "71e215f0fca5ce47"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "phone"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "Book appointment",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:57:35 pm CAI",
+    "timeCairo": "24/06/2026, 18:57:35 CAI",
+    "isoTime": "2026-06-24T15:57:35.633Z",
+    "meta": {
+      "appointmentId": "6a3bfe6f82761e2087ad9337"
+    },
+    "_sig": "3e25383ccd2ddf4a"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:57:42 pm CAI",
+    "timeCairo": "24/06/2026, 18:57:42 CAI",
+    "isoTime": "2026-06-24T15:57:42.509Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "e1d0d9d0cbe89e79"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "6a3bfe23b862706c5b304740",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:57:54 pm CAI",
+    "timeCairo": "24/06/2026, 18:57:54 CAI",
+    "isoTime": "2026-06-24T15:57:54.261Z",
+    "meta": {},
+    "_sig": "68c7b24eb34ed95a"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:58:00 pm CAI",
+    "timeCairo": "24/06/2026, 18:58:00 CAI",
+    "isoTime": "2026-06-24T15:58:00.245Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "8c1f30a3142c008b"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:58:29 pm CAI",
+    "timeCairo": "24/06/2026, 18:58:29 CAI",
+    "isoTime": "2026-06-24T15:58:29.634Z",
+    "meta": {},
+    "_sig": "1b78f4545f19b1dc"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Read own medical records",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:58:40 pm CAI",
+    "timeCairo": "24/06/2026, 18:58:40 CAI",
+    "isoTime": "2026-06-24T15:58:40.855Z",
+    "meta": {},
+    "_sig": "41a0effc35fa36cd"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "6a3bfe23b862706c5b304740",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:58:58 pm CAI",
+    "timeCairo": "24/06/2026, 18:58:58 CAI",
+    "isoTime": "2026-06-24T15:58:58.051Z",
+    "meta": {},
+    "_sig": "e42844f9e1cf876f"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:59:03 pm CAI",
+    "timeCairo": "24/06/2026, 18:59:03 CAI",
+    "isoTime": "2026-06-24T15:59:03.991Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "d37c3996ea3dbc78"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Doctor read patient medical records",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 06:59:11 pm CAI",
+    "timeCairo": "24/06/2026, 18:59:11 CAI",
+    "isoTime": "2026-06-24T15:59:11.361Z",
+    "meta": {},
+    "_sig": "9a2ec6471d6b6f38"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "6a3bfe23b862706c5b304740",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 07:21:51 pm CAI",
+    "timeCairo": "24/06/2026, 19:21:51 CAI",
+    "isoTime": "2026-06-24T16:21:51.360Z",
+    "meta": {},
+    "_sig": "11d683bfbc9cd939"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 07:22:06 pm CAI",
+    "timeCairo": "24/06/2026, 19:22:06 CAI",
+    "isoTime": "2026-06-24T16:22:06.833Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "230a37ceb3c563ff"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "24/06/2026, 07:27:04 pm CAI",
+    "timeCairo": "24/06/2026, 19:27:04 CAI",
+    "isoTime": "2026-06-24T16:27:04.478Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "904226b044b1d458"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 04:11:32 pm CAI",
+    "timeCairo": "25/06/2026, 16:11:32 CAI",
+    "isoTime": "2026-06-25T13:11:32.551Z",
+    "meta": {},
+    "_sig": "f1fa2d76ae2f0029"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "6a3bfe23b862706c5b304740",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 04:12:01 pm CAI",
+    "timeCairo": "25/06/2026, 16:12:01 CAI",
+    "isoTime": "2026-06-25T13:12:01.224Z",
+    "meta": {},
+    "_sig": "90f43505c024f752"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "6a3bfe23b862706c5b304740",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 04:12:11 pm CAI",
+    "timeCairo": "25/06/2026, 16:12:11 CAI",
+    "isoTime": "2026-06-25T13:12:11.806Z",
+    "meta": {},
+    "_sig": "7cceeca535e2eee4"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3bfe23b862706c5b304740",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 04:12:20 pm CAI",
+    "timeCairo": "25/06/2026, 16:12:20 CAI",
+    "isoTime": "2026-06-25T13:12:20.044Z",
+    "meta": {},
+    "_sig": "2cf4b733e80e52e1"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3bfe23b862706c5b304740",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 04:12:20 pm CAI",
+    "timeCairo": "25/06/2026, 16:12:20 CAI",
+    "isoTime": "2026-06-25T13:12:20.382Z",
+    "meta": {},
+    "_sig": "2cf4b733e80e52e1"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "6a3bfe23b862706c5b304740",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 04:12:46 pm CAI",
+    "timeCairo": "25/06/2026, 16:12:46 CAI",
+    "isoTime": "2026-06-25T13:12:46.043Z",
+    "meta": {},
+    "_sig": "24ff0b76fe691030"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "6a3bfe23b862706c5b304740",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Doctor read patient medical records",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 04:12:55 pm CAI",
+    "timeCairo": "25/06/2026, 16:12:55 CAI",
+    "isoTime": "2026-06-25T13:12:55.270Z",
+    "meta": {},
+    "_sig": "f2b14b8610aeaa76"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 04:13:12 pm CAI",
+    "timeCairo": "25/06/2026, 16:13:12 CAI",
+    "isoTime": "2026-06-25T13:13:12.806Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "4ef53e3fb5999da1"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 04:13:28 pm CAI",
+    "timeCairo": "25/06/2026, 16:13:28 CAI",
+    "isoTime": "2026-06-25T13:13:28.958Z",
+    "meta": {},
+    "_sig": "4303e8d631b2e86e"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 04:13:38 pm CAI",
+    "timeCairo": "25/06/2026, 16:13:38 CAI",
+    "isoTime": "2026-06-25T13:13:38.717Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "6523701b3bed5271"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 04:51:53 pm CAI",
+    "timeCairo": "25/06/2026, 16:51:53 CAI",
+    "isoTime": "2026-06-25T13:51:53.624Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "acabd39583754b14"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3bfe23b862706c5b304740",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 04:52:20 pm CAI",
+    "timeCairo": "25/06/2026, 16:52:20 CAI",
+    "isoTime": "2026-06-25T13:52:20.709Z",
+    "meta": {},
+    "_sig": "dd47284483ae199b"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3bfe23b862706c5b304740",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 04:52:21 pm CAI",
+    "timeCairo": "25/06/2026, 16:52:21 CAI",
+    "isoTime": "2026-06-25T13:52:21.049Z",
+    "meta": {},
+    "_sig": "aa8cd82e55e3eb4a"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "User registration",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 07:22:18 pm CAI",
+    "timeCairo": "25/06/2026, 19:22:18 CAI",
+    "isoTime": "2026-06-25T16:22:18.322Z",
+    "meta": {},
+    "_sig": "f0e3670354738cd8"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 07:22:25 pm CAI",
+    "timeCairo": "25/06/2026, 19:22:25 CAI",
+    "isoTime": "2026-06-25T16:22:25.616Z",
+    "meta": {},
+    "_sig": "e0141ee853699d4e"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Doctor read patient medical records",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 07:22:25 pm CAI",
+    "timeCairo": "25/06/2026, 19:22:25 CAI",
+    "isoTime": "2026-06-25T16:22:25.815Z",
+    "meta": {},
+    "_sig": "3b8a9d8e760c5fc5"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 07:22:25 pm CAI",
+    "timeCairo": "25/06/2026, 19:22:25 CAI",
+    "isoTime": "2026-06-25T16:22:25.993Z",
+    "meta": {},
+    "_sig": "e0141ee853699d4e"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 07:29:31 pm CAI",
+    "timeCairo": "25/06/2026, 19:29:31 CAI",
+    "isoTime": "2026-06-25T16:29:31.543Z",
+    "meta": {},
+    "_sig": "a4facdccd7cdb38f"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 07:29:37 pm CAI",
+    "timeCairo": "25/06/2026, 19:29:37 CAI",
+    "isoTime": "2026-06-25T16:29:37.172Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "85d71d6da0e1be5f"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 07:29:48 pm CAI",
+    "timeCairo": "25/06/2026, 19:29:48 CAI",
+    "isoTime": "2026-06-25T16:29:48.719Z",
+    "meta": {},
+    "_sig": "547a30a1bff0adab"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 07:29:49 pm CAI",
+    "timeCairo": "25/06/2026, 19:29:49 CAI",
+    "isoTime": "2026-06-25T16:29:49.064Z",
+    "meta": {},
+    "_sig": "4471ae0e79d4c536"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "phone"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "Book appointment",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 07:30:17 pm CAI",
+    "timeCairo": "25/06/2026, 19:30:17 CAI",
+    "isoTime": "2026-06-25T16:30:17.168Z",
+    "meta": {
+      "appointmentId": "6a3d57985e8fb4d1b5b38434"
+    },
+    "_sig": "59f353b0ba84231a"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 07:30:28 pm CAI",
+    "timeCairo": "25/06/2026, 19:30:28 CAI",
+    "isoTime": "2026-06-25T16:30:28.332Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "553d8f9b4f60d2e2"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 07:31:28 pm CAI",
+    "timeCairo": "25/06/2026, 19:31:28 CAI",
+    "isoTime": "2026-06-25T16:31:28.421Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "ed48ebfe0bb319f8"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 07:33:14 pm CAI",
+    "timeCairo": "25/06/2026, 19:33:14 CAI",
+    "isoTime": "2026-06-25T16:33:14.729Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "7b2a41a8002c7986"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 07:33:15 pm CAI",
+    "timeCairo": "25/06/2026, 19:33:15 CAI",
+    "isoTime": "2026-06-25T16:33:15.431Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "3a596a76e9aebeaa"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 07:36:55 pm CAI",
+    "timeCairo": "25/06/2026, 19:36:55 CAI",
+    "isoTime": "2026-06-25T16:36:55.979Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "389e4245095e4f68"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 07:37:46 pm CAI",
+    "timeCairo": "25/06/2026, 19:37:46 CAI",
+    "isoTime": "2026-06-25T16:37:46.714Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "3fa9ee6de862aee0"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 07:39:19 pm CAI",
+    "timeCairo": "25/06/2026, 19:39:19 CAI",
+    "isoTime": "2026-06-25T16:39:19.847Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "ac90ba46a9648c6a"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 07:39:20 pm CAI",
+    "timeCairo": "25/06/2026, 19:39:20 CAI",
+    "isoTime": "2026-06-25T16:39:20.660Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "74e862190ee9a1c5"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 07:40:52 pm CAI",
+    "timeCairo": "25/06/2026, 19:40:52 CAI",
+    "isoTime": "2026-06-25T16:40:52.731Z",
+    "meta": {},
+    "_sig": "67e6d27920193ce1"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "25/06/2026, 07:41:01 pm CAI",
+    "timeCairo": "25/06/2026, 19:41:01 CAI",
+    "isoTime": "2026-06-25T16:41:01.322Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "08c997e63df2f4fe"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:14:52 pm CAI",
+    "timeCairo": "26/06/2026, 16:14:52 CAI",
+    "isoTime": "2026-06-26T13:14:52.190Z",
+    "meta": {},
+    "_sig": "b62dabd6ab10999d"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:17:14 pm CAI",
+    "timeCairo": "26/06/2026, 16:17:15 CAI",
+    "isoTime": "2026-06-26T13:17:15.075Z",
+    "meta": {},
+    "_sig": "83abfc5a51e85cc5"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:17:28 pm CAI",
+    "timeCairo": "26/06/2026, 16:17:28 CAI",
+    "isoTime": "2026-06-26T13:17:28.363Z",
+    "meta": {},
+    "_sig": "7eaae9f3b1950247"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Doctor read patient medical records",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:17:28 pm CAI",
+    "timeCairo": "26/06/2026, 16:17:28 CAI",
+    "isoTime": "2026-06-26T13:17:28.497Z",
+    "meta": {},
+    "_sig": "aae7428ad7e02b40"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:17:28 pm CAI",
+    "timeCairo": "26/06/2026, 16:17:28 CAI",
+    "isoTime": "2026-06-26T13:17:28.710Z",
+    "meta": {},
+    "_sig": "7eaae9f3b1950247"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:17:42 pm CAI",
+    "timeCairo": "26/06/2026, 16:17:42 CAI",
+    "isoTime": "2026-06-26T13:17:42.801Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "035becd8ee67ed8f"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:22:33 pm CAI",
+    "timeCairo": "26/06/2026, 16:22:33 CAI",
+    "isoTime": "2026-06-26T13:22:33.309Z",
+    "meta": {},
+    "_sig": "48e53fccd7779ec2"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:22:33 pm CAI",
+    "timeCairo": "26/06/2026, 16:22:33 CAI",
+    "isoTime": "2026-06-26T13:22:33.663Z",
+    "meta": {},
+    "_sig": "48e53fccd7779ec2"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:22:40 pm CAI",
+    "timeCairo": "26/06/2026, 16:22:40 CAI",
+    "isoTime": "2026-06-26T13:22:40.523Z",
+    "meta": {},
+    "_sig": "f40a8279b13cf755"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Doctor read patient medical records",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:22:40 pm CAI",
+    "timeCairo": "26/06/2026, 16:22:40 CAI",
+    "isoTime": "2026-06-26T13:22:40.694Z",
+    "meta": {},
+    "_sig": "766f73c9ad157c8b"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:22:40 pm CAI",
+    "timeCairo": "26/06/2026, 16:22:40 CAI",
+    "isoTime": "2026-06-26T13:22:40.863Z",
+    "meta": {},
+    "_sig": "f40a8279b13cf755"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:22:58 pm CAI",
+    "timeCairo": "26/06/2026, 16:22:58 CAI",
+    "isoTime": "2026-06-26T13:22:58.046Z",
+    "meta": {},
+    "_sig": "678f38bd772904ac"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Doctor read patient medical records",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:22:58 pm CAI",
+    "timeCairo": "26/06/2026, 16:22:58 CAI",
+    "isoTime": "2026-06-26T13:22:58.192Z",
+    "meta": {},
+    "_sig": "a7d32ed9fd367d75"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:22:58 pm CAI",
+    "timeCairo": "26/06/2026, 16:22:58 CAI",
+    "isoTime": "2026-06-26T13:22:58.390Z",
+    "meta": {},
+    "_sig": "678f38bd772904ac"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:24:18 pm CAI",
+    "timeCairo": "26/06/2026, 16:24:18 CAI",
+    "isoTime": "2026-06-26T13:24:18.159Z",
+    "meta": {},
+    "_sig": "7b6ea906b5acdb47"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:24:18 pm CAI",
+    "timeCairo": "26/06/2026, 16:24:18 CAI",
+    "isoTime": "2026-06-26T13:24:18.500Z",
+    "meta": {},
+    "_sig": "7b6ea906b5acdb47"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:24:37 pm CAI",
+    "timeCairo": "26/06/2026, 16:24:37 CAI",
+    "isoTime": "2026-06-26T13:24:37.840Z",
+    "meta": {},
+    "_sig": "b8802432b2e988e8"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Doctor read patient medical records",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:24:37 pm CAI",
+    "timeCairo": "26/06/2026, 16:24:37 CAI",
+    "isoTime": "2026-06-26T13:24:37.976Z",
+    "meta": {},
+    "_sig": "41a97ec4ba263765"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:24:38 pm CAI",
+    "timeCairo": "26/06/2026, 16:24:38 CAI",
+    "isoTime": "2026-06-26T13:24:38.171Z",
+    "meta": {},
+    "_sig": "e263d3609f8c80ea"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:34:15 pm CAI",
+    "timeCairo": "26/06/2026, 16:34:15 CAI",
+    "isoTime": "2026-06-26T13:34:15.507Z",
+    "meta": {},
+    "_sig": "90eabf86be651846"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:34:24 pm CAI",
+    "timeCairo": "26/06/2026, 16:34:24 CAI",
+    "isoTime": "2026-06-26T13:34:24.504Z",
+    "meta": {},
+    "_sig": "edab1100b6e7a445"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:34:24 pm CAI",
+    "timeCairo": "26/06/2026, 16:34:24 CAI",
+    "isoTime": "2026-06-26T13:34:24.858Z",
+    "meta": {},
+    "_sig": "edab1100b6e7a445"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3bfe23b862706c5b304740",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:34:36 pm CAI",
+    "timeCairo": "26/06/2026, 16:34:36 CAI",
+    "isoTime": "2026-06-26T13:34:36.143Z",
+    "meta": {},
+    "_sig": "3ce876f5e78e0c41"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3bfe23b862706c5b304740",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:34:36 pm CAI",
+    "timeCairo": "26/06/2026, 16:34:36 CAI",
+    "isoTime": "2026-06-26T13:34:36.496Z",
+    "meta": {},
+    "_sig": "3ce876f5e78e0c41"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:34:48 pm CAI",
+    "timeCairo": "26/06/2026, 16:34:48 CAI",
+    "isoTime": "2026-06-26T13:34:48.467Z",
+    "meta": {},
+    "_sig": "2e6a7ce2f2c76167"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:54:44 pm CAI",
+    "timeCairo": "26/06/2026, 16:54:44 CAI",
+    "isoTime": "2026-06-26T13:54:44.790Z",
+    "meta": {},
+    "_sig": "a937155064bdb5fb"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:54:53 pm CAI",
+    "timeCairo": "26/06/2026, 16:54:53 CAI",
+    "isoTime": "2026-06-26T13:54:53.893Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "8efc3281ad78effe"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:54:53 pm CAI",
+    "timeCairo": "26/06/2026, 16:54:53 CAI",
+    "isoTime": "2026-06-26T13:54:53.901Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "8efc3281ad78effe"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:55:23 pm CAI",
+    "timeCairo": "26/06/2026, 16:55:23 CAI",
+    "isoTime": "2026-06-26T13:55:23.727Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "ddaf7ebff7ffd6f5"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:55:24 pm CAI",
+    "timeCairo": "26/06/2026, 16:55:24 CAI",
+    "isoTime": "2026-06-26T13:55:24.028Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "47ab4cc7d9191a69"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:55:32 pm CAI",
+    "timeCairo": "26/06/2026, 16:55:32 CAI",
+    "isoTime": "2026-06-26T13:55:32.627Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "159d9d73f455ef01"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:55:32 pm CAI",
+    "timeCairo": "26/06/2026, 16:55:32 CAI",
+    "isoTime": "2026-06-26T13:55:32.998Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "159d9d73f455ef01"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:55:38 pm CAI",
+    "timeCairo": "26/06/2026, 16:55:38 CAI",
+    "isoTime": "2026-06-26T13:55:38.481Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "e36f36f78b989518"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:55:38 pm CAI",
+    "timeCairo": "26/06/2026, 16:55:38 CAI",
+    "isoTime": "2026-06-26T13:55:38.490Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "e36f36f78b989518"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:55:45 pm CAI",
+    "timeCairo": "26/06/2026, 16:55:45 CAI",
+    "isoTime": "2026-06-26T13:55:45.624Z",
+    "meta": {},
+    "_sig": "550f47a50390a327"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:55:45 pm CAI",
+    "timeCairo": "26/06/2026, 16:55:45 CAI",
+    "isoTime": "2026-06-26T13:55:45.635Z",
+    "meta": {},
+    "_sig": "550f47a50390a327"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 04:55:56 pm CAI",
+    "timeCairo": "26/06/2026, 16:55:56 CAI",
+    "isoTime": "2026-06-26T13:55:56.778Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "cdac2c108e57126a"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:15:47 pm CAI",
+    "timeCairo": "26/06/2026, 17:15:47 CAI",
+    "isoTime": "2026-06-26T14:15:47.987Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "3b20ba5459103046"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:15:48 pm CAI",
+    "timeCairo": "26/06/2026, 17:15:48 CAI",
+    "isoTime": "2026-06-26T14:15:48.639Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "ed422f63428cffd4"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:15:53 pm CAI",
+    "timeCairo": "26/06/2026, 17:15:53 CAI",
+    "isoTime": "2026-06-26T14:15:53.558Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "71162008398b6c5a"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:18:16 pm CAI",
+    "timeCairo": "26/06/2026, 17:18:16 CAI",
+    "isoTime": "2026-06-26T14:18:16.770Z",
+    "meta": {},
+    "_sig": "81fd198c563d02e4"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:18:26 pm CAI",
+    "timeCairo": "26/06/2026, 17:18:26 CAI",
+    "isoTime": "2026-06-26T14:18:26.735Z",
+    "meta": {},
+    "_sig": "98f609903fa0abcb"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Doctor read patient medical records",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:18:27 pm CAI",
+    "timeCairo": "26/06/2026, 17:18:27 CAI",
+    "isoTime": "2026-06-26T14:18:27.198Z",
+    "meta": {},
+    "_sig": "62dfbe9081768568"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:18:27 pm CAI",
+    "timeCairo": "26/06/2026, 17:18:27 CAI",
+    "isoTime": "2026-06-26T14:18:27.362Z",
+    "meta": {},
+    "_sig": "7347397090a9bc75"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Doctor read patient medical records",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:18:29 pm CAI",
+    "timeCairo": "26/06/2026, 17:18:29 CAI",
+    "isoTime": "2026-06-26T14:18:29.868Z",
+    "meta": {},
+    "_sig": "1a95c9a5c7857318"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:18:40 pm CAI",
+    "timeCairo": "26/06/2026, 17:18:40 CAI",
+    "isoTime": "2026-06-26T14:18:40.304Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "01394511d66a9b20"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:18:40 pm CAI",
+    "timeCairo": "26/06/2026, 17:18:40 CAI",
+    "isoTime": "2026-06-26T14:18:40.307Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "01394511d66a9b20"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:20:07 pm CAI",
+    "timeCairo": "26/06/2026, 17:20:07 CAI",
+    "isoTime": "2026-06-26T14:20:07.989Z",
+    "meta": {},
+    "_sig": "e0af24594561ec61"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:24:52 pm CAI",
+    "timeCairo": "26/06/2026, 17:24:52 CAI",
+    "isoTime": "2026-06-26T14:24:52.981Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "11ef8a4f6688fe54"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:24:52 pm CAI",
+    "timeCairo": "26/06/2026, 17:24:52 CAI",
+    "isoTime": "2026-06-26T14:24:52.985Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "11ef8a4f6688fe54"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:36:17 pm CAI",
+    "timeCairo": "26/06/2026, 17:36:17 CAI",
+    "isoTime": "2026-06-26T14:36:17.510Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "407146b053471024"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:36:18 pm CAI",
+    "timeCairo": "26/06/2026, 17:36:18 CAI",
+    "isoTime": "2026-06-26T14:36:18.208Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "0cb187b90f20385c"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:36:24 pm CAI",
+    "timeCairo": "26/06/2026, 17:36:24 CAI",
+    "isoTime": "2026-06-26T14:36:24.521Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "ab460af985cec87a"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:36:24 pm CAI",
+    "timeCairo": "26/06/2026, 17:36:24 CAI",
+    "isoTime": "2026-06-26T14:36:24.525Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "ab460af985cec87a"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:36:52 pm CAI",
+    "timeCairo": "26/06/2026, 17:36:52 CAI",
+    "isoTime": "2026-06-26T14:36:52.337Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "bbdabecb31bcf122"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:36:52 pm CAI",
+    "timeCairo": "26/06/2026, 17:36:52 CAI",
+    "isoTime": "2026-06-26T14:36:52.339Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "bbdabecb31bcf122"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:46:26 pm CAI",
+    "timeCairo": "26/06/2026, 17:46:26 CAI",
+    "isoTime": "2026-06-26T14:46:26.914Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "525f6ad6c6faced0"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:46:27 pm CAI",
+    "timeCairo": "26/06/2026, 17:46:27 CAI",
+    "isoTime": "2026-06-26T14:46:27.576Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "733bd6c4ee4a97d8"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:46:41 pm CAI",
+    "timeCairo": "26/06/2026, 17:46:41 CAI",
+    "isoTime": "2026-06-26T14:46:41.210Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "0494e028b16829ee"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:46:41 pm CAI",
+    "timeCairo": "26/06/2026, 17:46:41 CAI",
+    "isoTime": "2026-06-26T14:46:41.221Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "0494e028b16829ee"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "6a3bfe23b862706c5b304740",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:56:51 pm CAI",
+    "timeCairo": "26/06/2026, 17:56:51 CAI",
+    "isoTime": "2026-06-26T14:56:51.192Z",
+    "meta": {},
+    "_sig": "0d28b5220cf06229"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:56:57 pm CAI",
+    "timeCairo": "26/06/2026, 17:56:57 CAI",
+    "isoTime": "2026-06-26T14:56:57.231Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "59b2177543fb3da9"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 05:56:57 pm CAI",
+    "timeCairo": "26/06/2026, 17:56:57 CAI",
+    "isoTime": "2026-06-26T14:56:57.234Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "59b2177543fb3da9"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 06:02:32 pm CAI",
+    "timeCairo": "26/06/2026, 18:02:32 CAI",
+    "isoTime": "2026-06-26T15:02:32.665Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "d2c0cc1740ef4b65"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 06:02:32 pm CAI",
+    "timeCairo": "26/06/2026, 18:02:32 CAI",
+    "isoTime": "2026-06-26T15:02:32.669Z",
+    "meta": {
+      "count": 1
+    },
+    "_sig": "d2c0cc1740ef4b65"
+  },
+  {
+    "userId": "6a3bfe23b862706c5b304740",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Doctor read patient medical records",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 06:02:36 pm CAI",
+    "timeCairo": "26/06/2026, 18:02:36 CAI",
+    "isoTime": "2026-06-26T15:02:36.519Z",
+    "meta": {},
+    "_sig": "bb1174c0ba0a8bcc"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 06:03:08 pm CAI",
+    "timeCairo": "26/06/2026, 18:03:08 CAI",
+    "isoTime": "2026-06-26T15:03:08.042Z",
+    "meta": {},
+    "_sig": "8662f89140fe1f83"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 06:03:44 pm CAI",
+    "timeCairo": "26/06/2026, 18:03:44 CAI",
+    "isoTime": "2026-06-26T15:03:44.779Z",
+    "meta": {},
+    "_sig": "458ca9a40ef96016"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 06:03:45 pm CAI",
+    "timeCairo": "26/06/2026, 18:03:45 CAI",
+    "isoTime": "2026-06-26T15:03:45.133Z",
+    "meta": {},
+    "_sig": "c8acaee08c628b07"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 06:56:57 pm CAI",
+    "timeCairo": "26/06/2026, 18:56:57 CAI",
+    "isoTime": "2026-06-26T15:56:57.771Z",
+    "meta": {},
+    "_sig": "27f14f49f760520c"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 06:56:57 pm CAI",
+    "timeCairo": "26/06/2026, 18:56:57 CAI",
+    "isoTime": "2026-06-26T15:56:57.776Z",
+    "meta": {},
+    "_sig": "27f14f49f760520c"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Doctor read patient medical records",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 06:56:57 pm CAI",
+    "timeCairo": "26/06/2026, 18:56:57 CAI",
+    "isoTime": "2026-06-26T15:56:57.935Z",
+    "meta": {},
+    "_sig": "48fe7e64559be27a"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Doctor read patient medical records",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 06:56:57 pm CAI",
+    "timeCairo": "26/06/2026, 18:56:57 CAI",
+    "isoTime": "2026-06-26T15:56:57.937Z",
+    "meta": {},
+    "_sig": "48fe7e64559be27a"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:01:29 pm CAI",
+    "timeCairo": "26/06/2026, 19:01:29 CAI",
+    "isoTime": "2026-06-26T16:01:29.200Z",
+    "meta": {},
+    "_sig": "c93686f18701f09f"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Doctor read patient medical records",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:01:29 pm CAI",
+    "timeCairo": "26/06/2026, 19:01:29 CAI",
+    "isoTime": "2026-06-26T16:01:29.447Z",
+    "meta": {},
+    "_sig": "9afbe58ff73bd75a"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:12:45 pm CAI",
+    "timeCairo": "26/06/2026, 19:12:45 CAI",
+    "isoTime": "2026-06-26T16:12:45.998Z",
+    "meta": {},
+    "_sig": "8c3eb24af23b3caf"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:13:14 pm CAI",
+    "timeCairo": "26/06/2026, 19:13:14 CAI",
+    "isoTime": "2026-06-26T16:13:14.146Z",
+    "meta": {},
+    "_sig": "6a5d5633500e95b9"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:13:14 pm CAI",
+    "timeCairo": "26/06/2026, 19:13:14 CAI",
+    "isoTime": "2026-06-26T16:13:14.497Z",
+    "meta": {},
+    "_sig": "6a5d5633500e95b9"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "phone"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "WRITE",
+    "reason": "Book appointment",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:15:41 pm CAI",
+    "timeCairo": "26/06/2026, 19:15:41 CAI",
+    "isoTime": "2026-06-26T16:15:41.682Z",
+    "meta": {
+      "appointmentId": "6a3ea5adf0efecebd690035e"
+    },
+    "_sig": "886b09110fe66825"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:15:58 pm CAI",
+    "timeCairo": "26/06/2026, 19:15:58 CAI",
+    "isoTime": "2026-06-26T16:15:58.715Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "41885c57942bae52"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:15:59 pm CAI",
+    "timeCairo": "26/06/2026, 19:15:59 CAI",
+    "isoTime": "2026-06-26T16:15:59.401Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "f05ba89f4333ef3f"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:17:41 pm CAI",
+    "timeCairo": "26/06/2026, 19:17:41 CAI",
+    "isoTime": "2026-06-26T16:17:41.389Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "22871a1b8ac5d5e6"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:17:42 pm CAI",
+    "timeCairo": "26/06/2026, 19:17:42 CAI",
+    "isoTime": "2026-06-26T16:17:42.071Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "60d472a7a77ea488"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3bfe23b862706c5b304740",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:24:29 pm CAI",
+    "timeCairo": "26/06/2026, 19:24:29 CAI",
+    "isoTime": "2026-06-26T16:24:29.694Z",
+    "meta": {},
+    "_sig": "1f63a3fbc32bbef1"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3bfe23b862706c5b304740",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:24:30 pm CAI",
+    "timeCairo": "26/06/2026, 19:24:30 CAI",
+    "isoTime": "2026-06-26T16:24:30.040Z",
+    "meta": {},
+    "_sig": "b30187fb13f91e94"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Read own medical records",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:24:42 pm CAI",
+    "timeCairo": "26/06/2026, 19:24:42 CAI",
+    "isoTime": "2026-06-26T16:24:42.020Z",
+    "meta": {},
+    "_sig": "9e5bbc5899c926f4"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Read own medical records",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:24:43 pm CAI",
+    "timeCairo": "26/06/2026, 19:24:43 CAI",
+    "isoTime": "2026-06-26T16:24:43.728Z",
+    "meta": {},
+    "_sig": "a5c711f60f745e34"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:27:08 pm CAI",
+    "timeCairo": "26/06/2026, 19:27:08 CAI",
+    "isoTime": "2026-06-26T16:27:08.238Z",
+    "meta": {},
+    "_sig": "c1924f947bc04658"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:27:59 pm CAI",
+    "timeCairo": "26/06/2026, 19:27:59 CAI",
+    "isoTime": "2026-06-26T16:27:59.999Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "abbb21aa7905c966"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:28:01 pm CAI",
+    "timeCairo": "26/06/2026, 19:28:01 CAI",
+    "isoTime": "2026-06-26T16:28:01.286Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "64eb10f8cdb07786"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Doctor read patient medical records",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:28:16 pm CAI",
+    "timeCairo": "26/06/2026, 19:28:16 CAI",
+    "isoTime": "2026-06-26T16:28:16.249Z",
+    "meta": {},
+    "_sig": "8a7ad36dd0a431da"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:29:43 pm CAI",
+    "timeCairo": "26/06/2026, 19:29:43 CAI",
+    "isoTime": "2026-06-26T16:29:43.979Z",
+    "meta": {},
+    "_sig": "c740337acae9fa2d"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:29:43 pm CAI",
+    "timeCairo": "26/06/2026, 19:29:43 CAI",
+    "isoTime": "2026-06-26T16:29:43.981Z",
+    "meta": {},
+    "_sig": "c740337acae9fa2d"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Doctor read patient medical records",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:29:44 pm CAI",
+    "timeCairo": "26/06/2026, 19:29:44 CAI",
+    "isoTime": "2026-06-26T16:29:44.127Z",
+    "meta": {},
+    "_sig": "0df7b1ef2917bfc1"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "medicalRecords"
+    ],
+    "categories": [
+      "OTHER"
+    ],
+    "action": "READ",
+    "reason": "Doctor read patient medical records",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:29:44 pm CAI",
+    "timeCairo": "26/06/2026, 19:29:44 CAI",
+    "isoTime": "2026-06-26T16:29:44.146Z",
+    "meta": {},
+    "_sig": "0df7b1ef2917bfc1"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:38:11 pm CAI",
+    "timeCairo": "26/06/2026, 19:38:11 CAI",
+    "isoTime": "2026-06-26T16:38:11.421Z",
+    "meta": {},
+    "_sig": "5d3725b5f7ba7df1"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:38:20 pm CAI",
+    "timeCairo": "26/06/2026, 19:38:20 CAI",
+    "isoTime": "2026-06-26T16:38:20.761Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "06bee45ef0c76275"
+  },
+  {
+    "userId": "6a3d55b911d5361a04b793ef",
+    "patientId": "MULTIPLE_PATIENTS",
+    "fields": [
+      "patientName",
+      "phone",
+      "email",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get doctor appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:38:20 pm CAI",
+    "timeCairo": "26/06/2026, 19:38:20 CAI",
+    "isoTime": "2026-06-26T16:38:20.763Z",
+    "meta": {
+      "count": 2
+    },
+    "_sig": "06bee45ef0c76275"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:38:54 pm CAI",
+    "timeCairo": "26/06/2026, 19:38:54 CAI",
+    "isoTime": "2026-06-26T16:38:54.800Z",
+    "meta": {},
+    "_sig": "89eb0b04d924110a"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:39:08 pm CAI",
+    "timeCairo": "26/06/2026, 19:39:08 CAI",
+    "isoTime": "2026-06-26T16:39:08.453Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "41b330f5c57d83f8"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:39:08 pm CAI",
+    "timeCairo": "26/06/2026, 19:39:08 CAI",
+    "isoTime": "2026-06-26T16:39:08.473Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "41b330f5c57d83f8"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:39:29 pm CAI",
+    "timeCairo": "26/06/2026, 19:39:29 CAI",
+    "isoTime": "2026-06-26T16:39:29.497Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "2e9256bb784a3e63"
+  },
+  {
+    "userId": "6a3bfd9616ead30b89c164a0",
+    "patientId": "6a3bfd9616ead30b89c164a0",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "READ",
+    "reason": "Get patient appointments list",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:39:29 pm CAI",
+    "timeCairo": "26/06/2026, 19:39:29 CAI",
+    "isoTime": "2026-06-26T16:39:29.514Z",
+    "meta": {
+      "count": 3
+    },
+    "_sig": "2e9256bb784a3e63"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:40:12 pm CAI",
+    "timeCairo": "26/06/2026, 19:40:12 CAI",
+    "isoTime": "2026-06-26T16:40:12.224Z",
+    "meta": {},
+    "_sig": "eda1505408fb5a30"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:40:12 pm CAI",
+    "timeCairo": "26/06/2026, 19:40:12 CAI",
+    "isoTime": "2026-06-26T16:40:12.587Z",
+    "meta": {},
+    "_sig": "eda1505408fb5a30"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:41:22 pm CAI",
+    "timeCairo": "26/06/2026, 19:41:22 CAI",
+    "isoTime": "2026-06-26T16:41:22.430Z",
+    "meta": {},
+    "_sig": "6ad5feb8ba376ff3"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:41:22 pm CAI",
+    "timeCairo": "26/06/2026, 19:41:22 CAI",
+    "isoTime": "2026-06-26T16:41:22.446Z",
+    "meta": {},
+    "_sig": "6ad5feb8ba376ff3"
+  },
+  {
+    "userId": "anonymous",
+    "patientId": "6a3d55b911d5361a04b793ef",
+    "fields": [
+      "patientName",
+      "email",
+      "phone",
+      "address"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "Read doctor details by ID",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 07:49:50 pm CAI",
+    "timeCairo": "26/06/2026, 19:49:50 CAI",
+    "isoTime": "2026-06-26T16:49:50.072Z",
+    "meta": {},
+    "_sig": "d4cb063965863d6b"
+  },
+  {
+    "userId": "6a3ebf399a6c9cf57220e3aa",
+    "patientId": "6a3ebf399a6c9cf57220e3aa",
+    "fields": [
+      "patientName",
+      "email"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CONTACT"
+    ],
+    "action": "READ",
+    "reason": "User authentication",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 09:04:44 pm CAI",
+    "timeCairo": "26/06/2026, 21:04:44 CAI",
+    "isoTime": "2026-06-26T18:04:44.158Z",
+    "meta": {},
+    "_sig": "8cf27fb6974f5d14"
+  },
+  {
+    "userId": "6a3ebf399a6c9cf57220e3aa",
+    "patientId": "6a3bfc4d750c717ac4a2fda2",
+    "fields": [
+      "patientName",
+      "diagnosis"
+    ],
+    "categories": [
+      "IDENTITY",
+      "CLINICAL"
+    ],
+    "action": "WRITE",
+    "reason": "Complete appointment",
+    "ip": "127.0.0.1",
+    "time": "26/06/2026, 09:04:45 pm CAI",
+    "timeCairo": "26/06/2026, 21:04:45 CAI",
+    "isoTime": "2026-06-26T18:04:45.145Z",
+    "meta": {
+      "appointmentId": "6a3ebf399a6c9cf57220e3ac"
+    },
+    "_sig": "2e52a1b970120e8e"
+  }
+]

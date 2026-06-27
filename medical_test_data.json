@@ -1,0 +1,42 @@
+[
+    {
+        "input": "My lower back is killing me and I cant stand up",
+        "expected_specialty": "Orthopedics",
+        "category": "Slang / Severe Pain"
+    },
+    {
+        "input": "I twisted my ankle playing soccer and its really swollen",
+        "expected_specialty": "Orthopedics",
+        "category": "Trauma / Sports Injury"
+    },
+    {
+        "input": "I have a sharp pain in my chest and difficulty breathing",
+        "expected_specialty": "Emergency medicine",
+        "category": "Critical / Emergency"
+    },
+    {
+        "input": "Im always thirsty and I go to the bathroom a lot lately",
+        "expected_specialty": "Internal medicine",
+        "category": "Symptom Pattern (Diabetes)"
+    },
+    {
+        "input": "I feel very tired and I lost some weight without trying",
+        "expected_specialty": "Internal medicine",
+        "category": "General Systemic"
+    },
+    {
+        "input": "My stomach is burning but I have no fever",
+        "expected_specialty": "Gastroenterology",
+        "category": "Negation Handling"
+    },
+    {
+        "input": "I fell from the stairs and now my shoulder hurts when I move it",
+        "expected_specialty": "Orthopedics",
+        "category": "Accident / Trauma"
+    },
+    {
+        "input": "I have persistent cough with a lot of phlegm",
+        "expected_specialty": "Pulmonology",
+        "category": "Common Respiratory"
+    }
+]

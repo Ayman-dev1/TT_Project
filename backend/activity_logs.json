@@ -1,0 +1,320 @@
+[
+  {
+    "id": 1782497083492,
+    "timestamp": "2026-06-26T18:04:43.492Z",
+    "type": "Payment Approved",
+    "message": "Admin approved payment for Booking 6a3ebf399a6c9cf57220e3ac (ali@example.com)"
+  },
+  {
+    "id": 1782491869839,
+    "timestamp": "2026-06-26T16:37:49.839Z",
+    "type": "Logout",
+    "message": "User logged out: admin1@tabibi.com"
+  },
+  {
+    "id": 1782491666610,
+    "timestamp": "2026-06-26T16:34:26.610Z",
+    "type": "Payment Approved",
+    "message": "Admin approved payment for Booking 6a3ea5adf0efecebd690035e (C@gmail.com)"
+  },
+  {
+    "id": 1782491509214,
+    "timestamp": "2026-06-26T16:31:49.214Z",
+    "type": "Admin Login",
+    "message": "Admin authenticated: admin1@tabibi.com (Server synced)"
+  },
+  {
+    "id": 1782490772245,
+    "timestamp": "2026-06-26T16:19:32.245Z",
+    "type": "Missing Specialty",
+    "message": "System lacks active doctors for predicted specialty: Dentist"
+  },
+  {
+    "id": 1782490541699,
+    "timestamp": "2026-06-26T16:15:41.699Z",
+    "type": "Appointment Booked",
+    "message": "Patient: C booked with T using vodafone"
+  },
+  {
+    "id": 1782490541679,
+    "timestamp": "2026-06-26T16:15:41.679Z",
+    "type": "Payment Submitted",
+    "message": "Patient C@gmail.com submitted payment details for Booking 6a3ea5adf0efecebd690035e"
+  },
+  {
+    "id": 1782490176417,
+    "timestamp": "2026-06-26T16:09:36.417Z",
+    "type": "Logout",
+    "message": "User logged out: C@gmail.com"
+  },
+  {
+    "id": 1782489364023,
+    "timestamp": "2026-06-26T15:56:04.023Z",
+    "type": "Missing Specialty",
+    "message": "System lacks active doctors for predicted specialty: Dentist"
+  },
+  {
+    "id": 1782486170561,
+    "timestamp": "2026-06-26T15:02:50.561Z",
+    "type": "Logout",
+    "message": "User logged out: X@gmail.com"
+  },
+  {
+    "id": 1782483600884,
+    "timestamp": "2026-06-26T14:20:00.884Z",
+    "type": "Logout",
+    "message": "User logged out: T@gmail.com"
+  },
+  {
+    "id": 1782483476042,
+    "timestamp": "2026-06-26T14:17:56.042Z",
+    "type": "Logout",
+    "message": "User logged out: C@gmail.com"
+  },
+  {
+    "id": 1782480881111,
+    "timestamp": "2026-06-26T13:34:41.111Z",
+    "type": "Logout",
+    "message": "User logged out: C@gmail.com"
+  },
+  {
+    "id": 1782480845745,
+    "timestamp": "2026-06-26T13:34:05.745Z",
+    "type": "Logout",
+    "message": "User logged out: T@gmail.com"
+  },
+  {
+    "id": 1782479817186,
+    "timestamp": "2026-06-26T13:16:57.186Z",
+    "type": "Logout",
+    "message": "User logged out: C@gmail.com"
+  },
+  {
+    "id": 1782479652006,
+    "timestamp": "2026-06-26T13:14:12.006Z",
+    "type": "Logout",
+    "message": "User logged out: C@gmail.com"
+  },
+  {
+    "id": 1782405647753,
+    "timestamp": "2026-06-25T16:40:47.753Z",
+    "type": "Logout",
+    "message": "User logged out: admin1@tabibi.com"
+  },
+  {
+    "id": 1782405641526,
+    "timestamp": "2026-06-25T16:40:41.526Z",
+    "type": "Payment Approved",
+    "message": "Admin approved payment for Booking 6a3d57985e8fb4d1b5b38434 (C@gmail.com)"
+  },
+  {
+    "id": 1782405616702,
+    "timestamp": "2026-06-25T16:40:16.702Z",
+    "type": "Admin Login",
+    "message": "Admin authenticated: admin1@tabibi.com (Server synced)"
+  },
+  {
+    "id": 1782405017185,
+    "timestamp": "2026-06-25T16:30:17.185Z",
+    "type": "Appointment Booked",
+    "message": "Patient: C booked with T using vodafone"
+  },
+  {
+    "id": 1782405017141,
+    "timestamp": "2026-06-25T16:30:17.141Z",
+    "type": "Payment Submitted",
+    "message": "Patient C@gmail.com submitted payment details for Booking 6a3d57985e8fb4d1b5b38434"
+  },
+  {
+    "id": 1782404962315,
+    "timestamp": "2026-06-25T16:29:22.315Z",
+    "type": "Logout",
+    "message": "User logged out: T@gmail.com"
+  },
+  {
+    "id": 1782403904383,
+    "timestamp": "2026-06-25T16:11:44.383Z",
+    "type": "Logout",
+    "message": "User logged out: admin1@tabibi.com"
+  },
+  {
+    "id": 1782400038607,
+    "timestamp": "2026-06-25T15:07:18.607Z",
+    "type": "Payment Approved",
+    "message": "Admin approved payment for Booking 6a3bfe6f82761e2087ad9337 (C@gmail.com)"
+  },
+  {
+    "id": 1782396242589,
+    "timestamp": "2026-06-25T14:04:02.589Z",
+    "type": "Admin Login",
+    "message": "Admin authenticated: admin1@tabibi.com (Server synced)"
+  },
+  {
+    "id": 1782393204417,
+    "timestamp": "2026-06-25T13:13:24.417Z",
+    "type": "Logout",
+    "message": "User logged out: X@gmail.com"
+  },
+  {
+    "id": 1782393160223,
+    "timestamp": "2026-06-25T13:12:40.223Z",
+    "type": "Logout",
+    "message": "User logged out: C@gmail.com"
+  },
+  {
+    "id": 1782393126372,
+    "timestamp": "2026-06-25T13:12:06.372Z",
+    "type": "Logout",
+    "message": "User logged out: X@gmail.com"
+  },
+  {
+    "id": 1782393108098,
+    "timestamp": "2026-06-25T13:11:48.098Z",
+    "type": "Logout",
+    "message": "User logged out: C@gmail.com"
+  },
+  {
+    "id": 1782393087188,
+    "timestamp": "2026-06-25T13:11:27.188Z",
+    "type": "Logout",
+    "message": "User logged out: admin1@tabibi.com"
+  },
+  {
+    "id": 1782393013252,
+    "timestamp": "2026-06-25T13:10:13.252Z",
+    "type": "Admin Login",
+    "message": "Admin authenticated: admin1@tabibi.com (Server synced)"
+  },
+  {
+    "id": 1782318104080,
+    "timestamp": "2026-06-24T16:21:44.080Z",
+    "type": "Logout",
+    "message": "User logged out: admin1@tabibi.com"
+  },
+  {
+    "id": 1782318027114,
+    "timestamp": "2026-06-24T16:20:27.114Z",
+    "type": "Admin Login",
+    "message": "Admin authenticated: admin1@tabibi.com (Server synced)"
+  },
+  {
+    "id": 1782316729605,
+    "timestamp": "2026-06-24T15:58:49.605Z",
+    "type": "Logout",
+    "message": "User logged out: C@gmail.com"
+  },
+  {
+    "id": 1782316701607,
+    "timestamp": "2026-06-24T15:58:21.607Z",
+    "type": "Logout",
+    "message": "User logged out: X@gmail.com"
+  },
+  {
+    "id": 1782316666821,
+    "timestamp": "2026-06-24T15:57:46.822Z",
+    "type": "Logout",
+    "message": "User logged out: C@gmail.com"
+  },
+  {
+    "id": 1782316655648,
+    "timestamp": "2026-06-24T15:57:35.648Z",
+    "type": "Appointment Booked",
+    "message": "Patient: C booked with X"
+  },
+  {
+    "id": 1782316602329,
+    "timestamp": "2026-06-24T15:56:42.329Z",
+    "type": "Logout",
+    "message": "User logged out: X@gmail.com"
+  },
+  {
+    "id": 1782316554541,
+    "timestamp": "2026-06-24T15:55:54.541Z",
+    "type": "Logout",
+    "message": "User logged out: C@gmail.com"
+  },
+  {
+    "id": 1782316398668,
+    "timestamp": "2026-06-24T15:53:18.668Z",
+    "type": "Logout",
+    "message": "User logged out: admin1@tabibi.com"
+  },
+  {
+    "id": 1782314190629,
+    "timestamp": "2026-06-24T15:16:30.629Z",
+    "type": "Admin Login",
+    "message": "Admin authenticated: admin1@tabibi.com (Server synced)"
+  },
+  {
+    "id": 1782314091643,
+    "timestamp": "2026-06-24T15:14:51.643Z",
+    "type": "Logout",
+    "message": "User logged out: R@gmail.com"
+  },
+  {
+    "id": 1782312534847,
+    "timestamp": "2026-06-24T14:48:54.847Z",
+    "type": "Missing Specialty",
+    "message": "System lacks active doctors for predicted specialty: Dentist"
+  },
+  {
+    "id": 1782312534831,
+    "timestamp": "2026-06-24T14:48:54.831Z",
+    "type": "Missing Specialty",
+    "message": "System lacks active doctors for predicted specialty: Dentist"
+  },
+  {
+    "id": 1782310081428,
+    "timestamp": "2026-06-24T14:08:01.428Z",
+    "type": "Missing Specialty",
+    "message": "System lacks active doctors for predicted specialty: Dentist"
+  },
+  {
+    "id": 1782310081421,
+    "timestamp": "2026-06-24T14:08:01.421Z",
+    "type": "Missing Specialty",
+    "message": "System lacks active doctors for predicted specialty: Dentist"
+  },
+  {
+    "id": 1782304860131,
+    "timestamp": "2026-06-24T12:41:00.131Z",
+    "type": "Logout",
+    "message": "User logged out: C@gmail.com"
+  },
+  {
+    "id": 1782234006731,
+    "timestamp": "2026-06-23T17:00:06.731Z",
+    "type": "Logout",
+    "message": "User logged out: R@gmail.com"
+  },
+  {
+    "id": 1782233698016,
+    "timestamp": "2026-06-23T16:54:58.016Z",
+    "type": "Logout",
+    "message": "User logged out: C@gmail.com"
+  },
+  {
+    "id": 1782232759914,
+    "timestamp": "2026-06-23T16:39:19.914Z",
+    "type": "Appointment Booked",
+    "message": "Patient: C booked with R"
+  },
+  {
+    "id": 1782231412200,
+    "timestamp": "2026-06-23T16:16:52.200Z",
+    "type": "Logout",
+    "message": "User logged out: R@gmail.com"
+  },
+  {
+    "id": 1782230015234,
+    "timestamp": "2026-06-23T15:53:35.234Z",
+    "type": "Logout",
+    "message": "User logged out: admin1@tabibi.com"
+  },
+  {
+    "id": 1782229982170,
+    "timestamp": "2026-06-23T15:53:02.170Z",
+    "type": "Broadcast Sent",
+    "message": "اهلا و سهالا..."
+  }
+]

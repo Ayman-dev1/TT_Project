@@ -1,0 +1,439 @@
+{
+  "timestamp": "17/06/2026, 09:16:15 am CAI",
+  "label": "PANIC",
+  "logs": [
+    {
+      "ip": "127.0.0.1",
+      "type": "SQLi",
+      "score": 100,
+      "action": "BLOCKED",
+      "time": "17/06/2026, 09:05:55 am CAI",
+      "isoTime": "2026-06-17T06:05:55.096Z",
+      "path": "/api/auth/login",
+      "method": "POST",
+      "payload": "{\"email\":\"[EMAIL]' OR 1=1 --\",\"password\":\"password\"}",
+      "analysis": {
+        "type": "SQLi",
+        "risk": "CRITICAL",
+        "target": "Database",
+        "technique": "Boolean blind injection",
+        "additionalTypes": []
+      },
+      "fingerprint": "2edf2958166561c5c08cd228e53bbcdc",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "17/06/2026, 09:05:55 am CAI",
+      "_sig": "6d203912b8e19abf"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "XSS",
+      "score": 160,
+      "action": "BLOCKED",
+      "time": "17/06/2026, 09:05:55 am CAI",
+      "isoTime": "2026-06-17T06:05:55.104Z",
+      "path": "/api/auth/register",
+      "method": "POST",
+      "payload": "{\"name\":\"<script>alert('XSS')</script>\",\"email\":\"[EMAIL]\",\"password\":\"password\"}",
+      "analysis": {
+        "type": "XSS",
+        "risk": "MEDIUM",
+        "target": "Browser sessions",
+        "technique": "Reflected XSS",
+        "additionalTypes": []
+      },
+      "fingerprint": "2edf2958166561c5c08cd228e53bbcdc",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "17/06/2026, 09:05:55 am CAI",
+      "_sig": "f9a415f5f25ca2a7"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "CmdInjection",
+      "score": 260,
+      "action": "BLOCKED",
+      "time": "17/06/2026, 09:05:55 am CAI",
+      "isoTime": "2026-06-17T06:05:55.109Z",
+      "path": "/api/auth/login",
+      "method": "POST",
+      "payload": "{\"email\":\"[EMAIL]\",\"password\":\";cat /etc/passwd\"}",
+      "analysis": {
+        "type": "CmdInjection",
+        "risk": "CRITICAL",
+        "target": "Server shell",
+        "technique": "OS command execution",
+        "additionalTypes": [
+          "PathTraversal"
+        ]
+      },
+      "fingerprint": "2edf2958166561c5c08cd228e53bbcdc",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "17/06/2026, 09:05:55 am CAI",
+      "_sig": "4263db3d76bf3fec"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "BLOCKED_IP",
+      "score": 260,
+      "action": "BLOCKED",
+      "time": "17/06/2026, 09:12:03 am CAI",
+      "isoTime": "2026-06-17T06:12:03.883Z",
+      "path": "/",
+      "method": "GET",
+      "payload": "Blocked IP access attempt",
+      "analysis": null,
+      "fingerprint": "2edf2958166561c5c08cd228e53bbcdc",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "17/06/2026, 09:12:03 am CAI",
+      "_sig": "f1374207deab9568"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "SQLi",
+      "score": 360,
+      "action": "BLOCKED",
+      "time": "17/06/2026, 09:12:03 am CAI",
+      "isoTime": "2026-06-17T06:12:03.908Z",
+      "path": "/api/auth/login",
+      "method": "POST",
+      "payload": "{\"email\":\"' OR '1'='1\",\"password\":\"x\"}",
+      "analysis": {
+        "type": "SQLi",
+        "risk": "CRITICAL",
+        "target": "Database",
+        "technique": "Generic SQL injection",
+        "additionalTypes": []
+      },
+      "fingerprint": "2edf2958166561c5c08cd228e53bbcdc",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "17/06/2026, 09:12:03 am CAI",
+      "_sig": "7dc352dd9924c52c"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "SQLi",
+      "score": 460,
+      "action": "BLOCKED",
+      "time": "17/06/2026, 09:12:03 am CAI",
+      "isoTime": "2026-06-17T06:12:03.921Z",
+      "path": "/api/auth/login",
+      "method": "POST",
+      "payload": "{\"email\":\"admin'--\",\"password\":\"x\"}",
+      "analysis": {
+        "type": "SQLi",
+        "risk": "CRITICAL",
+        "target": "Database",
+        "technique": "Generic SQL injection",
+        "additionalTypes": []
+      },
+      "fingerprint": "2edf2958166561c5c08cd228e53bbcdc",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "17/06/2026, 09:12:03 am CAI",
+      "_sig": "9fdc908413c3b139"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "SQLi",
+      "score": 560,
+      "action": "BLOCKED",
+      "time": "17/06/2026, 09:12:03 am CAI",
+      "isoTime": "2026-06-17T06:12:03.929Z",
+      "path": "/api/auth/login",
+      "method": "POST",
+      "payload": "{\"email\":\"1; DROP TABLE users;--\",\"password\":\"x\"}",
+      "analysis": {
+        "type": "SQLi",
+        "risk": "CRITICAL",
+        "target": "Patient records",
+        "technique": "Destructive DDL injection",
+        "additionalTypes": []
+      },
+      "fingerprint": "2edf2958166561c5c08cd228e53bbcdc",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "17/06/2026, 09:12:03 am CAI",
+      "_sig": "4926c6953140d8c4"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "SQLi",
+      "score": 660,
+      "action": "BLOCKED",
+      "time": "17/06/2026, 09:12:03 am CAI",
+      "isoTime": "2026-06-17T06:12:03.952Z",
+      "path": "/api/auth/login",
+      "method": "POST",
+      "payload": "{\"email\":\"' UNION SELECT * FROM users--\",\"password\":\"x\"}",
+      "analysis": {
+        "type": "SQLi",
+        "risk": "CRITICAL",
+        "target": "Patient records",
+        "technique": "UNION-based extraction",
+        "additionalTypes": []
+      },
+      "fingerprint": "2edf2958166561c5c08cd228e53bbcdc",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "17/06/2026, 09:12:03 am CAI",
+      "_sig": "c29a8489cd537577"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "XSS",
+      "score": 720,
+      "action": "BLOCKED",
+      "time": "17/06/2026, 09:12:03 am CAI",
+      "isoTime": "2026-06-17T06:12:03.960Z",
+      "path": "/api/auth/register",
+      "method": "POST",
+      "payload": "{\"name\":\"<script>alert(1)</script>\",\"email\":\"[EMAIL]\",\"password\":\"x\"}",
+      "analysis": {
+        "type": "XSS",
+        "risk": "MEDIUM",
+        "target": "Browser sessions",
+        "technique": "Reflected XSS",
+        "additionalTypes": []
+      },
+      "fingerprint": "2edf2958166561c5c08cd228e53bbcdc",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "17/06/2026, 09:12:03 am CAI",
+      "_sig": "788c5396ffcc8fbf"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "XSS",
+      "score": 780,
+      "action": "BLOCKED",
+      "time": "17/06/2026, 09:12:03 am CAI",
+      "isoTime": "2026-06-17T06:12:03.968Z",
+      "path": "/api/auth/register",
+      "method": "POST",
+      "payload": "{\"name\":\"\\\"><img src=x onerror=alert(1)>\",\"email\":\"[EMAIL]\",\"password\":\"x\"}",
+      "analysis": {
+        "type": "XSS",
+        "risk": "MEDIUM",
+        "target": "Browser sessions",
+        "technique": "Reflected XSS",
+        "additionalTypes": []
+      },
+      "fingerprint": "2edf2958166561c5c08cd228e53bbcdc",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "17/06/2026, 09:12:03 am CAI",
+      "_sig": "8b4a19d83469f3ea"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "XSS",
+      "score": 840,
+      "action": "BLOCKED",
+      "time": "17/06/2026, 09:12:03 am CAI",
+      "isoTime": "2026-06-17T06:12:03.977Z",
+      "path": "/api/auth/register",
+      "method": "POST",
+      "payload": "{\"name\":\"javascript:alert(document.cookie)\",\"email\":\"[EMAIL]\",\"password\":\"x\"}",
+      "analysis": {
+        "type": "XSS",
+        "risk": "MEDIUM",
+        "target": "Browser sessions",
+        "technique": "Session hijacking",
+        "additionalTypes": []
+      },
+      "fingerprint": "2edf2958166561c5c08cd228e53bbcdc",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "17/06/2026, 09:12:03 am CAI",
+      "_sig": "786e400ebd2fca8e"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "CmdInjection",
+      "score": 940,
+      "action": "BLOCKED",
+      "time": "17/06/2026, 09:12:03 am CAI",
+      "isoTime": "2026-06-17T06:12:03.986Z",
+      "path": "/api/auth/login",
+      "method": "POST",
+      "payload": "{\"email\":\"[EMAIL]; cat /etc/passwd\",\"password\":\"x\"}",
+      "analysis": {
+        "type": "CmdInjection",
+        "risk": "CRITICAL",
+        "target": "Server shell",
+        "technique": "OS command execution",
+        "additionalTypes": [
+          "PathTraversal"
+        ]
+      },
+      "fingerprint": "2edf2958166561c5c08cd228e53bbcdc",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "17/06/2026, 09:12:03 am CAI",
+      "_sig": "a35fbaae3d4bf62d"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "CmdInjection",
+      "score": 1040,
+      "action": "BLOCKED",
+      "time": "17/06/2026, 09:12:03 am CAI",
+      "isoTime": "2026-06-17T06:12:03.997Z",
+      "path": "/api/auth/login",
+      "method": "POST",
+      "payload": "{\"email\":\"[EMAIL] | whoami\",\"password\":\"x\"}",
+      "analysis": {
+        "type": "CmdInjection",
+        "risk": "CRITICAL",
+        "target": "Server shell",
+        "technique": "OS command execution",
+        "additionalTypes": []
+      },
+      "fingerprint": "2edf2958166561c5c08cd228e53bbcdc",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "17/06/2026, 09:12:03 am CAI",
+      "_sig": "c86ba722b8d016a1"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "PathTraversal",
+      "score": 1140,
+      "action": "BLOCKED",
+      "time": "17/06/2026, 09:12:04 am CAI",
+      "isoTime": "2026-06-17T06:12:04.010Z",
+      "path": "/api/../../../etc/passwd",
+      "method": "GET",
+      "payload": "/api/../../../etc/passwd",
+      "analysis": {
+        "type": "PathTraversal",
+        "risk": "HIGH",
+        "target": "/etc/passwd",
+        "technique": "Directory traversal",
+        "additionalTypes": []
+      },
+      "fingerprint": "2edf2958166561c5c08cd228e53bbcdc",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "17/06/2026, 09:12:04 am CAI",
+      "_sig": "549d72412b35e128"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "PathTraversal",
+      "score": 1240,
+      "action": "BLOCKED",
+      "time": "17/06/2026, 09:12:04 am CAI",
+      "isoTime": "2026-06-17T06:12:04.016Z",
+      "path": "/api/%2e%2e%2f%2e%2e%2fetc%2fpasswd",
+      "method": "GET",
+      "payload": "/api/%2e%2e%2f%2e%2e%2fetc%2fpasswd",
+      "analysis": {
+        "type": "PathTraversal",
+        "risk": "HIGH",
+        "target": "/etc/passwd",
+        "technique": "Directory traversal",
+        "additionalTypes": []
+      },
+      "fingerprint": "2edf2958166561c5c08cd228e53bbcdc",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "17/06/2026, 09:12:04 am CAI",
+      "_sig": "cd9f497f18dc8b0a"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "Brute",
+      "score": 1300,
+      "action": "BLOCKED",
+      "time": "17/06/2026, 09:12:04 am CAI",
+      "isoTime": "2026-06-17T06:12:04.091Z",
+      "path": "/api/panic",
+      "method": "POST",
+      "payload": "7 requests in 60s — brute force",
+      "analysis": {
+        "type": "Brute",
+        "risk": "HIGH",
+        "target": "/api/panic",
+        "technique": "Brute force"
+      },
+      "fingerprint": "2edf2958166561c5c08cd228e53bbcdc",
+      "timeCairo": "17/06/2026, 09:12:04 am CAI",
+      "_sig": "d6e7d9873935aee1"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "Brute",
+      "score": 60,
+      "action": "RATE-LIMITED",
+      "time": "17/06/2026, 09:15:41 am CAI",
+      "isoTime": "2026-06-17T06:15:41.230Z",
+      "path": "/api/upload/scan",
+      "method": "POST",
+      "payload": "7 requests in 60s — brute force",
+      "analysis": {
+        "type": "Brute",
+        "risk": "HIGH",
+        "target": "/api/upload/scan",
+        "technique": "Brute force"
+      },
+      "fingerprint": "2edf2958166561c5c08cd228e53bbcdc",
+      "timeCairo": "17/06/2026, 09:15:41 am CAI",
+      "_sig": "895dabf0a6c19969"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "Brute",
+      "score": 120,
+      "action": "BLOCKED",
+      "time": "17/06/2026, 09:15:41 am CAI",
+      "isoTime": "2026-06-17T06:15:41.258Z",
+      "path": "/api/unblock-ip",
+      "method": "POST",
+      "payload": "8 requests in 60s — brute force",
+      "analysis": {
+        "type": "Brute",
+        "risk": "HIGH",
+        "target": "/api/unblock-ip",
+        "technique": "Brute force"
+      },
+      "fingerprint": "2edf2958166561c5c08cd228e53bbcdc",
+      "timeCairo": "17/06/2026, 09:15:41 am CAI",
+      "_sig": "b63198717b24c6ca"
+    }
+  ]
+}
