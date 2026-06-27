@@ -54,7 +54,7 @@ const frontendBuildPath = path.join(__dirname, '..', 'frontend', 'dist');
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(frontendBuildPath));
     // Catch-all: send React's index.html for any non-API route
-    app.get('*', (req, res) => {
+    app.get('*splat', (req, res) => {
         res.sendFile(path.join(frontendBuildPath, 'index.html'));
     });
 } else {
