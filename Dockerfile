@@ -6,13 +6,13 @@ WORKDIR /app
 
 # Copy dependency files first to leverage Docker layer caching
 COPY backend/package*.json ./backend/
-COPY HospitalManagement/requirements.txt ./HospitalManagement/
+COPY requirements.txt ./
 
 # Install Node.js dependencies
 RUN cd backend && npm install --production=false
 
 # Install Python dependencies
-RUN cd HospitalManagement && pip install --upgrade pip && pip install -r requirements.txt
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
 # Copy the entire workspace into the container
 COPY . .
