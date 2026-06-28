@@ -95,9 +95,21 @@ app.use('/api/appointments', require('./routes/appointmentRoutes'));
 app.use('/api/admin', require('./routes/adminRoutes'));
 app.use('/api/medical-records', require('./routes/medicalRecordRoutes'));
 
-// Root route
-app.get('/', (req, res) => {
-    res.send('Tabibi API is running...');
+// Serve static assets from Frontend production build
+const frontendBuildPath = path.join(__dirname, '..', 'frontend', 'dist');
+app.use(express.static(frontendBuildPath));
+
+// Health check / API status endpoint
+app.get('/api/health', (req, res) => {
+    res.json({ status: 'healthy', message: 'Tabibi API is running...' });
+});
+
+// Catch-all route to serve the React index.html for client-side routing
+app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api') || req.path.startsWith('/soc') || req.path.startsWith('/socket.io')) {
+        return next();
+    }
+    res.sendFile(path.join(frontendBuildPath, 'index.html'));
 });
 
 // Error Handling Middleware
