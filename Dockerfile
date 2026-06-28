@@ -6,7 +6,6 @@ FROM nikolaik/python-nodejs:python3.10-nodejs20
 WORKDIR /app
 
 # ── Step 1: Copy the entire build context first ────────────────────────────────
-# This avoids having to know the exact static path to requirements.txt
 COPY . .
 
 # ── Step 2: Install Python dependencies ───────────────────────────────────────
@@ -17,13 +16,16 @@ RUN pip install --upgrade pip && \
 # ── Step 3: Install Node.js dependencies ──────────────────────────────────────
 RUN cd /app/backend && npm install --production=false
 
+# ── Step 4: Make the startup script executable ────────────────────────────────
+RUN chmod +x /app/start.sh
+
 # ── Expose ports ───────────────────────────────────────────────────────────────
-# Node.js listens on $PORT (injected by Railway) falling back to 5000
-# Django always runs internally on 8000 (not exposed publicly)
-EXPOSE 5000
+# Only one port needs to be publicly routed by Railway (injected as $PORT → Node.js)
+# Django on 8000 is internal only (localhost loopback between the two processes)
 EXPOSE 8000
 
-# ── Step 4: Start both services concurrently ──────────────────────────────────
-# Django starts in the background on port 8000 (localhost only)
-# Node.js starts as the main foreground process so Railway tracks it
-CMD ["sh", "-c", "cd /app/HospitalManagement && python manage.py migrate && python seed_medical_data.py && python seed_data.py && python manage.py runserver 0.0.0.0:8000 & cd /app/backend && node server.js"]
+# ── Step 5: Run the orchestration startup script ──────────────────────────────
+# start.sh runs migrations/seeds synchronously FIRST,
+# then starts Django in the background,
+# then exec's Node.js as PID 1 so Railway can health-check and signal it correctly.
+CMD ["/app/start.sh"]
