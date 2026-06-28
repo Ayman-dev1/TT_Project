@@ -1,60 +1,51 @@
 #!/bin/sh
-# start.sh — Fully dynamic startup. Finds manage.py and server.js at runtime.
-# No hardcoded paths. Works regardless of folder name, casing, or nesting.
+# start.sh — Bulletproof dynamic startup script.
+# Uses inline command substitution for exec so no variable scoping can interfere.
 set -e
 
-echo "==> Resolving project paths dynamically..."
+echo "==> [DEBUG] Contents of /app:"
+ls /app
 
-# ── Locate Django root (parent of manage.py) ──────────────────────────────────
-MANAGE_PY=$(find /app -name "manage.py" \
-  -not -path "*/node_modules/*" | head -1)
+echo ""
+echo "==> [DEBUG] Locating all server.js files (excluding node_modules and Security_Layer):"
+find /app -name "server.js" -not -path "*/node_modules/*" -not -path "*/Security_Layer/*"
 
+echo ""
+echo "==> [DEBUG] Locating manage.py:"
+find /app -name "manage.py" -not -path "*/node_modules/*"
+
+echo ""
+echo "==> [DEBUG] Locating requirements.txt:"
+find /app -name "requirements.txt" -not -path "*/node_modules/*"
+
+# ── Resolve Django root ────────────────────────────────────────────────────────
+MANAGE_PY=$(find /app -name "manage.py" -not -path "*/node_modules/*" | head -1)
 if [ -z "$MANAGE_PY" ]; then
-  echo "FATAL: manage.py not found under /app. Aborting."
+  echo "FATAL: manage.py not found. Aborting."
   exit 1
 fi
 DJANGO_DIR=$(dirname "$MANAGE_PY")
-echo "    manage.py    -> $MANAGE_PY"
-echo "    Django root  -> $DJANGO_DIR"
-
-# ── Locate server.js using absolute path ──────────────────────────────────────
-# Prefer any server.js inside a folder named 'backend', skip Security_Layer
-SERVER_JS=$(find /app -name "server.js" \
-  -not -path "*/node_modules/*" \
-  -not -path "*/Security_Layer/*" \
-  | grep "/backend/server\.js" | head -1)
-
-# Fallback: take the first server.js that is not in node_modules or Security_Layer
-if [ -z "$SERVER_JS" ]; then
-  SERVER_JS=$(find /app -name "server.js" \
-    -not -path "*/node_modules/*" \
-    -not -path "*/Security_Layer/*" | head -1)
-fi
-
-if [ -z "$SERVER_JS" ]; then
-  echo "FATAL: server.js not found under /app. Aborting."
-  exit 1
-fi
-echo "    server.js    -> $SERVER_JS"
-
-# ── Step 1: Run Django migrations ─────────────────────────────────────────────
 echo ""
-echo "==> [1/4] Running Django database migrations..."
+echo "==> Resolved Django root: $DJANGO_DIR"
+
+# ── Step 1: Run migrations ────────────────────────────────────────────────────
+echo "==> [1/4] Running Django migrations..."
 cd "$DJANGO_DIR"
 python manage.py migrate --noinput
 
-# ── Step 2: Seed initial data ─────────────────────────────────────────────────
-echo "==> [2/4] Seeding data (non-fatal if already seeded)..."
+# ── Step 2: Seed data ─────────────────────────────────────────────────────────
+echo "==> [2/4] Seeding data (non-fatal on re-deploy)..."
 python seed_medical_data.py || true
 python seed_data.py || true
 
 # ── Step 3: Start Django in background ────────────────────────────────────────
-echo "==> [3/4] Starting Django AI service on 0.0.0.0:8000 (background)..."
+echo "==> [3/4] Starting Django AI service on 0.0.0.0:8000..."
 python manage.py runserver 0.0.0.0:8000 &
 
-# ── Step 4: Launch Node.js as PID 1 via absolute path ────────────────────────
-# Using the ABSOLUTE path to server.js — no reliance on working directory.
-# 'exec' replaces this shell so Node becomes PID 1 for Railway's health checks.
-echo "==> [4/4] Starting Node.js server as PID 1..."
-echo "    Running: node $SERVER_JS"
-exec node "$SERVER_JS"
+# ── Step 4: Launch Node.js using inline find substitution ─────────────────────
+# Using direct inline command substitution — no variable assignment.
+# This is the most reliable method: the shell resolves the path inline at exec time.
+echo "==> [4/4] Resolving and launching Node.js server..."
+echo "    Target: $(find /app -name "server.js" -not -path "*/node_modules/*" -not -path "*/Security_Layer/*" | head -n 1)"
+
+exec node $(find /app -name "server.js" -not -path "*/node_modules/*" -not -path "*/Security_Layer/*" | head -n 1)
