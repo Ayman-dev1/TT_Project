@@ -26,9 +26,4 @@ EXPOSE 8000
 # ── Step 4: Start both services concurrently ──────────────────────────────────
 # Django starts in the background on port 8000 (localhost only)
 # Node.js starts as the main foreground process so Railway tracks it
-CMD ["sh", "-c", "\
-  python /app/HospitalManagement/manage.py migrate && \
-  python /app/HospitalManagement/seed_medical_data.py && \
-  python /app/HospitalManagement/seed_data.py && \
-  python /app/HospitalManagement/manage.py runserver 0.0.0.0:8000 & \
-  node /app/backend/server.js"]
+CMD ["sh", "-c", "cd /app/HospitalManagement && python manage.py migrate && python seed_medical_data.py && python seed_data.py && python manage.py runserver 0.0.0.0:8000 & cd /app/backend && node server.js"]
