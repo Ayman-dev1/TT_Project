@@ -87,6 +87,23 @@ app.use('/api', securityLayer.router);
 app.use('/api/security', securityLayer.router);
 app.use(securityLayer.sessionTracker);
 
+// ── DB readiness guard ────────────────────────────────────────────────────────
+// Mongoose readyState: 0=disconnected, 1=connected, 2=connecting, 3=disconnecting
+// Reject every /api request immediately if the database is not fully connected,
+// so the client receives a meaningful error instead of a silent crash.
+app.use('/api', (req, res, next) => {
+    const { readyState } = require('mongoose').connection;
+    if (readyState !== 1) {
+        const stateLabel = ['disconnected', 'connected', 'connecting', 'disconnecting'][readyState] || 'unknown';
+        console.error(`[DB Guard] Request blocked — MongoDB state: ${stateLabel} (${readyState})`);
+        return res.status(500).json({
+            success: false,
+            message: 'Database connection error. Please check MONGO_URI environment variable on Railway.',
+        });
+    }
+    next();
+});
+
 // Routes
 app.use('/api', require('./routes/appRoutes'));
 app.use('/api/auth', require('./routes/authRoutes'));
