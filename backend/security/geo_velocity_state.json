@@ -1,0 +1,36 @@
+{
+  "lastLogin": {},
+  "geoCache": {
+    "8.8.8.8": {
+      "ip": "8.8.8.8",
+      "lat": 39.03,
+      "lon": -77.5,
+      "country": "United States",
+      "countryCode": "US",
+      "region": "Virginia",
+      "city": "Ashburn",
+      "isp": "Google LLC",
+      "org": "Google Public DNS",
+      "mobile": false,
+      "proxy": false,
+      "hosting": true,
+      "ts": 1782614615192
+    },
+    "1.1.1.1": {
+      "ip": "1.1.1.1",
+      "lat": -27.4766,
+      "lon": 153.0166,
+      "country": "Australia",
+      "countryCode": "AU",
+      "region": "Queensland",
+      "city": "South Brisbane",
+      "isp": "Cloudflare, Inc",
+      "org": "APNIC and Cloudflare DNS Resolver project",
+      "mobile": false,
+      "proxy": false,
+      "hosting": true,
+      "ts": 1782614615277
+    }
+  },
+  "events": []
+}

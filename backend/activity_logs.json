@@ -1,5 +1,125 @@
 [
   {
+    "id": 1782593348105,
+    "timestamp": "2026-06-27T20:49:08.105Z",
+    "type": "Admin Login",
+    "message": "Admin authenticated: admin1@tabibi.com (Server synced)"
+  },
+  {
+    "id": 1782591260616,
+    "timestamp": "2026-06-27T20:14:20.616Z",
+    "type": "Logout",
+    "message": "User logged out: admin1@tabibi.com"
+  },
+  {
+    "id": 1782590924352,
+    "timestamp": "2026-06-27T20:08:44.352Z",
+    "type": "Admin Login",
+    "message": "Admin authenticated: admin1@tabibi.com (Server synced)"
+  },
+  {
+    "id": 1782590915389,
+    "timestamp": "2026-06-27T20:08:35.389Z",
+    "type": "Logout",
+    "message": "User logged out: admin1@tabibi.com"
+  },
+  {
+    "id": 1782558939835,
+    "timestamp": "2026-06-27T11:15:39.835Z",
+    "type": "Admin Login",
+    "message": "Admin authenticated: admin1@tabibi.com (Server synced)"
+  },
+  {
+    "id": 1782558939733,
+    "timestamp": "2026-06-27T11:15:39.733Z",
+    "type": "Admin Login",
+    "message": "Admin authenticated: admin1@tabibi.com (Server synced)"
+  },
+  {
+    "id": 1782558939713,
+    "timestamp": "2026-06-27T11:15:39.713Z",
+    "type": "Admin Login",
+    "message": "Admin authenticated: admin1@tabibi.com (Server synced)"
+  },
+  {
+    "id": 1782558922903,
+    "timestamp": "2026-06-27T11:15:22.903Z",
+    "type": "Logout",
+    "message": "User logged out: admin1@tabibi.com"
+  },
+  {
+    "id": 1782555595672,
+    "timestamp": "2026-06-27T10:19:55.672Z",
+    "type": "Payment Approved",
+    "message": "Admin approved payment for Booking 6a3f97659597a1110df165dd (dex@tabibi.com)"
+  },
+  {
+    "id": 1782552537325,
+    "timestamp": "2026-06-27T09:28:57.325Z",
+    "type": "Admin Login",
+    "message": "Admin authenticated: admin1@tabibi.com (Server synced)"
+  },
+  {
+    "id": 1782552435032,
+    "timestamp": "2026-06-27T09:27:15.032Z",
+    "type": "Logout",
+    "message": "User logged out: dex@tabibi.com"
+  },
+  {
+    "id": 1782552421204,
+    "timestamp": "2026-06-27T09:27:01.204Z",
+    "type": "Appointment Booked",
+    "message": "Patient: bnbn booked with Dr. Maryam El-Gohary using vodafone"
+  },
+  {
+    "id": 1782552421191,
+    "timestamp": "2026-06-27T09:27:01.191Z",
+    "type": "Payment Submitted",
+    "message": "Patient dex@tabibi.com submitted payment details for Booking 6a3f97659597a1110df165dd"
+  },
+  {
+    "id": 1782552378416,
+    "timestamp": "2026-06-27T09:26:18.416Z",
+    "type": "Admin Logout",
+    "message": "Admin logged out: admin1@tabibi.com"
+  },
+  {
+    "id": 1782552360909,
+    "timestamp": "2026-06-27T09:26:00.909Z",
+    "type": "Admin Login",
+    "message": "Admin authenticated: admin1@tabibi.com (Server synced)"
+  },
+  {
+    "id": 1782552354670,
+    "timestamp": "2026-06-27T09:25:54.670Z",
+    "type": "Logout",
+    "message": "User logged out: dex@tabibi.com"
+  },
+  {
+    "id": 1782552310291,
+    "timestamp": "2026-06-27T09:25:10.291Z",
+    "type": "Logout",
+    "message": "User logged out: ahmed@tabibi.com"
+  },
+  {
+    "id": 1782552209843,
+    "timestamp": "2026-06-27T09:23:29.843Z",
+    "type": "Logout",
+    "message": "User logged out: admin1@tabibi.com"
+  },
+  {
+    "id": 1782551634698,
+    "timestamp": "2026-06-27T09:13:54.698Z",
+    "type": "Admin Login",
+    "message": "Admin authenticated: admin1@tabibi.com (Server synced)"
+  },
+  {
+    "id": 1782550698845,
+    "timestamp": "2026-06-27T08:58:18.845Z",
+    "type": "Logout",
+    "message": "User logged out: ahmed@tabibi.com"
+  },
+  {
     "id": 1782497083492,
     "timestamp": "2026-06-26T18:04:43.492Z",
     "type": "Payment Approved",

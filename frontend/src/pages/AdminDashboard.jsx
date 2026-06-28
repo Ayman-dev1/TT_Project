@@ -1,23 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TabibiAPI } from '../utils/TabibiAPI';
-import { io } from 'socket.io-client';
-import SecurityDashboard from '../components/SecurityDashboard';
 import axios from 'axios';
 
 const AdminDashboard = () => {
     const navigate = useNavigate();
+    const securityLayerUrl = import.meta.env.VITE_SECURITY_LAYER_URL || '/soc';
+    const [securityFrameNonce, setSecurityFrameNonce] = useState(() => Date.now());
     const [currentUser, setCurrentUser] = useState(null);
     const [activeTab, setActiveTab] = useState('dashboard');
     const [cachedDocs, setCachedDocs] = useState([]);
-    
-    // SOC States & Ref
-    const [socThreats, setSocThreats] = useState([]);
-    const [blockedIPs, setBlockedIPs] = useState([]);
-    const [socHealth, setSocHealth] = useState(100);
-    const [panicMode, setPanicMode] = useState(false);
-    const socSocketRef = useRef(null);
-    
+
     // Stats & Data
     const [stats, setStats] = useState({ totalAppointments: 0, totalDoctors: 0, totalPatients: 0, revenue: 0 });
     const [appointments, setAppointments] = useState([]);
@@ -81,94 +74,6 @@ const AdminDashboard = () => {
             loadData();
         }
     }, [navigate]);
-
-    // SOC Socket.IO Real-time Connection
-    useEffect(() => {
-        if (activeTab !== 'soc') return;
-
-        console.log('[SOC Socket] Connecting to http://localhost:5000...');
-        const socket = io('http://localhost:5000');
-        socSocketRef.current = socket;
-
-        // Fetch initial stats and blocked list via REST APIs to avoid delays
-        const fetchInitialSocData = async () => {
-            const socHeaders = {
-                'Authorization': 'Bearer TABIBI-SOC-TOKEN-2026',
-                'Content-Type': 'application/json'
-            };
-            try {
-                const statsRes = await fetch('http://localhost:5000/api/soc-stats', { headers: socHeaders });
-                const statsData = await statsRes.json();
-                if (statsData && statsData.health !== undefined) {
-                    setSocHealth(statsData.health);
-                }
-                
-                const blockedRes = await fetch('http://localhost:5000/api/blocked-ips', { headers: socHeaders });
-                const blockedData = await blockedRes.json();
-                if (Array.isArray(blockedData)) {
-                    setBlockedIPs(blockedData);
-                }
-            } catch (err) {
-                console.error('Error fetching initial SOC data:', err);
-            }
-        };
-        fetchInitialSocData();
-
-        socket.on('connect', () => {
-            console.log('[SOC Socket] Connected successfully, ID:', socket.id);
-        });
-
-        socket.on('recent-attacks', (attacks) => {
-            if (Array.isArray(attacks)) {
-                // Show newest first
-                setSocThreats([...attacks].reverse());
-            }
-        });
-
-        socket.on('attack', (attack) => {
-            if (attack) {
-                setSocThreats(prev => {
-                    const exists = prev.some(t => t.isoTime === attack.isoTime || (t.time === attack.time && t.ip === attack.ip));
-                    if (exists) return prev;
-                    return [attack, ...prev].slice(0, 50);
-                });
-            }
-        });
-
-        socket.on('new-threat', (threat) => {
-            if (threat) {
-                setSocThreats(prev => {
-                    const exists = prev.some(t => t.isoTime === threat.isoTime || (t.time === threat.time && t.ip === threat.ip));
-                    if (exists) return prev;
-                    return [threat, ...prev].slice(0, 50);
-                });
-            }
-        });
-
-        socket.on('blocked-list', (list) => {
-            if (Array.isArray(list)) {
-                setBlockedIPs(list);
-            }
-        });
-
-        socket.on('health-update', (data) => {
-            if (data && data.health !== undefined) {
-                setSocHealth(data.health);
-            }
-        });
-
-        socket.on('panic-mode', (data) => {
-            if (data && data.active !== undefined) {
-                setPanicMode(data.active);
-            }
-        });
-
-        return () => {
-            console.log('[SOC Socket] Disconnecting from http://localhost:5000...');
-            socket.disconnect();
-            socSocketRef.current = null;
-        };
-    }, [activeTab]);
 
     const normalizeDoctor = (d) => {
         const userIdObj = d.userId && typeof d.userId === 'object' ? d.userId : {};
@@ -384,8 +289,16 @@ const AdminDashboard = () => {
     // Tab switcher helper
     const handleSwitchTab = (tab) => {
         setActiveTab(tab);
+        if (tab === 'security-layer') {
+            setSecurityFrameNonce(Date.now());
+        }
         loadData();
     };
+
+    useEffect(() => {
+        const activeItem = document.querySelector(`[data-admin-tab="${activeTab}"]`);
+        activeItem?.scrollIntoView({ block: 'nearest' });
+    }, [activeTab]);
 
     // Logout
     const handleLogout = () => {
@@ -442,9 +355,16 @@ const AdminDashboard = () => {
         setEditModalOpen(true);
     };
 
-    const handleEditDocPicChange = (e) => {
+    const handleEditDocPicChange = async (e) => {
         const file = e.target.files[0];
         if (!file) return;
+        try {
+            await TabibiAPI.scanFile(file, 'Admin edit doctor photo');
+        } catch (error) {
+            TabibiAPI.showToast(error.message || 'Security scan blocked this image');
+            e.target.value = '';
+            return;
+        }
         const reader = new FileReader();
         reader.onload = (event) => {
             setEditDocImage(event.target.result);
@@ -557,9 +477,16 @@ const AdminDashboard = () => {
     };
 
     // Add Doctor Photo Preview
-    const handleNewDocPicChange = (e) => {
+    const handleNewDocPicChange = async (e) => {
         const file = e.target.files[0];
         if (!file) return;
+        try {
+            await TabibiAPI.scanFile(file, 'Admin add doctor photo');
+        } catch (error) {
+            TabibiAPI.showToast(error.message || 'Security scan blocked this image');
+            e.target.value = '';
+            return;
+        }
         const reader = new FileReader();
         reader.onload = (event) => {
             setNewDocImage(event.target.result);
@@ -1375,7 +1302,7 @@ const AdminDashboard = () => {
         );
     };
 
-    const renderSecurityMonitor = () => {
+    const renderPaymentSecurity = () => {
         const refGroups = {};
         appointments.forEach(a => {
             if (a.transactionRef && a.transactionRef.trim() !== '') {
@@ -1706,14 +1633,14 @@ const AdminDashboard = () => {
                     z-index: 100;
                 }
                 .sidebar-header {
-                    padding: 32px 24px;
+                    padding: 18px 24px;
                     border-bottom: 1px solid #F1F5F9;
                     display: flex;
                     align-items: center;
                     gap: 12px;
                 }
                 .sidebar-nav {
-                    padding: 24px 12px;
+                    padding: 12px;
                     flex-grow: 1;
                     overflow-y: auto;
                 }
@@ -1721,7 +1648,7 @@ const AdminDashboard = () => {
                     display: flex;
                     align-items: center;
                     gap: 12px;
-                    padding: 12px 16px;
+                    padding: 9px 16px;
                     border-radius: 12px;
                     color: #64748B;
                     font-weight: 500;
@@ -1909,10 +1836,27 @@ const AdminDashboard = () => {
                     flex-shrink: 0; transition: 0.2s;
                 }
                 .edit-doc-preview-box:hover { border-color: var(--primary); }
+                .admin-main.security-active {
+                    padding: 0;
+                    background: #020c1b;
+                }
+                .security-frame-wrap {
+                    width: 100%;
+                    height: 100vh;
+                    background: #020c1b;
+                }
+                .security-frame-wrap iframe {
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                    display: block;
+                    background: #020c1b;
+                }
                 @media (max-width: 900px) {
                     .admin-sidebar { width: 80px; }
                     .sidebar-item span, .sidebar-header h2 { display: none; }
                     .admin-main { margin-left: 80px; width: calc(100% - 80px); }
+                    .admin-main.security-active { padding: 0; }
                     .form-row { grid-template-columns: 1fr; }
                 }
             `}} />
@@ -1927,61 +1871,44 @@ const AdminDashboard = () => {
                 </div>
                 
                 <div className="sidebar-nav">
-                    <div className={`sidebar-item ${activeTab === 'dashboard' ? 'active' : ''}`} onClick={() => handleSwitchTab('dashboard')}><i className="fas fa-chart-pie"></i> <span>Overview</span></div>
-                    <div className={`sidebar-item ${activeTab === 'appointments' ? 'active' : ''}`} onClick={() => handleSwitchTab('appointments')}><i className="fas fa-calendar-check"></i> <span>Manage Bookings</span></div>
-                    <div className={`sidebar-item ${activeTab === 'doctors' ? 'active' : ''}`} onClick={() => handleSwitchTab('doctors')}><i className="fas fa-user-md"></i> <span>Doctors Directory</span></div>
-                    <div className={`sidebar-item ${activeTab === 'add-doctor' ? 'active' : ''}`} onClick={() => handleSwitchTab('add-doctor')}><i className="fas fa-plus-circle"></i> <span>Add New Doctor</span></div>
-                    <div className={`sidebar-item ${activeTab === 'patients' ? 'active' : ''}`} onClick={() => handleSwitchTab('patients')}><i className="fas fa-users"></i> <span>Patients</span></div>
-                    <div style={{ margin: '15px 16px 10px', fontSize: '11px', textTransform: 'uppercase', color: '#94A3B8', fontWeight: 700, letterSpacing: '1px' }}>Management</div>
-                    <div className={`sidebar-item ${activeTab === 'payments' ? 'active' : ''}`} onClick={() => handleSwitchTab('payments')}><i className="fas fa-wallet"></i> <span>Payments Dashboard</span></div>
-                    <div className={`sidebar-item ${activeTab === 'reviews' ? 'active' : ''}`} onClick={() => handleSwitchTab('reviews')}><i className="fas fa-star"></i> <span>Reviews</span></div>
-                    <div className={`sidebar-item ${activeTab === 'hero' ? 'active' : ''}`} onClick={() => handleSwitchTab('hero')}><i className="fas fa-images"></i> <span>Hero Slider</span></div>
-                    <div className={`sidebar-item ${activeTab === 'broadcast' ? 'active' : ''}`} onClick={() => handleSwitchTab('broadcast')}><i className="fas fa-bullhorn"></i> <span>Broadcast</span></div>
-                    <div className={`sidebar-item ${activeTab === 'auth-logs' ? 'active' : ''}`} onClick={() => handleSwitchTab('auth-logs')}><i className="fas fa-history"></i> <span>Auth Logs</span></div>
-                    <div style={{ margin: '15px 16px 10px', borderTop: '1px solid #E2E8F0', paddingTop: '15px', fontSize: '11px', textTransform: 'uppercase', color: '#94A3B8', fontWeight: 700, letterSpacing: '1px' }}>Security</div>
-                    <div className={`sidebar-item ${activeTab === 'payment-security' ? 'active' : ''}`} onClick={() => handleSwitchTab('payment-security')}><i className="fas fa-shield-virus"></i> <span>Payment Security</span></div>
-                    <div
-                        className={`sidebar-item ${activeTab === 'soc' ? 'active' : ''}`}
-                        onClick={() => setActiveTab('soc')}
-                        style={activeTab === 'soc' ? { background: 'linear-gradient(90deg, rgba(0,229,255,0.12), rgba(0,229,255,0.03))', color: '#00e5ff', borderLeft: '3px solid #00e5ff', borderRadius: '10px' } : {}}
-                    >
-                        <i className="fas fa-shield-alt" style={activeTab === 'soc' ? { color: '#00e5ff', filter: 'drop-shadow(0 0 4px #00e5ff)' } : {}}></i>
-                        <span style={activeTab === 'soc' ? { fontWeight: 700 } : {}}>Security Ops Center</span>
-                    </div>
+                    <div data-admin-tab="dashboard" className={`sidebar-item ${activeTab === 'dashboard' ? 'active' : ''}`} onClick={() => handleSwitchTab('dashboard')}><i className="fas fa-chart-pie"></i> <span>Overview</span></div>
+                    <div data-admin-tab="appointments" className={`sidebar-item ${activeTab === 'appointments' ? 'active' : ''}`} onClick={() => handleSwitchTab('appointments')}><i className="fas fa-calendar-check"></i> <span>Manage Bookings</span></div>
+                    <div data-admin-tab="doctors" className={`sidebar-item ${activeTab === 'doctors' ? 'active' : ''}`} onClick={() => handleSwitchTab('doctors')}><i className="fas fa-user-md"></i> <span>Doctors Directory</span></div>
+                    <div data-admin-tab="add-doctor" className={`sidebar-item ${activeTab === 'add-doctor' ? 'active' : ''}`} onClick={() => handleSwitchTab('add-doctor')}><i className="fas fa-plus-circle"></i> <span>Add New Doctor</span></div>
+                    <div data-admin-tab="patients" className={`sidebar-item ${activeTab === 'patients' ? 'active' : ''}`} onClick={() => handleSwitchTab('patients')}><i className="fas fa-users"></i> <span>Patients</span></div>
+                    <div style={{ margin: '8px 16px 6px', fontSize: '11px', textTransform: 'uppercase', color: '#94A3B8', fontWeight: 700, letterSpacing: '1px' }}>Management</div>
+                    <div data-admin-tab="payments" className={`sidebar-item ${activeTab === 'payments' ? 'active' : ''}`} onClick={() => handleSwitchTab('payments')}><i className="fas fa-wallet"></i> <span>Payments Dashboard</span></div>
+                    <div data-admin-tab="reviews" className={`sidebar-item ${activeTab === 'reviews' ? 'active' : ''}`} onClick={() => handleSwitchTab('reviews')}><i className="fas fa-star"></i> <span>Reviews</span></div>
+                    <div data-admin-tab="hero" className={`sidebar-item ${activeTab === 'hero' ? 'active' : ''}`} onClick={() => handleSwitchTab('hero')}><i className="fas fa-images"></i> <span>Hero Slider</span></div>
+                    <div data-admin-tab="broadcast" className={`sidebar-item ${activeTab === 'broadcast' ? 'active' : ''}`} onClick={() => handleSwitchTab('broadcast')}><i className="fas fa-bullhorn"></i> <span>Broadcast</span></div>
+                    <div data-admin-tab="auth-logs" className={`sidebar-item ${activeTab === 'auth-logs' ? 'active' : ''}`} onClick={() => handleSwitchTab('auth-logs')}><i className="fas fa-history"></i> <span>Auth Logs</span></div>
+                    <div style={{ margin: '8px 16px 6px', borderTop: '1px solid #E2E8F0', paddingTop: '8px', fontSize: '11px', textTransform: 'uppercase', color: '#94A3B8', fontWeight: 700, letterSpacing: '1px' }}>Security</div>
+                    <div data-admin-tab="payment-security" className={`sidebar-item ${activeTab === 'payment-security' ? 'active' : ''}`} onClick={() => handleSwitchTab('payment-security')}><i className="fas fa-shield-virus"></i> <span>Payment Security</span></div>
+                    <div data-admin-tab="security-layer" className={`sidebar-item ${activeTab === 'security-layer' ? 'active' : ''}`} onClick={() => handleSwitchTab('security-layer')}><i className="fas fa-shield-alt"></i> <span>Security Layer</span></div>
                 </div>
                 
-                <div style={{ padding: '24px' }}>
+                <div style={{ padding: '12px 24px' }}>
                     <button className="sidebar-item" style={{ width: '100%', background: '#FEF2F2', color: '#EF4444', border: 'none' }} onClick={handleLogout}><i className="fas fa-sign-out-alt"></i> <span>Sign Out</span></button>
                 </div>
             </aside>
 
             {/* MAIN */}
-            <main className="admin-main" style={activeTab === 'soc' ? { background: '#020c1b', transition: 'background 0.3s ease' } : { transition: 'background 0.3s ease' }}>
-                <header className="admin-header" style={activeTab === 'soc' ? { background: 'linear-gradient(90deg, #020c1b, #031422)', borderBottom: '1px solid rgba(0,229,255,0.2)' } : {}}>
+            <main className={`admin-main ${activeTab === 'security-layer' ? 'security-active' : ''}`} style={{ transition: 'background 0.3s ease' }}>
+                {activeTab !== 'security-layer' && <header className="admin-header">
                     <div className="page-title">
-                        <h1 style={activeTab === 'soc' ? { color: '#00e5ff', fontFamily: 'Orbitron, sans-serif', fontSize: '20px', textShadow: '0 0 12px rgba(0,229,255,0.4)' } : {}}>
-                            {activeTab === 'soc' ? '⚡ Security Operations Center' : 
-                             activeTab === 'payments' ? '💳 Payments Dashboard' : 
-                             activeTab === 'payment-security' ? '🛡️ Payment Security Monitoring' : 
-                             (activeTab.charAt(0).toUpperCase() + activeTab.slice(1))}
-                        </h1>
-                        <p style={activeTab === 'soc' ? { color: '#6a9bbf', fontFamily: 'JetBrains Mono, monospace', fontSize: '12px' } : {}}>
-                            {activeTab === 'soc' ? 'Welcome back, SOC Operator.' : 
-                             activeTab === 'payments' ? 'Track and verify clinic consultation transactions.' : 
-                             activeTab === 'payment-security' ? 'Monitor payment flags and transaction logs.' : 
-                             'Welcome back, Administrator.'}
-                        </p>
+                        <h1>{activeTab === 'payments' ? 'Payments Dashboard' : activeTab === 'payment-security' ? 'Payment Security Monitoring' : (activeTab.charAt(0).toUpperCase() + activeTab.slice(1))}</h1>
+                        <p>{activeTab === 'payments' ? 'Track and verify clinic consultation transactions.' : activeTab === 'payment-security' ? 'Monitor payment flags and transaction logs.' : 'Welcome back, Administrator.'}</p>
                     </div>
                     <div className="admin-profile" style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                         <div style={{ textAlign: 'right' }}>
-                            <div style={{ fontWeight: 700, color: activeTab === 'soc' ? '#00e5ff' : 'var(--dark)' }}>{currentUser?.name || 'Admin'}</div>
-                            <div style={{ fontSize: '12px', color: activeTab === 'soc' ? '#6a9bbf' : 'var(--gray)' }}>System Master</div>
+                            <div style={{ fontWeight: 700, color: 'var(--dark)' }}>{currentUser?.name || 'Admin'}</div>
+                            <div style={{ fontSize: '12px', color: 'var(--gray)' }}>System Master</div>
                         </div>
-                        <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: activeTab === 'soc' ? 'rgba(0,229,255,0.15)' : 'var(--primary)', border: activeTab === 'soc' ? '1.5px solid #00e5ff' : 'none', color: activeTab === 'soc' ? '#00e5ff' : 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800' }}>
+                        <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'var(--primary)', border: 'none', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800' }}>
                             {currentUser?.name?.charAt(0) || 'A'}
                         </div>
                     </div>
-                </header>
+                </header>}
 
                 {activeTab === 'dashboard' && renderOverview()}
                 {activeTab === 'appointments' && renderAppointments()}
@@ -1989,22 +1916,19 @@ const AdminDashboard = () => {
                 {activeTab === 'add-doctor' && renderAddDoctor()}
                 {activeTab === 'patients' && renderPatients()}
                 {activeTab === 'payments' && renderPaymentsDashboard()}
-                {activeTab === 'payment-security' && renderSecurityMonitor()}
+                {activeTab === 'payment-security' && renderPaymentSecurity()}
                 {activeTab === 'reviews' && renderReviews()}
                 {activeTab === 'hero' && renderHero()}
                 {activeTab === 'broadcast' && renderBroadcastPanel()}
                 {activeTab === 'auth-logs' && renderLogs()}
-                {activeTab === 'soc' && (
-                    <SecurityDashboard
-                        socThreats={socThreats}
-                        setSocThreats={setSocThreats}
-                        blockedIPs={blockedIPs}
-                        setBlockedIPs={setBlockedIPs}
-                        socHealth={socHealth}
-                        setSocHealth={setSocHealth}
-                        panicMode={panicMode}
-                        setPanicMode={setPanicMode}
-                    />
+                {activeTab === 'security-layer' && (
+                    <div className="security-frame-wrap">
+                        <iframe
+                            key={securityFrameNonce}
+                            title="TABIBI Security Layer"
+                            src={`${securityLayerUrl}${securityLayerUrl.includes('?') ? '&' : '?'}_=${securityFrameNonce}`}
+                        />
+                    </div>
                 )}
             </main>
 

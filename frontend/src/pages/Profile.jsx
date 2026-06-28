@@ -124,6 +124,13 @@ const Profile = () => {
             TabibiAPI.showToast('Image is too large (Max 2MB)');
             return;
         }
+        try {
+            await TabibiAPI.scanFile(file, 'Profile picture upload');
+        } catch (error) {
+            TabibiAPI.showToast(error.message || 'Security scan blocked this image');
+            event.target.value = '';
+            return;
+        }
 
         // Show locally first for instant feedback
         const localReader = new FileReader();
@@ -237,10 +244,22 @@ const Profile = () => {
         setUploadProgress(0);
 
         let done = 0;
-        fileArr.forEach((file, index) => {
+        fileArr.forEach(async (file, index) => {
             if (file.size > 10 * 1024 * 1024) {
                 TabibiAPI.showToast(file.name + ' is too large (Max 10MB)');
                 done++;
+                if (done === fileArr.length) setUploading(false);
+                return;
+            }
+
+            try {
+                await TabibiAPI.scanFile(file, 'Patient medical repository');
+            } catch (error) {
+                const reviewPrefix = error.scanStatus === 'Suspicious' ? 'Needs Security review: ' : '';
+                TabibiAPI.showToast(file.name + ': ' + reviewPrefix + (error.message || 'Security scan failed'));
+                done++;
+                const progress = Math.round((done / fileArr.length) * 100);
+                setUploadProgress(progress);
                 if (done === fileArr.length) setUploading(false);
                 return;
             }

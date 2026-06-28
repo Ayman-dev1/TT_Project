@@ -1,0 +1,28 @@
+﻿{
+    "emails":  [
+
+               ],
+    "phones":  [
+
+               ],
+    "triggers":  {
+                     "critical":  false,
+                     "brute":  false,
+                     "all":  false
+                 },
+    "smtp":  {
+                 "host":  "",
+                 "port":  587,
+                 "user":  "",
+                 "pass":  "",
+                 "secure":  false
+             },
+    "twilio":  {
+                   "sid":  "",
+                   "token":  "",
+                   "from":  ""
+               },
+    "alertLog":  [
+
+                 ]
+}

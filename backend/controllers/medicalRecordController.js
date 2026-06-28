@@ -1,5 +1,24 @@
 const MedicalRecord = require('../models/MedicalRecord');
 const User = require('../models/User');
+const Doctor = require('../models/Doctor');
+const Appointment = require('../models/Appointment');
+const fileScan = require('../security/fileScan');
+const { recordAdminAction } = require('../security/auditLog');
+
+const decodeFileData = (fileData) => {
+    const raw = String(fileData || '');
+    const match = raw.match(/^data:([^;]+);base64,(.*)$/);
+    if (match) {
+        return {
+            mime: match[1],
+            buffer: Buffer.from(match[2], 'base64')
+        };
+    }
+    return {
+        mime: '',
+        buffer: Buffer.from(raw, 'base64')
+    };
+};
 
 // @desc    Create a new medical record
 // @route   POST /api/medical-records
@@ -12,6 +31,34 @@ const createMedicalRecord = async (req, res, next) => {
             return res.status(400).json({ message: 'Please provide fileName, fileType, and fileData' });
         }
 
+        const decoded = decodeFileData(fileData);
+        const scanResult = fileScan.scan(decoded.buffer, fileName, fileType || decoded.mime);
+        fileScan.recordScan({
+            file: {
+                originalname: fileName,
+                mimetype: fileType || decoded.mime,
+                size: decoded.buffer.length,
+                buffer: decoded.buffer
+            },
+            result: scanResult,
+            req,
+            userInfo: {
+                username: req.user.name,
+                email: req.user.email,
+                role: req.user.role
+            },
+            uploadLocation: 'Medical records',
+            accountActivity: 'Upload medical record'
+        });
+
+        if (!scanResult.safe) {
+            return res.status(400).json({
+                message: 'File failed security validation',
+                reason: scanResult.reason || 'Blocked by file scanner',
+                threats: scanResult.threats || []
+            });
+        }
+
         const medicalRecord = await MedicalRecord.create({
             userEmail: req.user.email,
             fileName,
@@ -20,25 +67,6 @@ const createMedicalRecord = async (req, res, next) => {
             fileSize,
             uploadDate: new Date()
         });
-
-        // PHI write logging
-        if (process.env.SECURITY_LAYER_ENABLED !== 'false') {
-            try {
-                const phiAudit = require('../security/phiAudit');
-                const threatEngine = require('../security/threatEngine');
-                const clientIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || req.ip;
-                phiAudit.logAccess({
-                    userId: req.user._id.toString(),
-                    patientId: req.user._id.toString(),
-                    fields: ['medicalRecords'],
-                    reason: 'Upload medical record',
-                    ip: threatEngine.cleanIP(clientIp),
-                    action: 'WRITE'
-                });
-            } catch (err) {
-                console.error('[Security] PHI log failure:', err.message);
-            }
-        }
 
         // Return expected frontend structure
         res.status(201).json({
@@ -63,10 +91,32 @@ const getMedicalRecords = async (req, res, next) => {
     try {
         let targetEmail;
 
-        if (req.user.role === 'doctor') {
+        if (req.user.role === 'admin') {
+            targetEmail = req.query.email;
+            if (!targetEmail) {
+                return res.status(400).json({ message: 'Patient email query parameter is required for admin access' });
+            }
+            recordAdminAction(req, 'MEDICAL_RECORDS_VIEW_AS_ADMIN', { patientEmail: targetEmail });
+        } else if (req.user.role === 'doctor') {
             targetEmail = req.query.email;
             if (!targetEmail) {
                 return res.status(400).json({ message: 'Patient email query parameter is required for doctor access' });
+            }
+            const patient = await User.findOne({ email: targetEmail, role: 'patient' }).select('_id email');
+            if (!patient) {
+                return res.status(404).json({ message: 'Patient not found' });
+            }
+            const doctor = await Doctor.findOne({ userId: req.user._id }).select('_id');
+            if (!doctor) {
+                return res.status(403).json({ message: 'Doctor profile not found' });
+            }
+            const relationship = await Appointment.exists({
+                doctorId: doctor._id,
+                patientId: patient._id,
+                status: { $in: ['confirmed', 'completed'] }
+            });
+            if (!relationship) {
+                return res.status(403).json({ message: 'Not authorized to access records for this patient' });
             }
         } else {
             // Patients can only view their own records
@@ -74,30 +124,6 @@ const getMedicalRecords = async (req, res, next) => {
         }
 
         const records = await MedicalRecord.find({ userEmail: targetEmail }).sort({ uploadDate: -1 });
-
-        // PHI read logging
-        if (process.env.SECURITY_LAYER_ENABLED !== 'false') {
-            try {
-                const phiAudit = require('../security/phiAudit');
-                const threatEngine = require('../security/threatEngine');
-                const clientIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || req.ip;
-                
-                // Find patient user id if possible for audit logs
-                const patientUser = await User.findOne({ email: targetEmail });
-                const patientId = patientUser ? patientUser._id.toString() : targetEmail;
-
-                phiAudit.logAccess({
-                    userId: req.user._id.toString(),
-                    patientId,
-                    fields: ['medicalRecords'],
-                    reason: req.user.role === 'doctor' ? 'Doctor read patient medical records' : 'Read own medical records',
-                    ip: threatEngine.cleanIP(clientIp),
-                    action: 'READ'
-                });
-            } catch (err) {
-                console.error('[Security] PHI log failure:', err.message);
-            }
-        }
 
         // Format for frontend mapping
         const formattedRecords = records.map(rec => ({
@@ -129,30 +155,13 @@ const deleteMedicalRecord = async (req, res, next) => {
         }
 
         // Check ownership
-        if (record.userEmail !== req.user.email) {
+        if (req.user.role === 'admin') {
+            recordAdminAction(req, 'MEDICAL_RECORD_DELETE_AS_ADMIN', { recordId: req.params.id, patientEmail: record.userEmail });
+        } else if (record.userEmail !== req.user.email) {
             return res.status(403).json({ message: 'Not authorized to delete this medical record' });
         }
 
         await record.deleteOne();
-
-        // PHI write logging
-        if (process.env.SECURITY_LAYER_ENABLED !== 'false') {
-            try {
-                const phiAudit = require('../security/phiAudit');
-                const threatEngine = require('../security/threatEngine');
-                const clientIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || req.ip;
-                phiAudit.logAccess({
-                    userId: req.user._id.toString(),
-                    patientId: req.user._id.toString(),
-                    fields: ['medicalRecords'],
-                    reason: 'Delete medical record',
-                    ip: threatEngine.cleanIP(clientIp),
-                    action: 'WRITE'
-                });
-            } catch (err) {
-                console.error('[Security] PHI log failure:', err.message);
-            }
-        }
 
         res.json({ message: 'Medical record deleted successfully' });
     } catch (error) {

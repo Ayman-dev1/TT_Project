@@ -1,0 +1,14 @@
+{
+  "watch": ["server.js", "routes", "controllers", "middleware", "models", "security", "config", "utils"],
+  "ignore": [
+    "attacks.json",
+    "admin_audit.json",
+    "activity_logs.json",
+    "security/*.json",
+    "snapshots/**",
+    "../Security_Layer/attacks.json",
+    "../Security_Layer/security/*.json"
+  ],
+  "ext": "js,json",
+  "delay": "500ms"
+}

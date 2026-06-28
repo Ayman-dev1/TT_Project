@@ -3,6 +3,7 @@ const User = require('../models/User');
 const mongoose = require('mongoose');
 const fs = require('fs');
 const path = require('path');
+const { uploadBuffer } = require('../config/cloudinary');
 const ACTIVITY_LOGS_FILE = path.join(__dirname, '..', 'activity_logs.json');
 
 const logBackendActivity = (type, message) => {
@@ -43,25 +44,6 @@ const getDoctorById = async (req, res) => {
     const doctor = await Doctor.findById(req.params.id).populate('userId', 'name email image phone address dob');
 
     if (doctor) {
-        // Log PHI read access for doctor profile details
-        if (process.env.SECURITY_LAYER_ENABLED !== 'false') {
-            try {
-                const phiAudit = require('../security/phiAudit');
-                const threatEngine = require('../security/threatEngine');
-                const clientIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || req.ip;
-                phiAudit.logAccess({
-                    userId: req.user ? req.user._id.toString() : 'anonymous',
-                    patientId: doctor.userId ? doctor.userId._id.toString() : 'unknown',
-                    fields: ['patientName', 'email', 'phone', 'address'],
-                    reason: 'Read doctor details by ID',
-                    ip: threatEngine.cleanIP(clientIp),
-                    action: 'READ'
-                });
-            } catch (err) {
-                console.error('[Security] PHI log failure:', err.message);
-            }
-        }
-
         res.json(doctor);
     } else {
         res.status(404).json({ message: 'Doctor not found' });
@@ -81,32 +63,19 @@ const updateDoctorProfile = async (req, res) => {
         doctor.clinicAddress = req.body.clinicAddress || doctor.clinicAddress;
 
         if (req.file) {
+            const uploadResult = await uploadBuffer(req.file.buffer, {
+                folder: 'tabibi_uploads',
+                resource_type: 'image',
+                allowed_formats: ['jpg', 'png', 'jpeg']
+            });
+
             // Update user image as well
             const user = await User.findById(req.user._id);
-            user.image = req.file.path;
+            user.image = uploadResult.secure_url;
             await user.save();
         }
 
         const updatedDoctor = await doctor.save();
-
-        // Log PHI write access
-        if (process.env.SECURITY_LAYER_ENABLED !== 'false') {
-            try {
-                const phiAudit = require('../security/phiAudit');
-                const threatEngine = require('../security/threatEngine');
-                const clientIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || req.ip;
-                phiAudit.logAccess({
-                    userId: req.user._id.toString(),
-                    patientId: req.user._id.toString(),
-                    fields: ['patientName'],
-                    reason: 'Update doctor profile',
-                    ip: threatEngine.cleanIP(clientIp),
-                    action: 'WRITE'
-                });
-            } catch (err) {
-                console.error('[Security] PHI log failure:', err.message);
-            }
-        }
 
         res.json(updatedDoctor);
     } else {

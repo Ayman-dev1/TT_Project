@@ -13,6 +13,13 @@ const MAX_IR_LOG          = 500;
 // ─── Persistence ──────────────────────────────────────────────────────────────
 const PERSIST_FILE = path.join(__dirname, 'blocked_ips_persist.json');
 
+function writeJsonArrayAtomic(file, data) {
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  const tmp = `${file}.${process.pid}.${Date.now()}.tmp`;
+  fs.writeFileSync(tmp, JSON.stringify(data, null, 2) + '\n', 'utf8');
+  fs.renameSync(tmp, file);
+}
+
 function saveBlockedIPs() {
   try {
     const data = Object.entries(blockedIPs).map(([ip, d]) => ({
@@ -20,9 +27,10 @@ function saveBlockedIPs() {
       score: threats[ip] ? threats[ip].score : 100,
       hits:  threats[ip] ? threats[ip].hits  : 1
     }));
-    fs.writeFileSync(PERSIST_FILE, JSON.stringify(data, null, 2), 'utf8');
+    writeJsonArrayAtomic(PERSIST_FILE, data);
   } catch (e) {
     console.error('[ThreatEngine] Could not save blocked IPs:', e.message);
+    throw e;
   }
 }
 
@@ -31,11 +39,11 @@ function loadBlockedIPs() {
     if (!fs.existsSync(PERSIST_FILE)) return;
     const data = JSON.parse(fs.readFileSync(PERSIST_FILE, 'utf8'));
     if (!Array.isArray(data)) return;
-    data.forEach(({ ip, reason, blockedAt, score, hits }) => {
+    data.forEach(({ ip, reason, note, blockedAt, score, hits }) => {
       const isoAt = blockedAt && !isNaN(new Date(blockedAt).getTime())
         ? blockedAt
         : new Date().toISOString();
-      blockedIPs[ip] = { reason: reason || 'persisted', blockedAt: isoAt };
+      blockedIPs[ip] = { reason: reason || 'persisted', note: note || '', blockedAt: isoAt };
       threats[ip]    = {
         score: score || 100, hits: hits || 1, blocked: true,
         firstSeen: isoAt, lastSeen: new Date().toISOString()
@@ -105,13 +113,21 @@ function resetScore(ip) {
  * @param {string} [reason='manual']
  * @returns {object} Blocked IP record
  */
-function blockIP(ip, reason = 'manual') {
+function blockIP(ip, reason = 'manual', note = '') {
   ip = cleanIP(ip);
   const item = ensureThreat(ip);
   item.blocked  = true;
   item.score    = Math.max(item.score, 100);
   item.lastSeen = nowIso();
-  blockedIPs[ip] = { reason, blockedAt: nowIso() };
+  blockedIPs[ip] = { reason, note: note || '', blockedAt: nowIso() };
+  logIRAction({
+    action: 'BLOCK_IP',
+    target: ip,
+    reason,
+    note: note || '',
+    severity: reason === 'manual' || reason === 'manual-dashboard' ? 'MEDIUM' : 'HIGH',
+    banTime: blockedIPs[ip].blockedAt
+  });
   saveBlockedIPs();
   return getBlockedIP(ip);
 }
@@ -122,9 +138,14 @@ function blockIP(ip, reason = 'manual') {
  */
 function unblockIP(ip) {
   ip = cleanIP(ip);
+  const wasBlocked = Boolean(blockedIPs[ip]);
   delete blockedIPs[ip];
   if (threats[ip]) { threats[ip].blocked = false; threats[ip].score = 0; threats[ip].lastSeen = nowIso(); }
+  if (wasBlocked) {
+    logIRAction({ action: 'UNBLOCK_IP', target: ip, reason: 'manual-release', severity: 'INFO' });
+  }
   saveBlockedIPs();
+  return { ip, removed: wasBlocked, alreadyUnblocked: !wasBlocked, activeBlockRemoved: true };
 }
 
 /** @returns {boolean} Whether an IP is currently blocked */
@@ -141,6 +162,7 @@ function getBlockedIP(ip) {
   return {
     ip,
     reason: data.reason,
+    note: data.note || '',
     blockedAt: data.blockedAt,
     score: getThreatScore(ip),
     hits: threats[ip] ? threats[ip].hits : 0
@@ -218,14 +240,24 @@ function getIRLog() { return incidentLog.slice(); }
 /** Clears the incident response log (does not affect blocks or quarantines) */
 function clearIRLog() { incidentLog.length = 0; }
 
+function clearThreats() {
+  Object.keys(threats).forEach(k => delete threats[k]);
+}
+
 // ─── Nuclear reset (testing / admin) ─────────────────────────────────────────
-/** Clears all in-memory state and persists empty blocked list. */
+/** Clears all in-memory state and persists empty blocked list to disk. */
 function clearAll() {
   Object.keys(threats).forEach(k => delete threats[k]);
   Object.keys(blockedIPs).forEach(k => delete blockedIPs[k]);
   Object.keys(quarantinedAccounts).forEach(k => delete quarantinedAccounts[k]);
   incidentLog.length = 0;
-  saveBlockedIPs();
+  // Explicitly write an empty array so the persist file is clean on next restart
+  try {
+    writeJsonArrayAtomic(PERSIST_FILE, []);
+  } catch (e) {
+    console.error('[ThreatEngine] clearAll: could not wipe persist file:', e.message);
+    throw e;
+  }
 }
 
 module.exports = {
@@ -234,5 +266,5 @@ module.exports = {
   getBlockedIP, getBlockedIPs, getAllThreats,
   quarantineAccount, releaseAccount, isAccountQuarantined, getQuarantinedAccounts,
   getIRLog, logIRAction, clearIRLog,
-  clearAll, cleanIP
+  clearThreats, clearAll, cleanIP
 };

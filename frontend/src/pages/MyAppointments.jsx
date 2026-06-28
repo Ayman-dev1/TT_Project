@@ -7,6 +7,7 @@ import QRComponent from '../components/QRComponent';
 const MyAppointments = () => {
     const navigate = useNavigate();
     const user = TabibiAPI.getUser();
+    const isAdmin = user?.isAdmin || user?.role === 'admin';
 
     const [appointments, setAppointments] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -99,7 +100,13 @@ const MyAppointments = () => {
         try {
             const token = TabibiAPI.getToken();
             let res;
-            if (user.role === 'doctor') {
+            if (isAdmin) {
+                res = await axios.get('/api/admin/appointments', {
+                    headers: { Authorization: `Bearer ${token}` }
+                });
+                setAppointments(Array.isArray(res.data) ? res.data : []);
+                return;
+            } else if (user.role === 'doctor') {
                 res = await axios.get('/api/appointments/doctor', {
                     headers: { Authorization: `Bearer ${token}` }
                 });
@@ -169,6 +176,8 @@ const MyAppointments = () => {
                 if (user.role === 'doctor') {
                     const docId = user.doctorId || user.id;
                     setAppointments(localAppts.filter(a => String(a.doctorId?._id || a.doctorId) === String(docId) && a.status !== 'cancelled'));
+                } else if (isAdmin) {
+                    setAppointments(localAppts);
                 } else {
                     setAppointments(localAppts.filter(a => (a.userEmail === user.email || String(a.patientId?._id || a.patientId) === String(user._id || user.id)) && a.status !== 'cancelled'));
                 }
@@ -507,8 +516,68 @@ const MyAppointments = () => {
 
             <div className="appointments-page-container">
                 <div className="page-title" style={{ fontSize: '28px', fontWeight: '700', color: 'var(--dark)', marginBottom: '20px' }}>
-                    {user.role === 'doctor' ? 'My Dashboard' : 'My Appointments'}
+                    {isAdmin ? 'Appointments' : user.role === 'doctor' ? 'My Dashboard' : 'My Appointments'}
                 </div>
+
+                {/* Admin View */}
+                {isAdmin && (
+                    <div className="tab-content active">
+                        {loading ? (
+                            <div className="premium-empty-state">
+                                <h3>Loading appointments...</h3>
+                            </div>
+                        ) : appointments.length === 0 ? (
+                            <div className="premium-empty-state">
+                                <div className="premium-empty-icon-container">
+                                    <i className="fas fa-calendar-check"></i>
+                                </div>
+                                <h3 style={{ fontSize: '22px', fontWeight: '700', color: 'var(--dark)' }}>No appointments yet</h3>
+                                <p style={{ color: 'var(--gray)', fontSize: '16px' }}>Platform bookings will appear here.</p>
+                            </div>
+                        ) : (
+                            <div className="appt-list" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                                {appointments.map(a => {
+                                    const patientName = a.patientId?.name || a.userName || 'Patient';
+                                    const patientEmail = a.patientId?.email || a.userEmail || '';
+                                    const doctorName = a.doctorId?.userId?.name || a.doctorName || 'Doctor';
+
+                                    return (
+                                        <div className="appt-card-premium" key={a._id || a.id}>
+                                            <div className="doctor-patient-avatar">
+                                                {(patientName || 'P').charAt(0).toUpperCase()}
+                                            </div>
+                                            <div className="appt-info" style={{ flex: 1 }}>
+                                                <div className="appt-name" style={{ fontSize: '18px', fontWeight: '700', color: 'var(--dark)' }}>{patientName}</div>
+                                                <div className="appt-spec" style={{ fontSize: '14px', color: 'var(--gray)', margin: '4px 0' }}>{patientEmail}</div>
+                                                <div className="appt-datetime" style={{ display: 'flex', gap: '20px', marginTop: '12px', fontSize: '14px', flexWrap: 'wrap' }}>
+                                                    <div><i className="fas fa-user-md" style={{ color: 'var(--primary)', marginRight: '6px' }}></i> Doctor: <strong>{doctorName}</strong></div>
+                                                    <div><i className="far fa-calendar-alt" style={{ color: 'var(--primary)', marginRight: '6px' }}></i> Date: <strong>{new Date(a.date).toLocaleDateString()}</strong></div>
+                                                    <div><i className="far fa-clock" style={{ color: 'var(--primary)', marginRight: '6px' }}></i> Time: <strong>{a.time}</strong></div>
+                                                </div>
+                                                <div className="appt-payment-row" style={{ display: 'flex', gap: '12px', marginTop: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
+                                                    <span className="payment-status-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '12px', padding: '4px 10px', borderRadius: '8px', background: '#F3F4F6', color: '#374151', border: '1px solid #E5E7EB', fontWeight: 600 }}>
+                                                        Status: {a.status || 'pending'}
+                                                    </span>
+                                                    <span className="payment-status-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '12px', padding: '4px 10px', borderRadius: '8px', background: '#EEF2FF', color: '#3730A3', border: '1px solid #C7D2FE', fontWeight: 600 }}>
+                                                        Payment: {a.paymentStatus || 'Pending'}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div className="appt-actions" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                                                <button className="action-btn-pill btn-receipt" onClick={() => showReceipt(a)}>
+                                                    <i className="fas fa-receipt"></i> Receipt
+                                                </button>
+                                                <button className="action-btn-pill btn-edit" onClick={() => navigate('/admin')}>
+                                                    <i className="fas fa-user-shield"></i> Admin Panel
+                                                </button>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        )}
+                    </div>
+                )}
 
                 {/* Patients View (Appointments List) */}
                 {(!user.role || user.role === 'patient') && (
@@ -870,4 +939,3 @@ const MyAppointments = () => {
 };
 
 export default MyAppointments;
-

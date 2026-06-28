@@ -77,6 +77,7 @@ function writeLogsSync(logs) {
 // ─── Async write queue ────────────────────────────────────────────────────────
 let writeQueue = [];
 let flushTimer = null;
+let clearGeneration = 0;
 
 /** Flush the write queue synchronously (used on process exit) */
 function flushSync() {
@@ -91,7 +92,9 @@ function flushAsync() {
   flushTimer = null;
   if (!writeQueue.length) return;
   const batch = writeQueue.splice(0);
+  const batchGeneration = clearGeneration;
   fs.readFile(LOG_FILE, 'utf8', (readErr, raw) => {
+    if (batchGeneration !== clearGeneration) return;
     let logs = [];
     if (!readErr && raw) {
       try { logs = JSON.parse(raw); } catch { logs = []; }
@@ -100,6 +103,7 @@ function flushAsync() {
     logs.push(...batch);
     if (logs.length > MAX_ENTRIES) logs = logs.slice(logs.length - MAX_ENTRIES);
     fs.writeFile(LOG_FILE, JSON.stringify(logs, null, 2), 'utf8', writeErr => {
+      if (batchGeneration !== clearGeneration) return;
       if (writeErr) console.error('[Logger] Async write failed:', writeErr.message);
     });
   });
@@ -107,9 +111,11 @@ function flushAsync() {
 
 // ─── Socket.IO injection ──────────────────────────────────────────────────────
 let _io = null;
+let _alertDispatcher = null;
 
 /** Injects the Socket.IO server so the logger can forward to SIEM */
 function setIO(io) { _io = io; }
+function setAlertDispatcher(fn) { _alertDispatcher = typeof fn === 'function' ? fn : null; }
 
 // ─── Main enqueue function ────────────────────────────────────────────────────
 /**
@@ -139,6 +145,11 @@ function enqueue(entry) {
   try { siemExport.ingest(signed, _io); } catch (err) {
     console.error('[Logger] SIEM ingest failed:', err.message);
   }
+  if (_alertDispatcher) {
+    Promise.resolve()
+      .then(() => _alertDispatcher(signed))
+      .catch(err => console.error('[Logger] Alert dispatch failed:', err.message));
+  }
 
   // Flush immediately once queue grows large to avoid memory build-up
   if (writeQueue.length >= 50) {
@@ -150,15 +161,21 @@ function enqueue(entry) {
 }
 
 /**
- * Clears the write queue without writing.
- * Useful when clearing all logs — prevents stale queue from re-writing.
+ * Clears the write queue AND wipes the log file on disk synchronously.
+ * Useful when clearing all logs — prevents stale queue or file from re-appearing.
  * @param {Function} [callback]
  */
 function flushClear(callback) {
+  clearGeneration += 1;
   if (flushTimer) clearTimeout(flushTimer);
   flushTimer = null;
   writeQueue = [];
-  ensureLogFile();
+  // Wipe the file on disk immediately so a server restart also starts clean
+  try {
+    fs.writeFileSync(LOG_FILE, '[]\n', 'utf8');
+  } catch (err) {
+    console.error('[Logger] flushClear: could not wipe log file:', err.message);
+  }
   if (typeof callback === 'function') callback();
 }
 
@@ -177,3 +194,4 @@ module.exports.LOG_FILE     = LOG_FILE;
 module.exports.signEntry    = signEntry;
 module.exports.verifyEntry  = verifyEntry;
 module.exports.setIO        = setIO;
+module.exports.setAlertDispatcher = setAlertDispatcher;

@@ -8,7 +8,7 @@ const {
 const { protect, authorize } = require('../middleware/authMiddleware');
 
 router.post('/', protect, authorize('patient'), createMedicalRecord);
-router.get('/', protect, authorize('patient', 'doctor'), getMedicalRecords);
-router.delete('/:id', protect, authorize('patient'), deleteMedicalRecord);
+router.get('/', protect, authorize('patient', 'doctor', 'admin'), getMedicalRecords);
+router.delete('/:id', protect, authorize('patient', 'admin'), deleteMedicalRecord);
 
 module.exports = router;

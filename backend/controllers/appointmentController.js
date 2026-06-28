@@ -80,43 +80,6 @@ const bookAppointment = async (req, res, next) => {
         if (appointment) {
             logBackendActivity('Payment Submitted', `Patient ${req.user.email} submitted payment details for Booking ${appointment._id}`);
 
-            // Record appointment booking in security guard
-            if (process.env.SECURITY_LAYER_ENABLED !== 'false' && process.env.SECURITY_APPOINTMENT_GUARD_ENABLED !== 'false') {
-                try {
-                    const appointmentGuard = require('../security/appointmentGuard');
-                    const threatEngine = require('../security/threatEngine');
-                    const clientIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || req.ip;
-                    appointmentGuard.recordBooking({
-                        bookingId: appointment._id.toString(),
-                        userId: req.user._id.toString(),
-                        doctorId,
-                        ip: threatEngine.cleanIP(clientIp)
-                    });
-                } catch (err) {
-                    console.error('[Security] Failed to record booking in guard:', err.message);
-                }
-            }
-
-            // Log PHI write access
-            if (process.env.SECURITY_LAYER_ENABLED !== 'false') {
-                try {
-                    const phiAudit = require('../security/phiAudit');
-                    const threatEngine = require('../security/threatEngine');
-                    const clientIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || req.ip;
-                    phiAudit.logAccess({
-                        userId: req.user._id.toString(),
-                        patientId: req.user._id.toString(),
-                        fields: ['patientName', 'phone'],
-                        reason: 'Book appointment',
-                        ip: threatEngine.cleanIP(clientIp),
-                        action: 'WRITE',
-                        meta: { appointmentId: appointment._id.toString() }
-                    });
-                } catch (err) {
-                    console.error('[Security] PHI log failure:', err.message);
-                }
-            }
-
             res.status(201).json(appointment);
         } else {
             res.status(400).json({ message: 'Invalid appointment data' });
@@ -136,26 +99,6 @@ const getUserAppointments = async (req, res, next) => {
                 path: 'doctorId',
                 populate: { path: 'userId', select: 'name image' }
             });
-
-        // Log PHI read access
-        if (process.env.SECURITY_LAYER_ENABLED !== 'false') {
-            try {
-                const phiAudit = require('../security/phiAudit');
-                const threatEngine = require('../security/threatEngine');
-                const clientIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || req.ip;
-                phiAudit.logAccess({
-                    userId: req.user._id.toString(),
-                    patientId: req.user._id.toString(),
-                    fields: ['patientName', 'diagnosis'],
-                    reason: 'Get patient appointments list',
-                    ip: threatEngine.cleanIP(clientIp),
-                    action: 'READ',
-                    meta: { count: appointments.length }
-                });
-            } catch (err) {
-                console.error('[Security] PHI log failure:', err.message);
-            }
-        }
 
         res.json(appointments);
     } catch (error) {
@@ -177,26 +120,6 @@ const getDoctorAppointments = async (req, res, next) => {
         const appointments = await Appointment.find({ doctorId: doctor._id })
             .populate('patientId', 'name email phone');
 
-        // Log PHI read access
-        if (process.env.SECURITY_LAYER_ENABLED !== 'false') {
-            try {
-                const phiAudit = require('../security/phiAudit');
-                const threatEngine = require('../security/threatEngine');
-                const clientIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || req.ip;
-                phiAudit.logAccess({
-                    userId: req.user._id.toString(),
-                    patientId: 'MULTIPLE_PATIENTS',
-                    fields: ['patientName', 'phone', 'email', 'diagnosis'],
-                    reason: 'Get doctor appointments list',
-                    ip: threatEngine.cleanIP(clientIp),
-                    action: 'READ',
-                    meta: { count: appointments.length }
-                });
-            } catch (err) {
-                console.error('[Security] PHI log failure:', err.message);
-            }
-        }
-
         res.json(appointments);
     } catch (error) {
         next(error);
@@ -217,54 +140,18 @@ const cancelAppointment = async (req, res, next) => {
         const appointment = await Appointment.findById(appointmentId);
 
         if (appointment) {
-            // Check cancellation speed/abuse
-            if (process.env.SECURITY_LAYER_ENABLED !== 'false' && process.env.SECURITY_APPOINTMENT_GUARD_ENABLED !== 'false') {
-                try {
-                    const appointmentGuard = require('../security/appointmentGuard');
-                    const logger = require('../security/logger');
-                    const { cairoNow } = require('../security/timeUtils');
-                    const result = appointmentGuard.checkCancellation(appointmentId);
-                    if (result.suspicious) {
-                        const clientIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || req.ip;
-                        const cleanIp = require('../security/threatEngine').cleanIP(clientIp);
-                        const entry = {
-                            ip: cleanIp, type: 'RAPID_CANCEL', score: 40,
-                            action: 'FLAGGED', time: cairoNow(),
-                            path: req.originalUrl, method: req.method,
-                            payload: result.reason,
-                            analysis: { type: 'RAPID_CANCEL', risk: 'MEDIUM', target: `Booking ${appointmentId}`, technique: result.reason }
-                        };
-                        entry.isoTime = new Date().toISOString();
-                        logger(entry);
-                        if (req.io) req.io.emit('attack', entry);
-                    }
-                } catch (err) {
-                    console.error('[Security] Failed to check booking cancellation:', err.message);
+            if (req.user.role === 'patient' && String(appointment.patientId) !== String(req.user._id)) {
+                return res.status(403).json({ message: 'Not authorized to cancel this appointment' });
+            }
+            if (req.user.role === 'doctor') {
+                const doctor = await Doctor.findOne({ userId: req.user._id });
+                if (!doctor || String(appointment.doctorId) !== String(doctor._id)) {
+                    return res.status(403).json({ message: 'Not authorized to cancel this appointment' });
                 }
             }
 
             appointment.status = 'cancelled';
             const updatedAppointment = await appointment.save();
-
-            // Log PHI delete/cancel access
-            if (process.env.SECURITY_LAYER_ENABLED !== 'false') {
-                try {
-                    const phiAudit = require('../security/phiAudit');
-                    const threatEngine = require('../security/threatEngine');
-                    const clientIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || req.ip;
-                    phiAudit.logAccess({
-                        userId: req.user._id.toString(),
-                        patientId: appointment.patientId.toString(),
-                        fields: ['patientName'],
-                        reason: 'Cancel appointment',
-                        ip: threatEngine.cleanIP(clientIp),
-                        action: 'DELETE',
-                        meta: { appointmentId: appointment._id.toString() }
-                    });
-                } catch (err) {
-                    console.error('[Security] PHI log failure:', err.message);
-                }
-            }
 
             res.json(updatedAppointment);
         } else {
@@ -289,6 +176,11 @@ const completeAppointment = async (req, res, next) => {
         const appointment = await Appointment.findById(appointmentId);
 
         if (appointment) {
+            const actingDoctor = await Doctor.findOne({ userId: req.user._id });
+            if (!actingDoctor || String(appointment.doctorId) !== String(actingDoctor._id)) {
+                return res.status(403).json({ message: 'Not authorized to complete this appointment' });
+            }
+
             const wasConfirmed = appointment.status === 'confirmed';
             appointment.status = 'completed';
             
@@ -327,26 +219,6 @@ const completeAppointment = async (req, res, next) => {
 
             const updatedAppointment = await appointment.save();
 
-            // Log PHI completion access
-            if (process.env.SECURITY_LAYER_ENABLED !== 'false') {
-                try {
-                    const phiAudit = require('../security/phiAudit');
-                    const threatEngine = require('../security/threatEngine');
-                    const clientIp = req.headers['x-forwarded-for'] || req.socket?.remoteAddress || req.ip;
-                    phiAudit.logAccess({
-                        userId: req.user._id.toString(),
-                        patientId: appointment.patientId.toString(),
-                        fields: ['patientName', 'diagnosis'],
-                        reason: 'Complete appointment',
-                        ip: threatEngine.cleanIP(clientIp),
-                        action: 'WRITE',
-                        meta: { appointmentId: appointment._id.toString() }
-                    });
-                } catch (err) {
-                    console.error('[Security] PHI log failure:', err.message);
-                }
-            }
-
             res.json(updatedAppointment);
         } else {
             res.status(404).json({ message: 'Appointment not found' });
@@ -371,6 +243,9 @@ const resubmitAppointmentPayment = async (req, res, next) => {
         const appointment = await Appointment.findById(appointmentId);
         if (!appointment) {
             return res.status(404).json({ message: 'Appointment not found' });
+        }
+        if (String(appointment.patientId) !== String(req.user._id)) {
+            return res.status(403).json({ message: 'Not authorized to update this appointment' });
         }
 
         // Enforce duplicate check, excluding current appointment

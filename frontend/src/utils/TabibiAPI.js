@@ -6,6 +6,32 @@ import axios from 'axios';
 
 // Set base URL for axios requests
 axios.defaults.baseURL = ''; // Set relative or back-end domain if needed
+axios.interceptors.request.use((config) => {
+    try {
+        config.headers = config.headers || {};
+        config.headers['X-Tabibi-Session-Id'] = _getBrowserSessionId();
+        const raw = localStorage.getItem('tabibi_user');
+        const user = raw ? JSON.parse(raw) : null;
+        const token = user?.token || user?.accessToken || '';
+        if (token && !config.headers?.Authorization) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+    } catch (_) {}
+    return config;
+});
+
+axios.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        const status = error?.response?.status;
+        const message = error?.response?.data?.message || '';
+        if (status === 401 && /token failed|user not found|no token/i.test(message)) {
+            localStorage.removeItem('tabibi_user');
+            window.dispatchEvent(new Event('tabibi_user_updated'));
+        }
+        return Promise.reject(error);
+    }
+);
 
 const KEYS = {
     USER: 'tabibi_user',
@@ -40,6 +66,16 @@ const _set = (key, val) => {
     localStorage.setItem(key, JSON.stringify(val));
 };
 
+const _getBrowserSessionId = () => {
+    const key = 'tabibi_browser_session_id';
+    let id = localStorage.getItem(key);
+    if (!id) {
+        id = `browser-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+        localStorage.setItem(key, id);
+    }
+    return id;
+};
+
 export const TabibiAPI = {
     getUser: () => _get(KEYS.USER, null),
     saveUser: (u) => {
@@ -66,7 +102,66 @@ export const TabibiAPI = {
         const user = _get(KEYS.USER, null);
         return user?.token || user?.accessToken || '';
     },
+    trackSession: (user, action = 'APP_SESSION_ACTIVE') => {
+        if (!user) return;
+        fetch('/api/sessions/track', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-Tabibi-Session-Id': _getBrowserSessionId() },
+            body: JSON.stringify({
+                _id: user._id || user.userId || user.id || user.email,
+                id: user.id,
+                sessionId: _getBrowserSessionId(),
+                name: user.name,
+                email: user.email,
+                role: user.role,
+                action
+            })
+        }).catch(() => {});
+    },
+    scanFile: async (file, uploadLocation = 'Website upload') => {
+        const user = _get(KEYS.USER, null);
+        const form = new FormData();
+        form.append('file', file);
+        form.append('username', user?.name || 'Guest');
+        form.append('email', user?.email || '');
+        form.append('uploadLocation', uploadLocation);
+        form.append('accountActivity', `${uploadLocation} by ${user?.email || 'guest'}`);
+        form.append('device', navigator.platform || '');
+        form.append('browser', navigator.userAgent || '');
+
+        const token = TabibiAPI.getToken();
+        const headers = token ? { Authorization: `Bearer ${token}` } : {};
+        const response = await fetch('/api/upload/scan', { method: 'POST', headers, body: form });
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok || data.record?.scanStatus !== 'Safe') {
+            const reason = data.record?.reasonForClassification || data.reason || data.message || 'File did not pass Security Layer scan';
+            const err = new Error(reason);
+            err.scan = data;
+            err.scanStatus = data.record?.scanStatus || data.scanStatus || 'Threat';
+            throw err;
+        }
+        return data.record;
+    },
     logout: () => {
+        const user = _get(KEYS.USER, null);
+        if (user) {
+            const payload = JSON.stringify({
+                _id: user._id || user.userId || user.id || user.email,
+                id: user.id,
+                sessionId: _getBrowserSessionId(),
+                email: user.email
+            });
+            if (navigator.sendBeacon) {
+                navigator.sendBeacon('/api/sessions/end', new Blob([payload], { type: 'application/json' }));
+            } else {
+                fetch('/api/sessions/end', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'X-Tabibi-Session-Id': _getBrowserSessionId() },
+                    body: payload,
+                    keepalive: true
+                }).catch(() => {});
+            }
+        }
         _set(KEYS.USER, null);
         window.location.href = '/';
     },

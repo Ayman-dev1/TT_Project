@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { TabibiAPI } from '../utils/TabibiAPI';
 
 
 const AuthModal = ({ visible, mode, onClose, onSwitch }) => {
@@ -16,9 +17,16 @@ const AuthModal = ({ visible, mode, onClose, onSwitch }) => {
         setTimeout(() => t.classList.remove('show'), 3000);
     };
 
-    const handleProfilePic = (e) => {
+    const handleProfilePic = async (e) => {
         const file = e.target.files[0];
         if (file) {
+            try {
+                await TabibiAPI.scanFile(file, 'Registration profile photo');
+            } catch (error) {
+                showToast(error.message || 'Security scan blocked this image');
+                e.target.value = '';
+                return;
+            }
             const reader = new FileReader();
             reader.onload = (ev) => setProfilePic(ev.target.result);
             reader.readAsDataURL(file);
@@ -68,6 +76,7 @@ const AuthModal = ({ visible, mode, onClose, onSwitch }) => {
                 available: backendUser.role === 'doctor' ? (localUser.available !== false) : undefined
             };
             localStorage.setItem('tabibi_user', JSON.stringify(fullUser));
+            TabibiAPI.trackSession(fullUser, 'LOGIN_SUCCESS');
             
             const idx = users.findIndex(u => u.email === email);
             if (idx > -1) {
@@ -156,6 +165,7 @@ const AuthModal = ({ visible, mode, onClose, onSwitch }) => {
                 available: regData.role === 'doctor'
             };
             localStorage.setItem('tabibi_user', JSON.stringify(fullUser));
+            TabibiAPI.trackSession(fullUser, 'SIGNUP_SUCCESS');
             
             const users = JSON.parse(localStorage.getItem('tabibi_users') || '[]');
             const idx = users.findIndex(u => u.email === email);

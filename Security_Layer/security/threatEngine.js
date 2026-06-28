@@ -13,6 +13,13 @@ const MAX_IR_LOG          = 500;
 // ─── Persistence ──────────────────────────────────────────────────────────────
 const PERSIST_FILE = path.join(__dirname, 'blocked_ips_persist.json');
 
+function writeJsonArrayAtomic(file, data) {
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  const tmp = `${file}.${process.pid}.${Date.now()}.tmp`;
+  fs.writeFileSync(tmp, JSON.stringify(data, null, 2) + '\n', 'utf8');
+  fs.renameSync(tmp, file);
+}
+
 function saveBlockedIPs() {
   try {
     const data = Object.entries(blockedIPs).map(([ip, d]) => ({
@@ -20,9 +27,10 @@ function saveBlockedIPs() {
       score: threats[ip] ? threats[ip].score : 100,
       hits:  threats[ip] ? threats[ip].hits  : 1
     }));
-    fs.writeFileSync(PERSIST_FILE, JSON.stringify(data, null, 2), 'utf8');
+    writeJsonArrayAtomic(PERSIST_FILE, data);
   } catch (e) {
     console.error('[ThreatEngine] Could not save blocked IPs:', e.message);
+    throw e;
   }
 }
 
@@ -122,9 +130,11 @@ function blockIP(ip, reason = 'manual') {
  */
 function unblockIP(ip) {
   ip = cleanIP(ip);
+  const wasBlocked = Boolean(blockedIPs[ip]);
   delete blockedIPs[ip];
   if (threats[ip]) { threats[ip].blocked = false; threats[ip].score = 0; threats[ip].lastSeen = nowIso(); }
   saveBlockedIPs();
+  return { ip, removed: wasBlocked, alreadyUnblocked: !wasBlocked, activeBlockRemoved: true };
 }
 
 /** @returns {boolean} Whether an IP is currently blocked */

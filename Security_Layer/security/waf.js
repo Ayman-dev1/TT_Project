@@ -15,6 +15,32 @@ const endpointTracker    = Object.create(null); // { 'ip:path': { count, windowS
 const fingerprintHist    = Object.create(null); // { fp: [{ ip, time }] }
 const blockedLogThrottle = Object.create(null); // { ip: lastLoggedMs }
 
+const MUST_BLOCK_ATTACKS = new Set([
+  'SQLi',
+  'XSS',
+  'Brute',
+  'PathTraversal',
+  'CmdInjection',
+  'SSRF',
+  'XXE',
+  'NoSQLi',
+  'HONEYPOT',
+  'PrototypePollution',
+  'PaymentTampering'
+]);
+
+const ATTACK_PRIORITY = {
+  XXE: 100,
+  SQLi: 95,
+  NoSQLi: 90,
+  CmdInjection: 85,
+  SSRF: 80,
+  PathTraversal: 75,
+  XSS: 70,
+  Brute: 65,
+  HONEYPOT: 60
+};
+
 // ─── Tunable thresholds (all overridable via .env) ───────────────────────────
 const BRUTE_WINDOW_MS           = Number(process.env.SOC_BRUTE_WINDOW_MS   || 60000);
 const BRUTE_LIMIT               = Number(process.env.SOC_BRUTE_LIMIT        || 6);
@@ -39,25 +65,89 @@ const STATIC_EXT    = /\.(ico|png|jpg|jpeg|gif|svg|css|js|woff2?|ttf|eot|map|web
 const SKIP_PREFIXES = ['/socket.io'];
 
 const DASHBOARD_PREFIXES = [
-  '/api/geo/', '/api/ratings/stats/',
-  '/api/siem/', '/api/incident-response/', '/api/iam/', '/api/data-privacy/',
+  '/api/siem/', '/api/incident-response/', '/api/iam/',
 ];
 
 const DASHBOARD_APIS = new Set([
-  '/api/test', '/api/logs', '/api/blocked-ips', '/api/threats', '/api/fingerprints',
-  '/api/security-state', '/api/block-ip', '/api/unblock-ip', '/api/snapshot',
+  '/api/test', '/api/logs', '/api/logs/clear', '/api/clear-threats', '/api/blocked-ips', '/api/threats', '/api/fingerprints',
+  '/api/security-state', '/api/security-state/clear', '/api/block-ip', '/api/unblock-ip', '/api/snapshot',
   '/api/webhook', '/api/webhook/test', '/api/panic', '/api/panic-status',
   '/api/recover', '/api/login', '/api/metrics',
-  '/api/upload/scan', '/api/geo/check',
-  '/api/ratings/check', '/api/ratings/record',
+  '/api/upload/scan',
+  '/api/geo-velocity', '/api/geo-velocity/check', '/api/geo-velocity/record', '/api/geo-velocity/events',
+  '/api/alerts/config', '/api/alerts/log', '/api/alerts/test-email', '/api/alerts/send-email', '/api/alerts/test-sms', '/api/alerts/send-sms',
   '/api/incident-response/banned-entities',
   '/api/audit/verify',
-  '/api/activity-logs',
+  '/api/sessions', '/api/sessions/track', '/api/sessions/end',
+  '/api/auth/me', '/api/auth/register',
+  '/api/doctors', '/api/appointments',
+  '/api/security/sessions', '/api/security/sessions/track', '/api/security/sessions/end',
 ]);
+
+const AUTH_ENDPOINTS = new Set(['/api/login', '/api/signin', '/api/auth/login']);
+
+const TRUSTED_ROLE_ROUTES = {
+  patient: [/^\/api\/auth\/me$/, /^\/api\/appointments(?:\/|$)/, /^\/api\/doctors(?:\/|$)/, /^\/api\/sessions(?:\/|$)/],
+  doctor: [/^\/api\/auth\/me$/, /^\/api\/appointments(?:\/|$)/, /^\/api\/doctors(?:\/|$)/, /^\/api\/sessions(?:\/|$)/],
+  admin: [/^\/api\/auth\/me$/, /^\/api\/admin(?:\/|$)/, /^\/api\/appointments(?:\/|$)/, /^\/api\/doctors(?:\/|$)/, /^\/api\/sessions(?:\/|$)/, /^\/api\/security(?:\/|$)/],
+  security_admin: [/^\/api\/(?:test|logs|blocked-ips|threats|fingerprints|security-state|metrics)(?:\/|$)/, /^\/api\/(?:siem|incident-response|iam|sessions)(?:\/|$)/, /^\/api\/security(?:\/|$)/],
+};
+
+const TRUSTED_AUTHENTICATED_ROUTES = [
+  /^\/api\/auth\/me$/,
+  /^\/api\/appointments(?:\/|$)/,
+  /^\/api\/doctors(?:\/|$)/,
+  /^\/api\/admin(?:\/|$)/,
+  /^\/api\/sessions(?:\/|$)/,
+  /^\/api\/security(?:\/|$)/,
+];
 
 function isDashboardRoute(p) {
   if (DASHBOARD_APIS.has(p)) return true;
   return DASHBOARD_PREFIXES.some(prefix => p.startsWith(prefix));
+}
+
+function normalizeRole(role) {
+  const value = String(role || '').toLowerCase().replace(/[\s-]+/g, '_');
+  if (value === 'securityadmin' || value === 'soc_admin') return 'security_admin';
+  return value;
+}
+
+function getRequestUser(req) {
+  const body = req.body && typeof req.body === 'object' ? req.body : {};
+  const user = req.user || body.user || {};
+  const role = normalizeRole(user.role || body.role || req.headers['x-user-role']);
+  return {
+    id: user._id || user.id || body._id || body.id || body.email || req.headers['x-user-id'] || null,
+    role: role || null,
+    authenticated: Boolean(req.user || req.headers.authorization || body._id || body.id || body.email),
+  };
+}
+
+function isRoleAllowed(role, p) {
+  const rules = TRUSTED_ROLE_ROUTES[normalizeRole(role)] || [];
+  return rules.some(rule => rule.test(p));
+}
+
+function isTrustedNormalTraffic(req) {
+  const user = getRequestUser(req);
+  if (isDashboardRoute(req.path)) return true;
+  if (req.method === 'GET' && !req.path.startsWith('/api/')) return true;
+  if (user.authenticated && TRUSTED_AUTHENTICATED_ROUTES.some(rule => rule.test(req.path))) return true;
+  return Boolean(user.authenticated && user.role && isRoleAllowed(user.role, req.path));
+}
+
+function explainThreat(req, user, rule, score, reason, decision) {
+  return {
+    userId: user.id || 'anonymous',
+    role: user.role || 'anonymous',
+    route: req.path,
+    action: req.method,
+    threatScore: score,
+    detectionRule: rule,
+    reason,
+    finalDecision: decision,
+  };
 }
 
 // Routes allowed even during full panic/lockdown mode
@@ -95,26 +185,9 @@ function trackFingerprint(fp, ip) {
   return [...new Set(fingerprintHist[fp].map(e => e.ip))];
 }
 
-// Sensitive authentication / critical endpoints subject to brute-force protection
-const SENSITIVE_ENDPOINTS = new Set([
-  '/api/auth/login',
-  '/api/auth/register',
-  '/api/login',
-  '/api/recover',
-  '/api/admin/login'
-]);
-
 // ─── Brute-force detection ────────────────────────────────────────────────────
-function checkBruteForce(ip, p, method) {
-  if (STATIC_EXT.test(p)) return false;
-  if (SKIP_PREFIXES.some(s => p.startsWith(s))) return false;
-  
-  const isSensitive = SENSITIVE_ENDPOINTS.has(p);
-  if (!isSensitive) return false; // Only enforce brute force limits on authentication/recovery endpoints
-  
-  if (method === 'GET' || method === 'HEAD' || method === 'OPTIONS') return false;
-  
-  const limit = LOGIN_BRUTE_LIMIT;
+function recordFailedAuthAttempt(ip, p) {
+  if (!AUTH_ENDPOINTS.has(p)) return false;
   const now   = Date.now();
   const t     = bruteTracker[ip];
   if (!t || now - t.windowStart > BRUTE_WINDOW_MS) {
@@ -122,7 +195,57 @@ function checkBruteForce(ip, p, method) {
     return false;
   }
   t.count += 1;
-  return t.count > limit;
+  return t.count > LOGIN_BRUTE_LIMIT;
+}
+
+function getBruteCount(ip) {
+  return (bruteTracker[ip] || {}).count || 0;
+}
+
+function watchFailedAuth(req, res, ip, io) {
+  if (req.method !== 'POST' || !AUTH_ENDPOINTS.has(req.path)) return;
+  let handled = false;
+  const handleFailure = (body) => {
+    if (handled) return;
+    if (res.statusCode < 400) {
+      delete bruteTracker[ip];
+      return;
+    }
+    if (res.statusCode !== 401 && res.statusCode !== 403) return;
+    if (body && /Attack Blocked|IP BLOCKED/i.test(String(body.message || body.error || ''))) return;
+    if (!recordFailedAuthAttempt(ip, req.path)) return;
+    handled = true;
+    const bScore = addThreat(ip, 100);
+    const user = getRequestUser(req);
+    const blockedRecord = blockIP(ip, 'Brute-auto', `Repeated failed login attempts on ${req.path}`);
+    tempBan(ip);
+    const decision = 'BLOCKED';
+    const bEntry = {
+      ip, type: 'Brute', score: bScore,
+      action: 'BLOCKED',
+      time: cairoNow(),
+      isoTime: new Date().toISOString(),
+      path: req.path, method: req.method,
+      payload: `${getBruteCount(ip)} failed login attempts in 60s`,
+      analysis: { type: 'Brute', risk: 'HIGH', target: req.path, technique: 'Failed authentication burst' },
+      explanation: explainThreat(req, user, 'FAILED_AUTH_BRUTE_FORCE', bScore, 'Repeated failed authentication attempts', decision),
+      fingerprint: getFingerprint(req),
+    };
+    logger(bEntry);
+    io.emit('attack', bEntry);
+    io.emit('new-threat', bEntry);
+    io.emit('ip-auto-banned', { ip, reason: 'Brute', score: bScore, time: cairoNow() });
+    io.emit('blocked-list', getBlockedIPs());
+    io.emit('incident-response', { type: 'BLOCK_IP', record: blockedRecord });
+    emitSecurityState(io);
+    sendWebhookAlert(bEntry);
+  };
+  const originalJson = res.json.bind(res);
+  res.json = function(body) {
+    handleFailure(body);
+    return originalJson(body);
+  };
+  res.on('finish', () => handleFailure(null));
 }
 
 // ─── Per-endpoint rate limiting ───────────────────────────────────────────────
@@ -200,11 +323,11 @@ function sendWebhookAlert(entry) {
 const PATTERNS = {
   CmdInjection:    {
     score: 100,
-    pattern: /([;&|`$]\s*(ls|cat|pwd|whoami|id|uname|wget|curl|bash|sh|cmd|powershell|ping|nc|ncat|netcat|python|perl|ruby|php)\b|`[^`]*`|\$\([^)]*\)|\bsystem\s*\(|\bpassthru\s*\(|\bshell_exec\s*\()/i
+    pattern: /([;&|`$]\s*(ls|cat|pwd|whoami|id|uname|wget|curl|bash|sh|cmd|powershell|ping|nc|ncat|netcat|python|perl|ruby|php)\b|(\|\||&&)\s*(ls|cat|id|whoami|curl|wget|bash|sh|cmd|powershell)\b|\$\{?IFS\}?|`[^`]*`|\$\([^)]*\)|\b(bash|sh|cmd|powershell)\s+(-c|\/c|-enc|-encodedcommand)\b|\b(system|passthru|shell_exec|exec|popen|proc_open)\s*\()/i
   },
   SQLi:            {
     score: 100,
-    pattern: /(--|DROP\s+TABLE|SELECT\s+.+FROM|UNION\s+SELECT|INSERT\s+INTO|DELETE\s+FROM|UPDATE\s+.+SET|OR\s+1\s*=\s*1|OR\s+'[^']*'\s*=\s*'[^']*'|SLEEP\s*\(|BENCHMARK\s*\(|LOAD_FILE\s*\(|INTO\s+OUTFILE|INFORMATION_SCHEMA|EXEC\s*\(|EXECUTE\s*\(|0x[0-9a-fA-F]+|%27|%2527|'\s*(OR|AND)\s+'?[\w\d])/i
+    pattern: /(--|#|\/\*|\*\/|;?\s*DROP\s+TABLE|SELECT\s+.+FROM|UNION(?:\s|\/\*.*?\*\/)+SELECT|INSERT\s+INTO|DELETE\s+FROM|UPDATE\s+.+SET|\b(OR|AND)\b\s+['"]?\w+['"]?\s*=\s*['"]?\w+['"]?|\b(OR|AND)\b\s+1\s*=\s*1|SLEEP\s*\(|BENCHMARK\s*\(|WAITFOR\s+DELAY|PG_SLEEP\s*\(|DBMS_PIPE\.RECEIVE_MESSAGE|LOAD_FILE\s*\(|INTO\s+OUTFILE|INFORMATION_SCHEMA|XP_CMDSHELL|EXEC\s*\(|EXECUTE\s*\(|CAST\s*\(|CONVERT\s*\(|0x[0-9a-fA-F]+|'\s*(OR|AND)\s+'?[\w\d])/i
   },
   XXE:             {
     score: 100, bodyOnly: true,
@@ -212,19 +335,19 @@ const PATTERNS = {
   },
   SSRF:            {
     score: 100, bodyOnly: true,
-    pattern: /(https?:\/\/(127\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.|0\.0\.0\.0|169\.254\.|localhost|\[?::1\]?)|file:\/\/|dict:\/\/|gopher:\/\/)/i
+    pattern: /(https?:\/\/(127\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.|0\.0\.0\.0|169\.254\.|localhost|\[?::1\]?|2130706433|0177\.|0x7f)|metadata\.google\.internal|169\.254\.169\.254|latest\/meta-data|computeMetadata\/v1|file:\/\/|dict:\/\/|gopher:\/\/|ftp:\/\/)/i
   },
   PathTraversal:   {
     score: 100,
-    pattern: /(\.\.\/|\.\.\\|%2e%2e%2f|%2e%2e\/|\.\.%2f|%252e%252e|\/etc\/passwd|\/etc\/shadow|\/proc\/self|c:\\windows\\|\.\.%5c)/i
+    pattern: /(\.\.\/|\.\.\\|\.\.%2f|\.\.%5c|%2e%2e%2f|%2e%2e%5c|%252e%252e|%c0%ae|\/etc\/passwd|\/etc\/shadow|\/proc\/self|\/var\/log|c:\\windows\\|windows\\win\.ini|boot\.ini)/i
   },
   XSS:             {
     score: 60,
-    pattern: /(<script[\s>]|<\/script>|javascript\s*:|vbscript\s*:|on\w+\s*=\s*["']?[^"'\s>]+|<\s*img[^>]+onerror|<\s*svg[^>]+onload|<\s*iframe|alert\s*\(|confirm\s*\(|prompt\s*\(|document\.cookie|eval\s*\(|innerHTML\s*=|%3Cscript)/i
+    pattern: /(<\s*script[\s/>]|<\/\s*script>|javascript\s*:|vbscript\s*:|data\s*:\s*text\/html|srcdoc\s*=|on\w+\s*=\s*["']?[^"'\s>]+|<\s*(img|svg|body|iframe|math|object|embed)[^>]*(onerror|onload|srcdoc|javascript:)|alert\s*\(|confirm\s*\(|prompt\s*\(|document\.(cookie|domain|location)|eval\s*\(|Function\s*\(|innerHTML\s*=|<\s*iframe)/i
   },
   NoSQLi:          {
     score: 100,
-    pattern: /(\$where|\$gt|\$lt|\$ne|\$in|\$nin|\$or|\$and|\$not|\$nor|\$exists|\$regex)\s*[:=]|\{\s*"\$/i
+    pattern: /(\$where|\$gt|\$gte|\$lt|\$lte|\$ne|\$eq|\$in|\$nin|\$or|\$and|\$not|\$nor|\$exists|\$regex|\$expr|\$function)\s*[:=]|\{\s*"\$|"\w+"\s*:\s*\{\s*"\$ne"\s*:|this\.\w+\s*==|sleep\s*\(\s*\d+\s*\)/i
   },
   LDAPInjection:   {
     score: 60,
@@ -238,13 +361,9 @@ const PATTERNS = {
     score: 40,
     pattern: /(redirect|return_url|next|goto|target|dest|redir|redirect_uri|callback)\s*=\s*(https?:\/\/(?!localhost|127\.)[^&\s]+)/i
   },
-  PHIExfiltration: {
-    score: 80,
-    pattern: /(patient_id|national_id|national_no|ssn|mrn|medical_record|dob|date_of_birth|diagnosis_code|icd_?[0-9]|phi|pii|hipaa)\s*=\s*[^&\s]{4,}.*(SELECT|UNION|OR\s+1|%27)/i
-  },
   SensitiveAPIAbuse: {
     score: 60,
-    pattern: /(\/api\/patient|\/api\/records|\/api\/medical|\/api\/phi|\/api\/prescriptions|\/api\/labs)\S*(admin|dump|export|download|bulk|all)/i
+    pattern: /(\/api\/patient|\/api\/records|\/api\/medical|\/api\/prescriptions|\/api\/labs)\S*(admin|dump|export|download|bulk|all)/i
   },
   PromptInjection: {
     score: 80, bodyOnly: true,
@@ -262,6 +381,63 @@ const HONEYPOT_FIELDS = ['_gotcha', 'website', 'phone_number_field', 'fax', 'h_f
 function checkHoneypotFields(body) {
   if (!body || typeof body !== 'object') return false;
   return HONEYPOT_FIELDS.some(f => body[f] !== undefined && body[f] !== '');
+}
+
+function decodeHtmlEntities(value) {
+  return String(value)
+    .replace(/&#x([0-9a-f]+);?/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
+    .replace(/&#(\d+);?/g, (_, dec) => String.fromCharCode(parseInt(dec, 10)))
+    .replace(/&colon;/gi, ':')
+    .replace(/&sol;/gi, '/')
+    .replace(/&bsol;/gi, '\\')
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&quot;/gi, '"')
+    .replace(/&apos;/gi, "'")
+    .replace(/&amp;/gi, '&');
+}
+
+function safeDecodeURIComponent(value) {
+  try { return decodeURIComponent(value.replace(/\+/g, ' ')); } catch { return value; }
+}
+
+function normalizeForInspection(value) {
+  let out = String(value || '').slice(0, 50000);
+  for (let i = 0; i < 4; i += 1) {
+    const before = out;
+    out = out.replace(/%u([0-9a-f]{4})/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+    out = safeDecodeURIComponent(out);
+    out = decodeHtmlEntities(out);
+    out = out.replace(/\\u([0-9a-f]{4})/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+    out = out.replace(/\\x([0-9a-f]{2})/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)));
+    if (out === before) break;
+  }
+  return out
+    .replace(/\/\*!?\d*/g, '/*')
+    .replace(/\/\*[\s\S]*?\*\//g, ' ')
+    .replace(/[\u0000-\u001f\u007f]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function detectAttackTypes({ bodyData = '', fullData = '' } = {}) {
+  const normalizedBody = normalizeForInspection(bodyData);
+  const normalizedFull = normalizeForInspection(fullData);
+  const candidates = {
+    bodyData: [bodyData, normalizedBody].filter(Boolean).join(' '),
+    fullData: [fullData, normalizedFull].filter(Boolean).join(' ')
+  };
+  const matches = [];
+  for (const [type, cfg] of Object.entries(PATTERNS)) {
+    const data = cfg.bodyOnly ? candidates.bodyData : candidates.fullData;
+    cfg.pattern.lastIndex = 0;
+    if (cfg.pattern.test(data)) matches.push({ type, score: cfg.score });
+  }
+  return matches.sort((a, b) =>
+    b.score - a.score ||
+    (ATTACK_PRIORITY[b.type] || 0) - (ATTACK_PRIORITY[a.type] || 0) ||
+    a.type.localeCompare(b.type)
+  );
 }
 
 // ─── Payload analysis ─────────────────────────────────────────────────────────
@@ -283,29 +459,13 @@ function analyzePayload(type, payload) {
   else if (type === 'NoSQLi')            { a.risk = 'HIGH'; a.target = 'Auth bypass'; a.technique = 'NoSQL operator injection'; }
   else if (type === 'Brute')             { a.risk = 'MEDIUM'; a.target = 'Unknown endpoints'; a.technique = 'Brute force / scanning'; }
   else if (type === 'RateLimit')         { a.risk = 'LOW'; a.target = 'API availability'; a.technique = 'Endpoint flooding'; }
-  else if (type === 'PHIExfiltration')   { a.risk = 'CRITICAL'; a.target = 'Patient Health Information (PHI)'; a.technique = 'SQL injection targeting PHI fields — HIPAA breach risk'; }
-  else if (type === 'SensitiveAPIAbuse') { a.risk = 'HIGH'; a.target = 'Medical API endpoints'; a.technique = 'Bulk PHI extraction attempt'; }
+  else if (type === 'SensitiveAPIAbuse') { a.risk = 'HIGH'; a.target = 'Medical API endpoints'; a.technique = 'Bulk medical API extraction attempt'; }
   else if (type === 'LDAPInjection')     { a.risk = 'HIGH'; a.target = 'Directory / LDAP auth'; a.technique = 'LDAP operator injection'; }
   else if (type === 'PromptInjection')   { a.risk = 'HIGH'; a.target = 'AI/LLM subsystem'; a.technique = 'Prompt injection / jailbreak attempt'; }
   else if (type === 'PaymentTampering')  { a.risk = 'CRITICAL'; a.target = 'Payment system'; a.technique = 'Amount manipulation or prototype pollution'; }
   return a;
 }
 
-// ─── PHI redaction ────────────────────────────────────────────────────────────
-// Redacts common PHI patterns before storing payloads in logs
-const PHI_REDACT = [
-  { re: /\b\d{9,14}\b/g,                                                      mask: '[NATIONAL-ID]' },
-  { re: /\b(0?1[0-9]{9})\b/g,                                                 mask: '[EG-PHONE]'    },
-  { re: /\+?\d[\d\s\-().]{6,20}\d/g,                                          mask: '[PHONE]'       },
-  { re: /[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/g,                mask: '[EMAIL]'       },
-  { re: /\b(MRN|mrn|patient_id|patientId)\s*[=:]\s*[A-Z0-9\-]{4,20}/gi,      mask: '[MRN]'         },
-  { re: /\b(19|20)\d{2}[\-/](0[1-9]|1[0-2])[\-/](0[1-9]|[12]\d|3[01])\b/g,  mask: '[DOB]'         },
-];
-
-function redactPHI(text) {
-  if (!text || typeof text !== 'string') return text;
-  return PHI_REDACT.reduce((t, p) => t.replace(p.re, p.mask), text);
-}
 
 // ─── Brute-force state helpers ────────────────────────────────────────────────
 function clearBruteState(ip) {
@@ -386,6 +546,9 @@ module.exports = io => {
     };
 
     const ip = cleanIP(req.ip);
+    const requestUser = getRequestUser(req);
+    const trustedNormalTraffic = isTrustedNormalTraffic(req);
+    watchFailedAuth(req, res, ip, io);
 
     // ── Panic / lockdown mode ──────────────────────────────────────────────────
     if (panicState.get() && !PANIC_EXEMPT.has(req.path) && !isDashboardRoute(req.path)) {
@@ -397,42 +560,11 @@ module.exports = io => {
     }
 
     // ── Brute-force detection ─────────────────────────────────────────────────
-    if (checkBruteForce(ip, req.path, req.method)) {
-      const bScore = addThreat(ip, 60);
-      const bCount = (bruteTracker[ip] || {}).count || 0;
-      const bEntry = {
-        ip, type: 'Brute', score: bScore,
-        action:  bScore >= 100 ? 'BLOCKED' : 'RATE-LIMITED',
-        time:    cairoNow(),
-        isoTime: new Date().toISOString(),
-        path:    req.path, method: req.method,
-        payload: `${bCount} requests in 60s — brute force`,
-        analysis: { type: 'Brute', risk: 'HIGH', target: req.path, technique: 'Brute force' },
-        fingerprint: getFingerprint(req),
-      };
-      if (bScore >= 100) {
-        blockIP(ip, 'Brute-auto'); tempBan(ip); clearBruteState(ip);
-        io.emit('ip-auto-banned', { ip, reason: 'Brute', score: bScore, time: cairoNow() });
-      }
-      logger(bEntry);
-      io.emit('attack',     bEntry);
-      io.emit('new-threat', bEntry);
-      emitSecurityState(io);
-      sendWebhookAlert(bEntry);
-      return res.status(429).json({ message: 'Brute - Too Many Requests' });
-    }
+    // Failed-login brute-force detection is recorded after the auth route responds.
 
     // ── Skip pattern scanning for SOC dashboard routes ────────────────────────
     // /api/login is public-facing (not admin-authed yet) — still scan it for injection attempts.
     if (isDashboardRoute(req.path) && req.path !== '/api/login') return next();
-
-    // Skip pattern scanning for client error logger to avoid false positives on stack traces/URLs
-    if (req.path === '/api/log-client-error') {
-      if (isTempBanned(ip) || isBlocked(ip) || getThreatScore(ip) >= 100) {
-        return res.status(403).json({ message: 'IP BLOCKED - Access Denied' });
-      }
-      return next();
-    }
 
     // ── Honeypot form-field trap ──────────────────────────────────────────────
     if (checkHoneypotFields(req.body)) {
@@ -471,11 +603,7 @@ module.exports = io => {
     const fullData  = `${bodyData} ${req.headers['user-agent'] || ''} ${req.headers['x-forwarded-for'] || ''} ${req.headers.referer || ''}`;
     const displayPayload = [bodyStr, queryStr, paramStr].filter(Boolean).join(' ') || rawUrl;
 
-    const matches = [];
-    for (const [type, cfg] of Object.entries(PATTERNS)) {
-      const data = cfg.bodyOnly ? bodyData : fullData;
-      if (cfg.pattern.test(data)) matches.push({ type, score: cfg.score });
-    }
+    const matches = detectAttackTypes({ bodyData, fullData });
 
     let detectedType  = null;
     let detectedScore = 0;
@@ -489,22 +617,33 @@ module.exports = io => {
     }
 
     if (detectedType) {
-      const score = addThreat(ip, detectedScore);
-      if (score >= 100) {
-        blockIP(ip, `${detectedType}-auto`); tempBan(ip); clearBruteState(ip);
+      const isCriticalAttack = detectedScore >= 100 && detectedType !== 'RateLimit';
+      const mustBlockAttack = MUST_BLOCK_ATTACKS.has(detectedType);
+      const adjustedScore = mustBlockAttack
+        ? Math.max(detectedScore, 100)
+        : ((requestUser.authenticated || trustedNormalTraffic) && !isCriticalAttack ? Math.min(detectedScore, 30) : detectedScore);
+      const score = addThreat(ip, adjustedScore);
+      const shouldBlock = detectedType !== 'RateLimit' && (score >= 100 || isCriticalAttack || mustBlockAttack);
+      if (shouldBlock) {
+        const blockedRecord = blockIP(ip, `${detectedType}-auto`, `Detected ${detectedType} attack on ${req.path}`);
+        tempBan(ip); clearBruteState(ip);
         io.emit('ip-auto-banned', { ip, reason: detectedType, score, time: cairoNow() });
+        io.emit('blocked-list', getBlockedIPs());
+        io.emit('incident-response', { type: 'BLOCK_IP', record: blockedRecord });
       }
+      const decision = shouldBlock ? 'BLOCKED' : (detectedType === 'RateLimit' ? 'TEMP_RATE_LIMIT' : (requestUser.authenticated || trustedNormalTraffic ? 'WARNING' : 'LOGGED'));
       const entry = {
         ip, type: detectedType, score,
-        action: score >= 100 ? 'BLOCKED' : (detectedType === 'Brute' || detectedType === 'RateLimit' ? 'RATE-LIMITED' : 'LOGGED'),
+        action: decision === 'TEMP_RATE_LIMIT' ? 'RATE-LIMITED' : decision,
         time:    cairoNow(),
         isoTime: new Date().toISOString(),
         path:    req.path, method: req.method,
-        payload: redactPHI(displayPayload.slice(0, 200)),
+        payload: displayPayload.slice(0, 200),
         analysis: {
           ...analyzePayload(detectedType, displayPayload),
           additionalTypes: matches.slice(1).map(m => m.type)
         },
+        explanation: explainThreat(req, requestUser, detectedType, score, requestUser.authenticated || trustedNormalTraffic ? 'Trusted/authenticated request lowered to warning sensitivity' : 'Attack pattern matched request payload', decision),
         fingerprint, suspiciousFingerprint, knownIPs
       };
       logger(entry);
@@ -512,14 +651,39 @@ module.exports = io => {
       io.emit('new-threat', entry);
       emitSecurityState(io);
       sendWebhookAlert(entry);
-      if (detectedType === 'Brute' || detectedType === 'RateLimit') {
+      if (detectedType === 'RateLimit') {
         return res.status(429).json({ message: `${detectedType} - Too Many Requests` });
       }
-      return res.status(403).json({ message: `${detectedType} Attack Blocked` });
+      if (shouldBlock) return res.status(403).json({ message: `${detectedType} Attack Blocked` });
+    }
+
+    if (req.method === 'POST' && AUTH_ENDPOINTS.has(req.path) && recordFailedAuthAttempt(ip, req.path)) {
+      const score = addThreat(ip, 100);
+      const blockedRecord = blockIP(ip, 'Brute-auto', `Rapid authentication attempts on ${req.path}`);
+      tempBan(ip); clearBruteState(ip);
+      const entry = {
+        ip, type: 'Brute', score, action: 'BLOCKED',
+        time: cairoNow(),
+        isoTime: new Date().toISOString(),
+        path: req.path, method: req.method,
+        payload: `${LOGIN_BRUTE_LIMIT + 1}+ login attempts in ${Math.round(BRUTE_WINDOW_MS / 1000)}s`,
+        analysis: { type: 'Brute', risk: 'HIGH', target: req.path, technique: 'Authentication burst before controller' },
+        explanation: explainThreat(req, requestUser, 'AUTH_BRUTE_FORCE', score, 'Rapid authentication attempts', 'BLOCKED'),
+        fingerprint, suspiciousFingerprint, knownIPs
+      };
+      logger(entry);
+      io.emit('attack', entry);
+      io.emit('new-threat', entry);
+      io.emit('ip-auto-banned', { ip, reason: 'Brute', score, time: cairoNow() });
+      io.emit('blocked-list', getBlockedIPs());
+      io.emit('incident-response', { type: 'BLOCK_IP', record: blockedRecord });
+      emitSecurityState(io);
+      sendWebhookAlert(entry);
+      return res.status(403).json({ message: 'Brute Force Attack Blocked' });
     }
 
     // ── Blocked-IP check ──────────────────────────────────────────────────────
-    if (isTempBanned(ip) || isBlocked(ip) || getThreatScore(ip) >= 100) {
+    if (!trustedNormalTraffic && (isTempBanned(ip) || isBlocked(ip) || getThreatScore(ip) >= 100)) {
       const now = Date.now();
       if (!blockedLogThrottle[ip] || now - blockedLogThrottle[ip] > 60000) {
         blockedLogThrottle[ip] = now;
@@ -529,7 +693,9 @@ module.exports = io => {
           isoTime: new Date().toISOString(),
           path:    req.path, method: req.method,
           payload: 'Blocked IP access attempt',
-          analysis: null, fingerprint, suspiciousFingerprint, knownIPs
+          analysis: null,
+          explanation: explainThreat(req, requestUser, 'BLOCKED_IP', getThreatScore(ip), 'IP is blocked or temporarily banned', 'BLOCKED'),
+          fingerprint, suspiciousFingerprint, knownIPs
         };
         logger(entry);
         io.emit('attack',     entry);
@@ -554,3 +720,6 @@ module.exports.clearAllBruteState    = clearAllBruteState;
 module.exports.DASHBOARD_APIS        = DASHBOARD_APIS;
 module.exports.isDashboardRoute      = isDashboardRoute;
 module.exports.PATTERNS              = PATTERNS;
+module.exports.normalizeForInspection = normalizeForInspection;
+module.exports.detectAttackTypes     = detectAttackTypes;
+

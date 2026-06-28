@@ -130,22 +130,6 @@ const CORRELATION_RULES = [
       if (!entry?.fingerprint) return {};
       return { fingerprint: entry.fingerprint, ipCount: fpIpMap[entry.fingerprint]?.size };
     }
-  },
-  {
-    id: 'PHI_EXFIL_PATTERN',
-    name: 'PHI exfiltration attempt pattern',
-    description: 'PHI or SQLi attack type detected 3+ times from same IP',
-    severity: 10,
-    check(ip) {
-      const rec = ipAttackTypes[ip];
-      if (!rec) return false;
-      const phiCount = (rec.types['PHIExfiltration'] || 0) + (rec.types['SQLi'] || 0);
-      return phiCount >= 3;
-    },
-    detail(ip) {
-      const rec = ipAttackTypes[ip];
-      return { ip, phiHits: rec?.types };
-    }
   }
 ];
 

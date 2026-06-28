@@ -77,6 +77,25 @@ function App() {
     const showModal = (mode) => { setModalMode(mode); setModalVisible(true); };
     const hideModal = () => setModalVisible(false);
 
+    useEffect(() => {
+        const sendHeartbeat = () => {
+            const user = TabibiAPI.getUser();
+            if (user) TabibiAPI.trackSession(user);
+        };
+        sendHeartbeat();
+        const timer = window.setInterval(sendHeartbeat, 60000);
+        const onVisibility = () => {
+            if (!document.hidden) sendHeartbeat();
+        };
+        window.addEventListener('focus', sendHeartbeat);
+        document.addEventListener('visibilitychange', onVisibility);
+        return () => {
+            window.clearInterval(timer);
+            window.removeEventListener('focus', sendHeartbeat);
+            document.removeEventListener('visibilitychange', onVisibility);
+        };
+    }, []);
+
     return (
         <Router>
             <BroadcastBanner />

@@ -15,6 +15,7 @@ const Navbar = ({ onShowModal }) => {
         const u = TabibiAPI.getUser();
         setUser(u);
         if (u) {
+            TabibiAPI.trackSession(u);
             if (u.role === 'doctor') {
                 setAvailable(u.available !== false);
             }

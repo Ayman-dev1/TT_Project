@@ -4,7 +4,10 @@ const Appointment = require('../models/Appointment');
 const generateToken = require('../utils/generateToken');
 const fs = require('fs');
 const path = require('path');
+const { readAudit, recordAdminAction } = require('../security/auditLog');
 const ACTIVITY_LOGS_FILE = path.join(__dirname, '..', 'activity_logs.json');
+const asString = (value) => typeof value === 'string' ? value.trim() : '';
+const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 
 const logBackendActivity = (type, message) => {
     try {
@@ -30,7 +33,11 @@ const logBackendActivity = (type, message) => {
 // @route   POST /api/admin/login
 // @access  Public
 const adminLogin = async (req, res) => {
-    const { email, password } = req.body;
+    const email = asString(req.body?.email).toLowerCase();
+    const password = asString(req.body?.password);
+    if (!isValidEmail(email) || !password) {
+        return res.status(401).json({ message: 'Invalid admin credentials' });
+    }
 
     const user = await User.findOne({ email, role: 'admin' });
 
@@ -93,6 +100,7 @@ const deleteDoctor = async (req, res) => {
     if (doctor) {
         await User.findByIdAndDelete(doctor.userId);
         await Doctor.findByIdAndDelete(req.params.id);
+        recordAdminAction(req, 'DOCTOR_DELETE', { doctorId: req.params.id, userId: doctor.userId });
         res.json({ message: 'Doctor and associated user removed' });
     } else {
         res.status(404).json({ message: 'Doctor not found' });
@@ -137,6 +145,7 @@ const updateDoctorAdmin = async (req, res) => {
         }
 
         await doctor.save();
+        recordAdminAction(req, 'DOCTOR_UPDATE', { doctorId: req.params.id, userId: doctor.userId }, req.body);
         res.json({ message: 'Doctor updated successfully' });
     } else {
         res.status(404).json({ message: 'Doctor not found' });
@@ -165,6 +174,7 @@ const deletePatient = async (req, res, next) => {
             await User.findByIdAndDelete(req.params.id);
             // Delete all appointments of this patient
             await Appointment.deleteMany({ patientId: req.params.id });
+            recordAdminAction(req, 'PATIENT_DELETE', { patientId: req.params.id, email: user.email });
             res.json({ message: 'Patient removed successfully' });
         } else {
             res.status(404).json({ message: 'Patient not found' });
@@ -229,6 +239,7 @@ const updateAppointmentPaymentAdmin = async (req, res, next) => {
             }
 
             const updatedAppointment = await appointment.save();
+            recordAdminAction(req, 'APPOINTMENT_PAYMENT_UPDATE', { appointmentId: req.params.id, patientEmail }, { paymentStatus, rejectionReason });
             res.json(updatedAppointment);
         } else {
             res.status(404).json({ message: 'Appointment not found' });
@@ -236,6 +247,10 @@ const updateAppointmentPaymentAdmin = async (req, res, next) => {
     } catch (error) {
         next(error);
     }
+};
+
+const getAdminAudit = async (req, res) => {
+    res.json(readAudit().slice(0, 250));
 };
 
 module.exports = {
@@ -247,5 +262,6 @@ module.exports = {
     updateDoctorAdmin,
     getAllPatientsAdmin,
     deletePatient,
-    updateAppointmentPaymentAdmin
+    updateAppointmentPaymentAdmin,
+    getAdminAudit
 };

@@ -1,0 +1,82 @@
+{
+  "active": [
+    {
+      "id": "app:6a3aaadbf7557e69557b569a:browser-1782591729115-d0bc09d8927218",
+      "userId": "6a3aaadbf7557e69557b569a",
+      "user": "System Admin",
+      "email": "admin1@tabibi.com",
+      "role": "Admin",
+      "ip": "127.0.0.1",
+      "startedAt": 1782616949040,
+      "startedAtIso": "2026-06-28T03:22:29.040Z",
+      "lastSeen": 1782617668556,
+      "lastSeenIso": "2026-06-28T03:34:28.556Z",
+      "expiresAt": 1782619468556,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36",
+      "status": "ACTIVE",
+      "source": "TABIBI_APP"
+    },
+    {
+      "id": "app:6a3fb29ba8ad611f8aa1c27c:browser-1782601126061-1e2153e3c52b8",
+      "userId": "6a3fb29ba8ad611f8aa1c27c",
+      "user": "hjf",
+      "email": "dex@gmail.com",
+      "role": "Patient",
+      "ip": "127.0.0.1",
+      "startedAt": 1782616961521,
+      "startedAtIso": "2026-06-28T03:22:41.521Z",
+      "lastSeen": 1782617639545,
+      "lastSeenIso": "2026-06-28T03:33:59.545Z",
+      "expiresAt": 1782619439545,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0",
+      "status": "ACTIVE",
+      "source": "TABIBI_APP"
+    }
+  ],
+  "history": [
+    {
+      "id": "SESS-1782616961522-222a99",
+      "time": "28/06/2026, 06:22:41 am CAI",
+      "isoTime": "2026-06-28T03:22:41.523Z",
+      "user": "hjf",
+      "role": "Patient",
+      "ip": "127.0.0.1",
+      "action": "SESSION_STARTED",
+      "duration": "",
+      "note": "dex@gmail.com"
+    },
+    {
+      "id": "SESS-1782616949041-21e6b7",
+      "time": "28/06/2026, 06:22:29 am CAI",
+      "isoTime": "2026-06-28T03:22:29.042Z",
+      "user": "System Admin",
+      "role": "Admin",
+      "ip": "127.0.0.1",
+      "action": "SESSION_STARTED",
+      "duration": "",
+      "note": "admin1@tabibi.com"
+    },
+    {
+      "id": "SESS-1782616948516-1d10d2",
+      "time": "28/06/2026, 06:22:28 am CAI",
+      "isoTime": "2026-06-28T03:22:28.516Z",
+      "user": "Security Test User",
+      "role": "Admin",
+      "ip": "127.0.0.1",
+      "action": "LOGOUT",
+      "duration": "1s",
+      "note": "security-test@tabibi.local"
+    },
+    {
+      "id": "SESS-1782616948509-3444ad",
+      "time": "28/06/2026, 06:22:28 am CAI",
+      "isoTime": "2026-06-28T03:22:28.509Z",
+      "user": "Security Test User",
+      "role": "Admin",
+      "ip": "127.0.0.1",
+      "action": "APP_SESSION_STARTED",
+      "duration": "",
+      "note": "security-test@tabibi.local"
+    }
+  ]
+}
