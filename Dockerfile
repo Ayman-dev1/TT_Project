@@ -19,7 +19,7 @@ RUN echo "--- Locating requirements.txt ---" && \
     pip install --upgrade pip && \
     pip install -r "$REQS"
 
-# ── Step 3: Install Node.js dependencies (fully dynamic) ──────────────────────
+# ── Step 3: Install Node.js Backend dependencies (fully dynamic) ──────────────
 # Locate the backend server.js by absolute path — skips Security_Layer
 RUN echo "--- Locating Node.js backend ---" && \
     SERVER_JS=$(find /app -name "server.js" \
@@ -36,7 +36,18 @@ RUN echo "--- Locating Node.js backend ---" && \
     echo "Found server.js at: $SERVER_JS" && \
     cd "$NODE_DIR" && npm install --production=false
 
-# ── Step 4: Make the startup script executable ────────────────────────────────
+# ── Step 4: Install Frontend dependencies and build (fully dynamic) ───────────
+# Locate the frontend directory by searching for package.json outside backend and node_modules
+RUN echo "--- Locating Frontend ---" && \
+    FRONTEND_PKG=$(find /app -name "package.json" \
+      -not -path "*/node_modules/*" \
+      -not -path "*/backend/*" | head -1) && \
+    if [ -z "$FRONTEND_PKG" ]; then echo "FATAL: frontend package.json not found" && exit 1; fi && \
+    FRONTEND_DIR=$(dirname "$FRONTEND_PKG") && \
+    echo "Found frontend at: $FRONTEND_DIR" && \
+    cd "$FRONTEND_DIR" && npm install --production=false && npm run build
+
+# ── Step 5: Make the startup script executable ────────────────────────────────
 RUN chmod +x /app/start.sh
 
 # ── Port declaration ───────────────────────────────────────────────────────────
