@@ -18,4 +18,4 @@ echo "==> [4/4] Starting Node.js backend (foreground, Railway public port)..."
 cd /app/backend
 # 'exec' replaces this shell with Node so Node becomes PID 1.
 # Railway health checks and signal forwarding (SIGTERM on deploy) work correctly.
-exec node server.js
+exec node /app/backend/server.js
