@@ -8,6 +8,21 @@ const AuthModal = ({ visible, mode, onClose, onSwitch }) => {
     const [registerRole, setRegisterRole] = useState('patient');
     const [profilePic, setProfilePic] = useState(null);
 
+    // ── Controlled state for login form ────────────────────────────────────────
+    const [loginEmail, setLoginEmail] = useState('');
+    const [loginPassword, setLoginPassword] = useState('');
+
+    // ── Controlled state for register form ────────────────────────────────────
+    const [regName, setRegName] = useState('');
+    const [regEmail, setRegEmail] = useState('');
+    const [regDob, setRegDob] = useState('');
+    const [regPassword, setRegPassword] = useState('');
+    const [regSpecialty, setRegSpecialty] = useState('General physician');
+    const [regExperience, setRegExperience] = useState('');
+    const [regFee, setRegFee] = useState('');
+    const [regClinicAddress, setRegClinicAddress] = useState('');
+    const [regDoctorCode, setRegDoctorCode] = useState('');
+
     if (!visible) return null;
 
     const showToast = (msg) => {
@@ -47,9 +62,14 @@ const AuthModal = ({ visible, mode, onClose, onSwitch }) => {
     };
 
     const doLogin = () => {
-        const email = document.getElementById('loginEmail').value.trim();
-        const pass  = document.getElementById('loginPassword').value;
-        if (!email || !pass) return showToast('Please fill all fields');
+        const email = loginEmail.trim();
+        const pass  = loginPassword;
+
+        // Diagnostic log — visible in browser DevTools console
+        console.log('[Tabibi Auth] doLogin called with:', { email, hasPassword: !!pass, role: loginRole });
+
+        if (!email) return showToast('Please enter your email');
+        if (!pass)  return showToast('Please enter your password');
         
         const loginData = { email, password: pass };
         axios.post('/api/auth/login', loginData)
@@ -127,17 +147,28 @@ const AuthModal = ({ visible, mode, onClose, onSwitch }) => {
     };
 
     const doRegister = () => {
-        const name  = document.getElementById('regName').value.trim();
-        const email = document.getElementById('regEmail').value.trim();
-        const dob   = document.getElementById('regDob').value;
-        const pass  = document.getElementById('regPassword').value;
-        if (!name || !email || !pass || !dob) return showToast('Please fill all fields');
+        // Read from React state — no DOM querying
+        const name  = regName.trim();
+        const email = regEmail.trim();
+        const dob   = regDob;
+        const pass  = regPassword;
+
+        // Diagnostic log — visible in browser DevTools console and Railway logs
+        const formSnapshot = { name, email, dob, hasPassword: !!pass, role: registerRole };
+        console.log('[Tabibi Auth] doRegister called with:', formSnapshot);
+
+        // Field-specific validation so the user knows exactly what is missing
+        if (!name)  return showToast('Please enter your full name');
+        if (!email) return showToast('Please enter your email address');
+        if (!dob)   return showToast('Please select your date of birth');
+        if (!pass)  return showToast('Please enter a password');
         if (pass.length < 6) return showToast('Password must be at least 6 characters');
+
         if (registerRole === 'doctor') {
-            const code = document.getElementById('regDoctorCode')?.value.trim();
-            if (!code || code.toUpperCase() !== 'TABIBI-DOC-2026') return showToast('Invalid doctor access code');
-            const clinicAddress = document.getElementById('regClinicAddress')?.value.trim();
-            if (!clinicAddress) return showToast('Clinic address is required');
+            if (!regDoctorCode || regDoctorCode.trim().toUpperCase() !== 'TABIBI-DOC-2026')
+                return showToast('Invalid doctor access code');
+            if (!regClinicAddress.trim())
+                return showToast('Clinic address is required');
         }
         
         const regData = {
@@ -146,10 +177,10 @@ const AuthModal = ({ visible, mode, onClose, onSwitch }) => {
             password: pass,
             role: registerRole,
             dob,
-            specialty: registerRole === 'doctor' ? document.getElementById('regSpecialty')?.value : '',
-            fee: registerRole === 'doctor' ? parseFloat(document.getElementById('regFee')?.value) || 50 : 0,
-            experience: registerRole === 'doctor' ? document.getElementById('regExperience')?.value : '',
-            clinicAddress: registerRole === 'doctor' ? document.getElementById('regClinicAddress')?.value.trim() : '',
+            specialty: registerRole === 'doctor' ? regSpecialty : '',
+            fee: registerRole === 'doctor' ? parseFloat(regFee) || 50 : 0,
+            experience: registerRole === 'doctor' ? regExperience : '',
+            clinicAddress: registerRole === 'doctor' ? regClinicAddress.trim() : '',
         };
 
         axios.post('/api/auth/register', regData)
@@ -215,9 +246,11 @@ const AuthModal = ({ visible, mode, onClose, onSwitch }) => {
                             </div>
                         </div>
                         <label>Email</label>
-                        <input type="email" id="loginEmail" placeholder="Your email" />
+                        <input type="email" id="loginEmail" placeholder="Your email"
+                            value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} />
                         <label>Password</label>
-                        <input type="password" id="loginPassword" placeholder="Password" />
+                        <input type="password" id="loginPassword" placeholder="Password"
+                            value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} />
                         <button className="btn-primary" onClick={doLogin}>Login</button>
                         <p className="switch">Don't have an account? <a onClick={() => onSwitch('register')}>Sign up here</a></p>
                     </div>
@@ -243,33 +276,49 @@ const AuthModal = ({ visible, mode, onClose, onSwitch }) => {
                             <input type="file" id="profilePicInput" accept="image/*" style={{ display: 'none' }} onChange={handleProfilePic} />
                         </div>
                         <div className="form-grid-2">
-                            <div><label>Full Name</label><input type="text" id="regName" placeholder="Name" /></div>
-                            <div><label>Email</label><input type="email" id="regEmail" placeholder="Your email" /></div>
+                            <div><label>Full Name</label>
+                                <input type="text" id="regName" placeholder="Name"
+                                    value={regName} onChange={(e) => setRegName(e.target.value)} /></div>
+                            <div><label>Email</label>
+                                <input type="email" id="regEmail" placeholder="Your email"
+                                    value={regEmail} onChange={(e) => setRegEmail(e.target.value)} /></div>
                         </div>
                         <div className="form-grid-2">
-                            <div><label>Date of Birth</label><input type="date" id="regDob" /></div>
-                            <div><label>Password</label><input type="password" id="regPassword" placeholder="Min 6 chars" /></div>
+                            <div><label>Date of Birth</label>
+                                <input type="date" id="regDob"
+                                    value={regDob} onChange={(e) => setRegDob(e.target.value)} /></div>
+                            <div><label>Password</label>
+                                <input type="password" id="regPassword" placeholder="Min 6 chars"
+                                    value={regPassword} onChange={(e) => setRegPassword(e.target.value)} /></div>
                         </div>
                         {registerRole === 'doctor' && (
                             <div style={{ background: 'var(--primary-light)', padding: '16px', borderRadius: '8px', marginBottom: '16px' }}>
                                 <div className="form-grid-2">
                                     <div>
                                         <label>Specialty</label>
-                                        <select id="regSpecialty">
+                                        <select id="regSpecialty" value={regSpecialty}
+                                            onChange={(e) => setRegSpecialty(e.target.value)}>
                                             <option>General physician</option><option>Gynecologist</option><option>Dermatologist</option>
                                             <option>Pediatricians</option><option>Neurologist</option><option>Gastroenterologist</option>
                                             <option>Dentist</option>
                                         </select>
                                     </div>
-                                    <div><label>Experience</label><input type="text" id="regExperience" placeholder="e.g. 3 Years" /></div>
+                                    <div><label>Experience</label>
+                                        <input type="text" id="regExperience" placeholder="e.g. 3 Years"
+                                            value={regExperience} onChange={(e) => setRegExperience(e.target.value)} /></div>
                                 </div>
                                 <div className="form-grid-2">
-                                    <div><label>Consultation Fee ($)</label><input type="number" id="regFee" placeholder="50" /></div>
-                                    <div><label>Clinic Address</label><input type="text" id="regClinicAddress" placeholder="e.g. 12 El-Galaa St, Cairo" /></div>
+                                    <div><label>Consultation Fee ($)</label>
+                                        <input type="number" id="regFee" placeholder="50"
+                                            value={regFee} onChange={(e) => setRegFee(e.target.value)} /></div>
+                                    <div><label>Clinic Address</label>
+                                        <input type="text" id="regClinicAddress" placeholder="e.g. 12 El-Galaa St, Cairo"
+                                            value={regClinicAddress} onChange={(e) => setRegClinicAddress(e.target.value)} /></div>
                                 </div>
                                 <div style={{ marginTop: '12px' }}>
                                     <label>Access Code</label>
-                                    <input type="text" id="regDoctorCode" placeholder="Enter access code" />
+                                    <input type="text" id="regDoctorCode" placeholder="Enter access code"
+                                        value={regDoctorCode} onChange={(e) => setRegDoctorCode(e.target.value)} />
                                 </div>
                             </div>
                         )}

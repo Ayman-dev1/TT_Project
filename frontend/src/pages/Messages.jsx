@@ -168,7 +168,7 @@ const Messages = () => {
 
     // Connect to Socket.io to receive real-time updates from other browsers
     useEffect(() => {
-        const socket = io('http://localhost:5000');
+        const socket = io(window.location.origin);
         
         socket.on('chat-message', (data) => {
             if (activeChat && data.key === `${activeChat.dId}_${activeChat.pEmail}`) {

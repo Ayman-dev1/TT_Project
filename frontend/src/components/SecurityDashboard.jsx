@@ -127,7 +127,7 @@ const SecurityDashboard = ({
     const [systemInfo, setSystemInfo] = useState({ version: '5.2.0', wafPatterns: 14, honeypots: 11, ping: 0, uptime: 0, totalEvents: 0 });
 
     const token = 'TABIBI-SOC-TOKEN-2026';
-    const baseUrl = 'http://localhost:5000';
+    const baseUrl = window.location.origin;
 
     const apiFetch = async (endpoint, options = {}) => {
         options.headers = {

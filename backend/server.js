@@ -116,9 +116,23 @@ app.use('/api/medical-records', require('./routes/medicalRecordRoutes'));
 const frontendBuildPath = path.join(__dirname, '..', 'frontend', 'dist');
 app.use(express.static(frontendBuildPath));
 
-// Health check / API status endpoint
+// Health check — returns real DB connection status for Railway diagnostics
+// Visit /api/health in browser to verify DB is connected before testing auth
 app.get('/api/health', (req, res) => {
-    res.json({ status: 'healthy', message: 'Tabibi API is running...' });
+    const mongoose = require('mongoose');
+    const readyState = mongoose.connection.readyState;
+    const stateLabels = ['disconnected', 'connected', 'connecting', 'disconnecting'];
+    const stateLabel = stateLabels[readyState] || 'unknown';
+    const isConnected = readyState === 1;
+    const mongoUriPresent = !!process.env.MONGO_URI;
+
+    res.status(isConnected ? 200 : 503).json({
+        status: isConnected ? 'healthy' : 'degraded',
+        database: isConnected ? 'Connected' : 'Disconnected',
+        databaseState: stateLabel,
+        mongoUriPresent,
+        timestamp: new Date().toISOString(),
+    });
 });
 
 // Catch-all route to serve the React index.html for client-side routing
