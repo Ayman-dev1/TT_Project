@@ -105,7 +105,7 @@ app.get('/api/health', (req, res) => {
 });
 
 // Catch-all route to serve the React index.html for client-side routing
-app.get('*', (req, res, next) => {
+app.get('*splat', (req, res, next) => {
     if (req.path.startsWith('/api') || req.path.startsWith('/soc') || req.path.startsWith('/socket.io')) {
         return next();
     }
