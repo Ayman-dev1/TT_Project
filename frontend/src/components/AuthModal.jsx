@@ -179,7 +179,7 @@ const AuthModal = ({ visible, mode, onClose, onSwitch }) => {
             dob,
             specialty: registerRole === 'doctor' ? regSpecialty : '',
             fee: registerRole === 'doctor' ? parseFloat(regFee) || 50 : 0,
-            experience: registerRole === 'doctor' ? regExperience : '',
+            experience: registerRole === 'doctor' ? parseInt(regExperience, 10) || 0 : 0,
             clinicAddress: registerRole === 'doctor' ? regClinicAddress.trim() : '',
         };
 

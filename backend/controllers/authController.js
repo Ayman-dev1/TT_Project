@@ -50,7 +50,8 @@ const registerUser = async (req, res, next) => {
             email,
             password,
             role,
-            image: asString(req.body.image)
+            image: asString(req.body.image),
+            dob: req.body.dob
         });
 
         if (user) {
@@ -59,7 +60,7 @@ const registerUser = async (req, res, next) => {
                 await Doctor.create({
                     userId: user._id,
                     specialty: req.body.specialty || 'General',
-                    experience: req.body.experience || 0,
+                    experience: parseInt(req.body.experience, 10) || 0,
                     fee: req.body.fee || 0,
                     degree: req.body.degree || 'MBBS',
                     about: req.body.about || '',
