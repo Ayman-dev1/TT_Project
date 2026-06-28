@@ -15,22 +15,34 @@ const registerUser = async (req, res, next) => {
         const password = asString(req.body?.password);
         const requestedRole = asString(req.body?.role).toLowerCase();
 
-        if (!name || !isValidEmail(email) || password.length < 8) {
-            return res.status(400).json({ message: 'Invalid registration data' });
+        if (!name) {
+            console.error("Registration validation failed: Full name is missing or invalid");
+            return res.status(400).json({ success: false, message: 'Full name is required' });
+        }
+        if (!isValidEmail(email)) {
+            console.error(`Registration validation failed: Invalid email address format - "${email}"`);
+            return res.status(400).json({ success: false, message: 'Please provide a valid email address' });
+        }
+        if (password.length < 8) {
+            console.error(`Registration validation failed: Password length is ${password.length} (minimum 8 required)`);
+            return res.status(400).json({ success: false, message: 'Password must be at least 8 characters long' });
         }
         if (requestedRole === 'admin') {
-            return res.status(403).json({ message: 'Admin accounts cannot be self-registered' });
+            console.error("Registration validation failed: Self-registration of admin accounts is blocked");
+            return res.status(403).json({ success: false, message: 'Admin accounts cannot be self-registered' });
         }
         const role = requestedRole === 'doctor' ? 'doctor' : 'patient';
 
         const userExists = await User.findOne({ email });
 
         if (userExists) {
-            return res.status(400).json({ message: 'User already exists' });
+            console.error(`Registration validation failed: Email "${email}" is already registered`);
+            return res.status(400).json({ success: false, message: 'An account with this email already exists' });
         }
 
         if (role === 'doctor' && !req.body.clinicAddress) {
-            return res.status(400).json({ message: 'Clinic address is required for doctor accounts' });
+            console.error("Registration validation failed: Clinic address is missing for doctor account");
+            return res.status(400).json({ success: false, message: 'Clinic address is required for doctor accounts' });
         }
 
         const user = await User.create({
@@ -73,7 +85,8 @@ const registerUser = async (req, res, next) => {
             res.status(400).json({ message: 'Invalid user data' });
         }
     } catch (error) {
-        next(error);
+        console.error("Registration validation failed:", error);
+        res.status(400).json({ success: false, message: error.message });
     }
 };
 

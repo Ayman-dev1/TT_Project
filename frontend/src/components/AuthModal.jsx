@@ -162,7 +162,7 @@ const AuthModal = ({ visible, mode, onClose, onSwitch }) => {
         if (!email) return showToast('Please enter your email address');
         if (!dob)   return showToast('Please select your date of birth');
         if (!pass)  return showToast('Please enter a password');
-        if (pass.length < 6) return showToast('Password must be at least 6 characters');
+        if (pass.length < 8) return showToast('Password must be at least 8 characters');
 
         if (registerRole === 'doctor') {
             if (!regDoctorCode || regDoctorCode.trim().toUpperCase() !== 'TABIBI-DOC-2026')
