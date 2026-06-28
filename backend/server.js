@@ -109,7 +109,12 @@ app.get('*', (req, res, next) => {
     if (req.path.startsWith('/api') || req.path.startsWith('/soc') || req.path.startsWith('/socket.io')) {
         return next();
     }
-    res.sendFile(path.join(frontendBuildPath, 'index.html'));
+    res.sendFile(path.join(frontendBuildPath, 'index.html'), (err) => {
+        if (err) {
+            // Avoid bubbling up/crashing the process; return a structured error page instead
+            res.status(500).send("Frontend build index.html is missing. Please check compilation logs.");
+        }
+    });
 });
 
 // Error Handling Middleware
